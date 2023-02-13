@@ -42,8 +42,8 @@ flutter:
     - family: Fulde
       fonts:
         - asset: fonts/fulde.ttf
-        - asset: fonts/fulde.ttf
-          style: italic
+        # - asset: fonts/fulde.ttf
+        #   style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -55,11 +55,14 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               text,
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1
+                  ?.copyWith(fontFamily: 'Fulde'),
             ),
             Text(
               _controllerText.text,
-              style: const TextStyle(color: Colors.red),
+              style: const TextStyle(color: Colors.red, fontFamily: 'Fulde'),
             ),
             SwitchListTile(
               title: Text(
@@ -76,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(),
             ),
             Container(
-              color: Colors.deepPurple,
+              color: const Color(0xFF28282B),
               child: FuldeKeyboard(
                   height: 300,
                   //width: 500,

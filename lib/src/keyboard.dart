@@ -57,7 +57,7 @@ class FuldeKeyboard extends StatefulWidget {
       this.reverseLayout = false,
       this.height = _virtualKeyboardDefaultHeight,
       this.textColor = Colors.black,
-      this.fontSize = 14,
+      this.fontSize = 18,
       this.alwaysCaps = false})
       : super(key: key);
 
@@ -105,6 +105,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           break;
         case FuldeKeyboardKeyAction.shift:
           break;
+        case FuldeKeyboardKeyAction.alt:
+          break;
         default:
       }
     }
@@ -139,6 +141,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       // Init the Text Style for keys.
       textStyle = TextStyle(
         fontFamily: 'Fulde',
+        fontWeight: FontWeight.bold,
         fontSize: fontSize,
         color: textColor,
       );
@@ -165,6 +168,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     // Init the Text Style for keys.
     textStyle = TextStyle(
       fontFamily: 'Fulde',
+      fontWeight: FontWeight.w100,
       fontSize: fontSize,
       color: textColor,
     );
@@ -344,6 +348,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                 color: textColor,
               ),
             ));
+        break;
+      case FuldeKeyboardKeyAction.alt:
+        actionKey = Icon(Icons.swap_horiz, color: textColor);
         break;
     }
 
