@@ -2,10 +2,13 @@ part of fulde_keyboard;
 
 /// Virtual keyboard actions.
 enum FuldeKeyboardKeyAction {
+  alt,
   backspace,
   enter,
-  shift,
+  leftShift,
+  rightShift,
   space,
+  switchAbc,
   switchLanguage,
-  alt
+  switchNumberPad
 }

@@ -35,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // is true will show the numeric keyboard.
   bool isNumericMode = false;
+  bool isAltMode = false;
   late TextEditingController _controllerText;
 
   @override
@@ -58,22 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context)
                   .textTheme
                   .bodyText1
-                  ?.copyWith(fontFamily: 'Fulde'),
+                  ?.copyWith(fontFamily: 'Fulde', fontSize: 40.0),
             ),
             Text(
               _controllerText.text,
-              style: const TextStyle(color: Colors.red, fontFamily: 'Fulde'),
-            ),
-            SwitchListTile(
-              title: Text(
-                'Keyboard Type = ${isNumericMode ? 'FuldeKeyboardType.numeric' : 'FuldeKeyboardType.alphanumeric'}',
-              ),
-              value: isNumericMode,
-              onChanged: (val) {
-                setState(() {
-                  isNumericMode = val;
-                });
-              },
+              style: const TextStyle(
+                  color: Colors.red, fontSize: 40.0, fontFamily: 'Fulde'),
             ),
             Expanded(
               child: Container(),
@@ -91,9 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     FuldeKeyboardDefaultLayouts.english
                   ],
                   //reverseLayout :true,
-                  type: isNumericMode
-                      ? FuldeKeyboardType.numeric
-                      : FuldeKeyboardType.alphanumeric,
+                  type: FuldeKeyboardType.alphanumeric,
                   onKeyPress: _onKeyPress),
             )
           ],
@@ -118,7 +107,10 @@ class _MyHomePageState extends State<MyHomePage> {
         case FuldeKeyboardKeyAction.space:
           text = text + key.text.toString();
           break;
-        case FuldeKeyboardKeyAction.shift:
+        case FuldeKeyboardKeyAction.leftShift:
+          shiftEnabled = !shiftEnabled;
+          break;
+        case FuldeKeyboardKeyAction.rightShift:
           shiftEnabled = !shiftEnabled;
           break;
         default:

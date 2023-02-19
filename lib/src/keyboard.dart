@@ -103,7 +103,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         case FuldeKeyboardKeyAction.space:
           textController.text += (key.text ?? '');
           break;
-        case FuldeKeyboardKeyAction.shift:
+        case FuldeKeyboardKeyAction.leftShift:
+          break;
+        case FuldeKeyboardKeyAction.rightShift:
           break;
         case FuldeKeyboardKeyAction.alt:
           break;
@@ -176,22 +178,6 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
   @override
   Widget build(BuildContext context) {
-    return type == FuldeKeyboardType.numeric ? _numeric() : _alphanumeric();
-  }
-
-  Widget _alphanumeric() {
-    return SizedBox(
-      height: height,
-      width: width ?? MediaQuery.of(context).size.width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: _rows(),
-      ),
-    );
-  }
-
-  Widget _numeric() {
     return SizedBox(
       height: height,
       width: width ?? MediaQuery.of(context).size.width,
@@ -206,10 +192,15 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   /// Returns the rows for keyboard.
   List<Widget> _rows() {
     // Get the keyboard Rows
-    List<List<FuldeKeyboardKey>> keyboardRows =
-        type == FuldeKeyboardType.numeric
-            ? _getKeyboardRowsNumeric()
-            : _getKeyboardRows(customLayoutKeys);
+    late List<List<FuldeKeyboardKey>> keyboardRows;
+
+    if (type == FuldeKeyboardType.numeric) {
+      keyboardRows = _getKeyboardRowsNumeric();
+    } else if (type == FuldeKeyboardType.alt) {
+      keyboardRows = _getKeyboardRowsAlt();
+    } else {
+      keyboardRows = _getKeyboardRowsAlphaNumeric(customLayoutKeys);
+    }
 
     // Generate keyboard row.
     List<Widget> rows = List.generate(keyboardRows.length, (int rowNum) {
@@ -321,17 +312,65 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               ),
             ));
         break;
-      case FuldeKeyboardKeyAction.shift:
-        actionKey = Icon(Icons.arrow_upward, color: textColor);
+      case FuldeKeyboardKeyAction.leftShift:
+        actionKey = SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Center(
+            child: Text(
+              customLayoutKeys.activeIndex == 0 ? '\u21E7' : '\u21E7',
+              style: textStyle,
+            ),
+          ),
+        );
+        break;
+      case FuldeKeyboardKeyAction.rightShift:
+        actionKey = SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Center(
+            child: Text(
+              customLayoutKeys.activeIndex == 0 ? '\u21E7' : '\u21E7',
+              style: textStyle,
+            ),
+          ),
+        );
         break;
       case FuldeKeyboardKeyAction.space:
-        actionKey = actionKey = Icon(Icons.space_bar, color: textColor);
+        actionKey = SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Center(
+            child: Text(
+              customLayoutKeys.activeIndex == 0 ? '\u0020' : 'SpaceBar',
+              style: textStyle,
+            ),
+          ),
+        );
         break;
       case FuldeKeyboardKeyAction.enter:
         actionKey = Icon(
           Icons.keyboard_return,
           color: textColor,
         );
+        break;
+      case FuldeKeyboardKeyAction.alt:
+        actionKey = GestureDetector(
+            onTap: () {
+              setState(() {
+                type = FuldeKeyboardType.alt;
+              });
+            },
+            child: SizedBox(
+              height: double.infinity,
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  customLayoutKeys.activeIndex == 0 ? '\u2387' : 'ALT',
+                  style: textStyle,
+                ),
+              ),
+            ));
         break;
       case FuldeKeyboardKeyAction.switchLanguage:
         actionKey = GestureDetector(
@@ -349,14 +388,50 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               ),
             ));
         break;
-      case FuldeKeyboardKeyAction.alt:
-        actionKey = Icon(Icons.swap_horiz, color: textColor);
+      case FuldeKeyboardKeyAction.switchAbc:
+        actionKey = GestureDetector(
+            onTap: () {
+              setState(() {
+                type = FuldeKeyboardType.alphanumeric;
+              });
+            },
+            child: SizedBox(
+              height: double.infinity,
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  'ABC',
+                  style: TextStyle(color: textColor),
+                ),
+              ),
+            ));
+        break;
+      case FuldeKeyboardKeyAction.switchNumberPad:
+        actionKey = GestureDetector(
+            onTap: () {
+              setState(() {
+                type = FuldeKeyboardType.numeric;
+              });
+            },
+            child: SizedBox(
+              height: double.infinity,
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  customLayoutKeys.activeIndex == 0
+                      ? '\u0661\u0662\u0663'
+                      : '123',
+                  style: textStyle,
+                ),
+              ),
+            ));
         break;
     }
 
     var widget = InkWell(
       onTap: () {
-        if (key.action == FuldeKeyboardKeyAction.shift) {
+        if (key.action == FuldeKeyboardKeyAction.leftShift ||
+            key.action == FuldeKeyboardKeyAction.rightShift) {
           if (!alwaysCaps) {
             setState(() {
               isShiftEnabled = !isShiftEnabled;
