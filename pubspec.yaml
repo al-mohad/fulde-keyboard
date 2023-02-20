@@ -3,6 +3,12 @@ description: A simple package for displaying virtual fulde keyboards. The librar
 version: 0.0.1
 homepage: https://github.com/al-mohad/fulde-keyboard
 
+screenshots:
+  - description: "first screenshot description here"
+    path: example/screenshots/1.png
+  - description: "secod screenshot description here"
+    path: example/screenshots/2.png
+
 environment:
   sdk: ">=2.18.6 <3.0.0"
   flutter: ">=1.17.0"
