@@ -176,6 +176,15 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     );
   }
 
+// TextStyle(
+//   fontFamily: 'Fulde',
+//   fontWeight: FontWeight.bold,
+//   fontSize: fontSize,
+//   color: textColor,
+//   decoration: TextDecoration.none,
+//   decorationColor: textColor,
+// );
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

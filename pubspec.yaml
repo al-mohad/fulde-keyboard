@@ -5,9 +5,15 @@ homepage: https://github.com/al-mohad/fulde-keyboard
 
 screenshots:
   - description: "first screenshot description here"
-    path: example/screenshots/1.png
+    path: example/screenshots/fuldeLayout.png
   - description: "secod screenshot description here"
-    path: example/screenshots/2.png
+    path: example/screenshots/englishLayout.png
+  - description: "secod screenshot description here"
+    path: example/screenshots/englishLayout2.png
+  - description: "secod screenshot description here"
+    path: example/screenshots/englishLayout3.png
+  - description: "secod screenshot description here"
+    path: example/screenshots/englishLayout4.png
 
 environment:
   sdk: ">=2.18.6 <3.0.0"
