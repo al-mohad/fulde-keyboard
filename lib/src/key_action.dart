@@ -10,5 +10,7 @@ enum FuldeKeyboardKeyAction {
   space,
   switchAbc,
   switchLanguage,
-  switchNumberPad
+  switchNumberPad,
+  alpha,
+  symbols,
 }

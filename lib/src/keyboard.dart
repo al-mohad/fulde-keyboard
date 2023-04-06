@@ -240,11 +240,19 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       if (reverseLayout) items = items.reversed.toList();
       return Material(
         color: Colors.transparent,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          // Generate keboard keys
-          children: items,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              // Generate keboard keys
+              children: items,
+            ),
+            const Divider(
+              color: Colors.white38,
+              height: 0,
+            )
+          ],
         ),
       );
     });
@@ -342,7 +350,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           width: double.infinity,
           child: Center(
             child: Text(
-              customLayoutKeys.activeIndex == 0 ? '\u0020' : 'SpaceBar',
+              customLayoutKeys.activeIndex == 0 ? '\u0020' : ' ',
               style: textStyle,
             ),
           ),
@@ -366,7 +374,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               width: double.infinity,
               child: Center(
                 child: Text(
-                  customLayoutKeys.activeIndex == 0 ? '\u2387' : 'ALT',
+                  customLayoutKeys.activeIndex == 0 ? '\u2387' : 'alt',
                   style: textStyle,
                 ),
               ),
