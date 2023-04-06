@@ -15,7 +15,7 @@ This project has forked from `virtual_keyboard` project because the `virtual_key
 
 <br>
 <p align="center">
-![alt text](fulde_keyboard/example/screenshots/fuldeLayout.png)
+![alt text](example/screenshots/fuldeLayout.png)
 
 <img style="height:200px;" alt="FlutterBlue" src="https://github.com/al-mohad/fulde_keyboard/blob/main/screen3.png?raw=true" />
 </p>
