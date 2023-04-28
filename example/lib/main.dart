@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fulde_keyboard/fulde_keyboard.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -58,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               text,
               style: Theme.of(context)
                   .textTheme
-                  .bodyText1
+                  .bodyLarge
                   ?.copyWith(fontFamily: 'Fulde', fontSize: 40.0),
             ),
             Text(
@@ -73,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
               color: const Color(0xFF28282B),
               child: FuldeKeyboard(
                   height: 300,
-                  //width: 500,
+                  // width: 100,
                   textColor: Colors.white,
                   textController: _controllerText,
                   //customLayoutKeys: _customLayoutKeys,

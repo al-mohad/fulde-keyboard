@@ -188,7 +188,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height,
+      // height: height,
       width: width ?? MediaQuery.of(context).size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -248,7 +248,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
       if (reverseLayout) items = items.reversed.toList();
       return Material(
-        color: Colors.transparent,
+        color: const Color(0xFF0A0A0A),
         child: Column(
           children: [
             Row(
@@ -257,10 +257,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               // Generate keboard keys
               children: items,
             ),
-            const Divider(
-              color: Colors.white38,
-              height: 0,
-            )
+            // ?* Add lines to each row
+            // const Divider(
+            //   color: Colors.white38,
+            //   height: 0,
+            // )
           ],
         ),
       );
@@ -281,13 +282,20 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       },
       child: SizedBox(
         height: height / customLayoutKeys.activeLayout.length,
-        child: Center(
-            child: Text(
-          alwaysCaps
-              ? key.capsText ?? ''
-              : (isShiftEnabled ? key.capsText : key.text) ?? '',
-          style: textStyle,
-        )),
+        child: Container(
+          margin: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            color: const Color(0xFF222222),
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: Center(
+              child: Text(
+            alwaysCaps
+                ? key.capsText ?? ''
+                : (isShiftEnabled ? key.capsText : key.text) ?? '',
+            style: textStyle,
+          )),
+        ),
       ),
     ));
   }
@@ -324,7 +332,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               height: double.infinity,
               width: double.infinity,
               child: Icon(
-                Icons.backspace,
+                CupertinoIcons.delete_left_fill,
                 color: textColor,
               ),
             ));
@@ -359,7 +367,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           width: double.infinity,
           child: Center(
             child: Text(
-              customLayoutKeys.activeIndex == 0 ? '\u0020' : ' ',
+              customLayoutKeys.activeIndex == 0 ? '\u0020' : 'space bar',
               style: textStyle,
             ),
           ),
@@ -383,7 +391,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               width: double.infinity,
               child: Center(
                 child: Text(
-                  customLayoutKeys.activeIndex == 0 ? '\u2387' : 'alt',
+                  customLayoutKeys.activeIndex == 0 ? '\u2387' : '!@#',
                   style: textStyle,
                 ),
               ),
@@ -459,6 +467,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         _onKeyPress(key);
       },
       child: Container(
+        margin: const EdgeInsets.all(2),
+        decoration: BoxDecoration(
+          color: const Color(0xFF313131),
+          borderRadius: BorderRadius.circular(4),
+        ),
         alignment: Alignment.center,
         height: height / customLayoutKeys.activeLayout.length,
         child: actionKey,

@@ -2,6 +2,7 @@ library fulde_keyboard;
 
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 part './src/key.dart';

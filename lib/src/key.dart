@@ -7,8 +7,12 @@ class FuldeKeyboardKey {
   final FuldeKeyboardKeyType keyType;
   final FuldeKeyboardKeyAction? action;
 
-  FuldeKeyboardKey(
-      {this.text, this.capsText, required this.keyType, this.action}) {
+  FuldeKeyboardKey({
+    this.text,
+    this.capsText,
+    required this.keyType,
+    this.action,
+  }) {
     if (text == null && action != null) {
       text = action == FuldeKeyboardKeyAction.space
           ? ' '

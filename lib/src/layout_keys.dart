@@ -66,7 +66,7 @@ const List<Map> _newEnglishLayout = [
     'i': 'I',
     'o': 'O',
     'p': 'P',
-    FuldeKeyboardKeyAction.backspace: FuldeKeyboardKeyAction.backspace
+    // FuldeKeyboardKeyAction.backspace: FuldeKeyboardKeyAction.backspace
   },
   // Row 3
   {
@@ -79,9 +79,9 @@ const List<Map> _newEnglishLayout = [
     'j': 'J',
     'k': 'K',
     'l': 'L',
-    ';': ';',
-    '\'': '\'',
-    FuldeKeyboardKeyAction.enter: FuldeKeyboardKeyAction.enter
+    // ';': ';',
+    // '\'': '\'',
+    // FuldeKeyboardKeyAction.enter: FuldeKeyboardKeyAction.enter
   },
   // Row 4
   {
@@ -93,20 +93,21 @@ const List<Map> _newEnglishLayout = [
     'b': 'B',
     'n': 'N',
     'm': 'M',
-    ',': ',',
-    '.': '.',
-    '/': '/',
-    FuldeKeyboardKeyAction.rightShift: FuldeKeyboardKeyAction.rightShift
+    // ',': ',',
+    // '.': '.',
+    // '/': '/',
+    FuldeKeyboardKeyAction.backspace: FuldeKeyboardKeyAction.backspace
   },
   // Row 5
   {
     FuldeKeyboardKeyAction.switchLanguage:
         FuldeKeyboardKeyAction.switchLanguage,
-    '@': '@',
-    FuldeKeyboardKeyAction.space: FuldeKeyboardKeyAction.space,
+    // '@': '@',
     FuldeKeyboardKeyAction.alt: FuldeKeyboardKeyAction.alt,
+    FuldeKeyboardKeyAction.space: FuldeKeyboardKeyAction.space,
     FuldeKeyboardKeyAction.switchNumberPad:
         FuldeKeyboardKeyAction.switchNumberPad,
+    FuldeKeyboardKeyAction.enter: FuldeKeyboardKeyAction.enter,
   }
 ];
 
@@ -138,7 +139,7 @@ const List<Map> _newFuldeLayout = [
     '\u06AE': '\u0689',
     '\u06BD': '\u0698',
     '\u06A4': '\u0690', //TODO CHECK
-    FuldeKeyboardKeyAction.backspace: FuldeKeyboardKeyAction.backspace
+    // FuldeKeyboardKeyAction.backspace: FuldeKeyboardKeyAction.backspace
   },
   // Row 3
   {
@@ -154,7 +155,7 @@ const List<Map> _newFuldeLayout = [
     '\u06A5': '\u0681',
     '\u06A9': '\u0685',
     '\u06B5': '\u0690',
-    FuldeKeyboardKeyAction.enter: FuldeKeyboardKeyAction.enter
+    // FuldeKeyboardKeyAction.enter: FuldeKeyboardKeyAction.enter
   },
   // Row 4
   {
@@ -166,19 +167,21 @@ const List<Map> _newFuldeLayout = [
     '\u06AA': '\u0686',
     '\u06B4': '\u068F',
     '\u06BF': '\u0699',
-    '\u06C0': '\u06C0',
-    '\u06C1': '\u06C1',
-    '\u06C3': '\u06C3',
-    '\u06C2': '\u06C2',
+    // '\u06C0': '\u06C0',
+    // '\u06C1': '\u06C1',
+    // '\u06C3': '\u06C3',
+    // '\u06C2': '\u06C2',
+    FuldeKeyboardKeyAction.backspace: FuldeKeyboardKeyAction.backspace,
   },
   // Row 5
   {
     FuldeKeyboardKeyAction.switchLanguage:
         FuldeKeyboardKeyAction.switchLanguage,
-    '@': '@',
-    FuldeKeyboardKeyAction.space: FuldeKeyboardKeyAction.space,
+    // '@': '@',
     FuldeKeyboardKeyAction.alt: FuldeKeyboardKeyAction.alt,
+    FuldeKeyboardKeyAction.space: FuldeKeyboardKeyAction.space,
     FuldeKeyboardKeyAction.switchNumberPad:
         FuldeKeyboardKeyAction.switchNumberPad,
+    FuldeKeyboardKeyAction.enter: FuldeKeyboardKeyAction.enter,
   }
 ];
