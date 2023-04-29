@@ -39,6 +39,11 @@ const List<List> _keyRowsAlt = [
     '\u069D',
     '\u069C',
     '\u069E',
+    '\u06C0',
+    '\u06C1',
+    '\u06C3',
+    '\u06C2',
+    ',',
   ],
   // Row 2
   [
@@ -59,13 +64,26 @@ const List<List> _keyRowsAlt = [
     '*',
     '\'',
     ':',
+    ';',
     '/',
     '!',
     '?',
     '+',
-    FuldeKeyboardKeyAction.backspace,
+    '.',
   ],
   // Row 4
+  [
+    // '"',
+    // '*',
+    // '\'',
+    // ':',
+    // '/',
+    // '!',
+    // '?',
+    // '+',
+    // FuldeKeyboardKeyAction.backspace,
+  ],
+  // Row 5
   [
     FuldeKeyboardKeyAction.switchAbc,
     FuldeKeyboardKeyAction.space,
