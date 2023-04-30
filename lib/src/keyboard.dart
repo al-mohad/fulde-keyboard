@@ -451,6 +451,12 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               ),
             ));
         break;
+      case FuldeKeyboardKeyAction.alpha:
+        // TODO: Handle this case.
+        break;
+      case FuldeKeyboardKeyAction.symbols:
+        // TODO: Handle this case.
+        break;
     }
 
     var widget = InkWell(

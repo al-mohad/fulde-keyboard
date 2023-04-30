@@ -73,14 +73,11 @@ const List<List> _keyRowsAlt = [
   ],
   // Row 4
   [
-    // '"',
-    // '*',
-    // '\'',
-    // ':',
-    // '/',
-    // '!',
-    // '?',
-    // '+',
+    '₦',
+    '£',
+    '₹',
+    '₵',
+    '¥',
     // FuldeKeyboardKeyAction.backspace,
   ],
   // Row 5
