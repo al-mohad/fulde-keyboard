@@ -78,7 +78,7 @@ const List<List> _keyRowsAlt = [
   [
     {
       'text': '\u069A',
-      'coords': {'row': 0, 'col': 0}
+      'coords': {'row': 0, 'col': 0},
     },
     {
       'text': '\u069B',
