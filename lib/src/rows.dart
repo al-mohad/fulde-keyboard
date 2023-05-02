@@ -4,29 +4,71 @@ part of fulde_keyboard;
 const List<List> _keyRowsNumeric = [
   // Row 1
   [
-    '1',
-    '2',
-    '3',
-    '+',
+    {
+      'text': '1',
+      'coords': {'row': 0, 'col': 0}
+    },
+    {
+      'text': '2',
+      'coords': {'row': 0, 'col': 1}
+    },
+    {
+      'text': '3',
+      'coords': {'row': 0, 'col': 2}
+    },
+    {
+      'text': '+',
+      'coords': {'row': 0, 'col': 3}
+    },
   ],
   // Row 2
   [
-    '4',
-    '5',
-    '6',
-    '#',
+    {
+      'text': '4',
+      'coords': {'row': 1, 'col': 0}
+    },
+    {
+      'text': '5',
+      'coords': {'row': 1, 'col': 1}
+    },
+    {
+      'text': '6',
+      'coords': {'row': 1, 'col': 2}
+    },
+    {
+      'text': '#',
+      'coords': {'row': 1, 'col': 3}
+    },
   ],
   // Row 3
   [
-    '7',
-    '8',
-    '9',
-    '%',
+    {
+      'text': '7',
+      'coords': {'row': 2, 'col': 0}
+    },
+    {
+      'text': '8',
+      'coords': {'row': 2, 'col': 1}
+    },
+    {
+      'text': '9',
+      'coords': {'row': 2, 'col': 2}
+    },
+    {
+      'text': '%',
+      'coords': {'row': 2, 'col': 3}
+    },
   ],
   // Row 4
   [
-    '.',
-    '0',
+    {
+      'text': '.',
+      'coords': {'row': 3, 'col': 0}
+    },
+    {
+      'text': '0',
+      'coords': {'row': 3, 'col': 1}
+    },
   ],
 ];
 
@@ -34,50 +76,155 @@ const List<List> _keyRowsNumeric = [
 const List<List> _keyRowsAlt = [
   // Row 1
   [
-    '\u069A',
-    '\u069B',
-    '\u069D',
-    '\u069C',
-    '\u069E',
-    '\u06C0',
-    '\u06C1',
-    '\u06C3',
-    '\u06C2',
-    ',',
+    {
+      'text': '\u069A',
+      'coords': {'row': 0, 'col': 0}
+    },
+    {
+      'text': '\u069B',
+      'coords': {'row': 0, 'col': 1}
+    },
+    {
+      'text': '\u069D',
+      'coords': {'row': 0, 'col': 2}
+    },
+    {
+      'text': '\u069C',
+      'coords': {'row': 0, 'col': 3}
+    },
+    {
+      'text': '\u069E',
+      'coords': {'row': 0, 'col': 4}
+    },
+    {
+      'text': '\u06C0',
+      'coords': {'row': 0, 'col': 5}
+    },
+    {
+      'text': '\u06C1',
+      'coords': {'row': 0, 'col': 6}
+    },
+    {
+      'text': '\u06C3',
+      'coords': {'row': 0, 'col': 7}
+    },
+    {
+      'text': '\u06C2',
+      'coords': {'row': 0, 'col': 8}
+    },
+    {
+      'text': ',',
+      'coords': {'row': 0, 'col': 9}
+    },
   ],
   // Row 2
   [
-    '@',
-    '#',
-    '\$',
-    '&',
-    '_',
-    '-',
-    '(',
-    ')',
-    '=',
-    '%',
+    {
+      'text': '@',
+      'coords': {'row': 1, 'col': 0}
+    },
+    {
+      'text': '#',
+      'coords': {'row': 1, 'col': 1}
+    },
+    {
+      'text': '\$',
+      'coords': {'row': 1, 'col': 2}
+    },
+    {
+      'text': '&',
+      'coords': {'row': 1, 'col': 3}
+    },
+    {
+      'text': '_',
+      'coords': {'row': 1, 'col': 4}
+    },
+    {
+      'text': '-',
+      'coords': {'row': 1, 'col': 5}
+    },
+    {
+      'text': '(',
+      'coords': {'row': 1, 'col': 6}
+    },
+    {
+      'text': ')',
+      'coords': {'row': 1, 'col': 7}
+    },
+    {
+      'text': '=',
+      'coords': {'row': 1, 'col': 8}
+    },
+    {
+      'text': '%',
+      'coords': {'row': 1, 'col': 9}
+    },
   ],
   // Row 3
   [
-    '"',
-    '*',
-    '\'',
-    ':',
-    ';',
-    '/',
-    '!',
-    '?',
-    '+',
-    '.',
+    {
+      'text': '"',
+      'coords': {'row': 2, 'col': 0}
+    },
+    {
+      'text': '*',
+      'coords': {'row': 2, 'col': 1}
+    },
+    {
+      'text': '\'',
+      'coords': {'row': 2, 'col': 2}
+    },
+    {
+      'text': ':',
+      'coords': {'row': 2, 'col': 3}
+    },
+    {
+      'text': ';',
+      'coords': {'row': 2, 'col': 4}
+    },
+    {
+      'text': '/',
+      'coords': {'row': 2, 'col': 5}
+    },
+    {
+      'text': '!',
+      'coords': {'row': 2, 'col': 6}
+    },
+    {
+      'text': '?',
+      'coords': {'row': 2, 'col': 7}
+    },
+    {
+      'text': '+',
+      'coords': {'row': 2, 'col': 8}
+    },
+    {
+      'text': '.',
+      'coords': {'row': 2, 'col': 9}
+    },
   ],
   // Row 4
   [
-    '₦',
-    '£',
-    '₹',
-    '₵',
-    '¥',
+    {
+      'text': '₦',
+      'coords': {'row': 3, 'col': 0},
+    },
+    {
+      'text': '£',
+      'coords': {'row': 3, 'col': 1},
+    },
+    {
+      'text': '₹',
+      'coords': {'row': 3, 'col': 2},
+    },
+    {
+      'text': '₵',
+      'coords': {'row': 3, 'col': 3},
+    },
+    {
+      'text': '¥',
+      'coords': {'row': 3, 'col': 4},
+    },
     // FuldeKeyboardKeyAction.backspace,
   ],
   // Row 5
@@ -100,6 +247,7 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysNumeric(rowNum) {
       text: key,
       capsText: key.toUpperCase(),
       keyType: FuldeKeyboardKeyType.string,
+      coords: [keyNum, rowNum],
     );
   });
 }
@@ -119,14 +267,18 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsNumeric() {
 
         rowKeys.add(
           FuldeKeyboardKey(
-              keyType: FuldeKeyboardKeyType.action,
-              action: FuldeKeyboardKeyAction.alt),
+            keyType: FuldeKeyboardKeyType.action,
+            action: FuldeKeyboardKeyAction.alt,
+            coords: [rowKeys.length, rowNum],
+          ),
         );
         // Right Shift
         rowKeys.add(
           FuldeKeyboardKey(
-              keyType: FuldeKeyboardKeyType.action,
-              action: FuldeKeyboardKeyAction.backspace),
+            keyType: FuldeKeyboardKeyType.action,
+            action: FuldeKeyboardKeyAction.backspace,
+            coords: [rowKeys.length, rowNum],
+          ),
         );
         break;
       default:
@@ -151,11 +303,15 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsAlt() {
         return FuldeKeyboardKey(
           text: key,
           keyType: FuldeKeyboardKeyType.string,
+          coords: [keyNum, rowNum],
         );
       } else {
         var action = _keyRowsAlt[rowNum][keyNum] as FuldeKeyboardKeyAction;
         return FuldeKeyboardKey(
-            keyType: FuldeKeyboardKeyType.action, action: action);
+          keyType: FuldeKeyboardKeyType.action,
+          action: action,
+          coords: [keyNum, rowNum],
+        );
       }
     });
   });
@@ -177,12 +333,16 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
         text: key,
         capsText: capsKey,
         keyType: FuldeKeyboardKeyType.string,
+        coords: [keyNum, rowNum],
       );
     } else {
       var action = layoutKeys.activeLayout[rowNum].keys.elementAt(keyNum)
           as FuldeKeyboardKeyAction;
       return FuldeKeyboardKey(
-          keyType: FuldeKeyboardKeyType.action, action: action);
+        keyType: FuldeKeyboardKeyType.action,
+        action: action,
+        coords: [keyNum, rowNum],
+      );
     }
   });
 }
