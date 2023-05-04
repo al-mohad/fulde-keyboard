@@ -87,27 +87,33 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   // True if shift is enabled.
   bool isShiftEnabled = false;
   void _onKeyPress(FuldeKeyboardKey key) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    print("key.text: ${key.text}");
+    print("key.latin: ${key.latin}");
+    print("deviceWidth: $deviceWidth");
+
     // height and width specifications
-    int kWidth = 36;
+    late double kWidth;
     int kHeight = 60;
 
+    //divide screenwidth by number of keys: devideWidth
     if (key.coords[1] == 0) {
       //row1 keywidth
-      kWidth = 36;
+      kWidth = deviceWidth / 10;
     } else if (key.coords[1] == 1) {
       //row2 keywidth
-      kWidth = 30;
+      kWidth = deviceWidth / 12;
     } else if (key.coords[1] == 2) {
       //row3 keywidth
-      kWidth = 30;
+      kWidth = deviceWidth / 12;
     } else if (key.coords[1] == 3) {
       //row4 keywidth
-      kWidth = 45;
+      kWidth = deviceWidth / 9;
     } else {
       //row 5 keywidth - variation
-      kWidth = 30;
+      kWidth = 36; //*default
     }
-
+    print("kWidth: $kWidth");
     //
 
     OverlayEntry? overlayEntry;
@@ -123,7 +129,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           ),
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Text(
-            key.text ?? '',
+            //key.text ?? '',
+            key.latin ?? '',
             style: const TextStyle(
               fontFamily: 'Fulde',
               color: Colors.white,
