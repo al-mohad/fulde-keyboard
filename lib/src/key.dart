@@ -3,14 +3,12 @@ part of fulde_keyboard;
 /// Virtual Keyboard key
 class FuldeKeyboardKey {
   String? text;
-  String? latin;
   String? capsText;
   final FuldeKeyboardKeyType keyType;
   final FuldeKeyboardKeyAction? action;
 
   FuldeKeyboardKey({
     this.text,
-    this.latin,
     this.capsText,
     required this.keyType,
     this.action,
