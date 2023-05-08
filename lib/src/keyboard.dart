@@ -87,28 +87,34 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   // True if shift is enabled.
   bool isShiftEnabled = false;
   void _onKeyPress(FuldeKeyboardKey key) {
-    // height and width specifications
-    int kWidth = 36;
-    int kHeight = 60;
+    double deviceWidth = MediaQuery.of(context).size.width;
+    print("key.text: ${key.text}");
+    // print("key.latin: ${key.latin}");
+    print("deviceWidth: $deviceWidth");
 
-    if (key.coords[1] == 0) {
-      //row1 keywidth
-      kWidth = 36;
-    } else if (key.coords[1] == 1) {
-      //row2 keywidth
-      kWidth = 30;
-    } else if (key.coords[1] == 2) {
-      //row3 keywidth
-      kWidth = 30;
-    } else if (key.coords[1] == 3) {
-      //row4 keywidth
-      kWidth = 45;
-    } else {
-      //row 5 keywidth - variation
-      kWidth = 30;
-    }
+    // // height and width specifications
+    // late double kWidth;
+    // int kHeight = 60;
 
-    //
+    // //divide screenwidth by number of keys: devideWidth
+    // if (key.coords[1] == 0) {
+    //   //row1 keywidth
+    //   kWidth = deviceWidth / 10;
+    // } else if (key.coords[1] == 1) {
+    //   //row2 keywidth
+    //   kWidth = deviceWidth / 12;
+    // } else if (key.coords[1] == 2) {
+    //   //row3 keywidth
+    //   kWidth = deviceWidth / 12;
+    // } else if (key.coords[1] == 3) {
+    //   //row4 keywidth
+    //   kWidth = deviceWidth / 9;
+    // } else {
+    //   //row 5 keywidth - variation
+    //   kWidth = 36; //*default
+    // }
+    // print("kWidth: $kWidth");
+    // //
 
     OverlayEntry? overlayEntry;
     if (key.keyType == FuldeKeyboardKeyType.string) {
@@ -122,28 +128,30 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
             borderRadius: BorderRadius.circular(8),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Text(
-            key.text ?? '',
-            style: const TextStyle(
-              fontFamily: 'Fulde',
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: Text('F'
+              //key.text ?? '',
+              // key.latin ?? '',
+              // style: const TextStyle(
+              //   fontFamily: 'Fulde',
+              //   color: Colors.white,
+              //   fontSize: 16,
+              //   fontWeight: FontWeight.bold,
+              // ),
+              ),
         ),
       );
       //print('Pressed key: ${key.text}');
       overlayEntry = OverlayEntry(
         builder: (BuildContext context) {
           return Positioned(
-            left: key.coords[0].toDouble() * kWidth,
-            bottom: 300 - ((key.coords[1].toDouble()) * kHeight),
+            // left: key.coords[0].toDouble() * kWidth,
+            // bottom: 300 - ((key.coords[1].toDouble()) * kHeight),
             child: customWidget,
           );
         },
       );
-      Overlay.of(context).insert(overlayEntry);
+      // ! responsible for displaying the pop over
+      // Overlay.of(context).insert(overlayEntry);
     }
 
     if (key.keyType == FuldeKeyboardKeyType.string) {
@@ -172,12 +180,12 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     }
 
     onKeyPress?.call(key);
-
-    if (key.keyType == FuldeKeyboardKeyType.string) {
-      Future.delayed(const Duration(milliseconds: 800), () {
-        overlayEntry!.remove();
-      });
-    }
+    // ! responsible for removing the pop over widget
+    // if (key.keyType == FuldeKeyboardKeyType.string) {
+    //   Future.delayed(const Duration(milliseconds: 800), () {
+    //     overlayEntry!.remove();
+    //   });
+    // }
   }
 
   @override
@@ -515,12 +523,12 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               ),
             ));
         break;
-      case FuldeKeyboardKeyAction.alpha:
-        // TODO: Handle this case.
-        break;
-      case FuldeKeyboardKeyAction.symbols:
-        // TODO: Handle this case.
-        break;
+      // case FuldeKeyboardKeyAction.alpha:
+      //   // TODO: Handle this case.
+      //   break;
+      // case FuldeKeyboardKeyAction.symbols:
+      //   // TODO: Handle this case.
+      //   break;
     }
 
     var widget = InkWell(
