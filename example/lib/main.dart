@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //deviceWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
       title: 'Fulde Keyboard Demo',
       theme: ThemeData(
@@ -74,18 +75,19 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               color: const Color(0xFF28282B),
               child: FuldeKeyboard(
-                  height: 300,
-                  // width: 100,
-                  textColor: Colors.white,
-                  textController: _controllerText,
-                  //customLayoutKeys: _customLayoutKeys,
-                  defaultLayouts: const [
-                    FuldeKeyboardDefaultLayouts.fulde,
-                    FuldeKeyboardDefaultLayouts.english
-                  ],
-                  //reverseLayout :true,
-                  type: FuldeKeyboardType.alphanumeric,
-                  onKeyPress: _onKeyPress),
+                height: 300,
+                // width: 100,
+                textColor: Colors.white,
+                textController: _controllerText,
+                //customLayoutKeys: _customLayoutKeys,
+                defaultLayouts: const [
+                  FuldeKeyboardDefaultLayouts.fulde,
+                  FuldeKeyboardDefaultLayouts.english
+                ],
+                //reverseLayout :true,
+                type: FuldeKeyboardType.alphanumeric,
+                onKeyPress: _onKeyPress,
+              ),
             )
           ],
         ),
@@ -97,6 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _onKeyPress(FuldeKeyboardKey key) {
     if (key.keyType == FuldeKeyboardKeyType.string) {
       text = text + (shiftEnabled ? key.capsText : key.text).toString();
+      // print('Key pressed at x:${key.coords[0]}, y:${key.coords[1]}');
     } else if (key.keyType == FuldeKeyboardKeyType.action) {
       switch (key.action) {
         case FuldeKeyboardKeyAction.backspace:

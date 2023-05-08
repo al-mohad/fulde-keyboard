@@ -73,10 +73,16 @@ const List<List> _keyRowsAlt = [
   ],
   // Row 4
   [
-    '₦',
+    // '"',
+    // '*',
+    // '\'',
+    // ':',
+    // '/',
+    // '!',
+    // '?',
+    // '+',
     '£',
     '₹',
-    '₵',
     '¥',
     // FuldeKeyboardKeyAction.backspace,
   ],
@@ -94,7 +100,6 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysNumeric(rowNum) {
   return List.generate(_keyRowsNumeric[rowNum].length, (int keyNum) {
     // Get key string value.
     String key = _keyRowsNumeric[rowNum][keyNum];
-
     // Create and return new VirtualKeyboardKey object.
     return FuldeKeyboardKey(
       text: key,
@@ -110,13 +115,11 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsNumeric() {
   return List.generate(_keyRowsNumeric.length, (int rowNum) {
     // Will contain the keyboard row keys.
     List<FuldeKeyboardKey> rowKeys = [];
-
     // We have to add Action keys to keyboard.
     switch (rowNum) {
       case 3:
         // String keys.
         rowKeys.addAll(_getKeyboardRowKeysNumeric(rowNum));
-
         rowKeys.add(
           FuldeKeyboardKey(
               keyType: FuldeKeyboardKeyType.action,
@@ -132,7 +135,6 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsNumeric() {
       default:
         rowKeys = _getKeyboardRowKeysNumeric(rowNum);
     }
-
     return rowKeys;
   });
 }
@@ -146,7 +148,6 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsAlt() {
       // Get key string value.
       if (_keyRowsAlt[rowNum][keyNum] is String) {
         String key = _keyRowsAlt[rowNum][keyNum];
-
         // Create and return new VirtualKeyboardKey object.
         return FuldeKeyboardKey(
           text: key,
@@ -165,13 +166,11 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsAlt() {
 List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
     FuldeKeyboardLayoutKeys layoutKeys, rowNum) {
   // Generate VirtualKeyboardKey objects for each row.
-
   return List.generate(layoutKeys.activeLayout[rowNum].length, (int keyNum) {
     // Get key string value.
     if (layoutKeys.activeLayout[rowNum].keys.elementAt(keyNum) is String) {
       String key = layoutKeys.activeLayout[rowNum].keys.elementAt(keyNum);
       String capsKey = layoutKeys.activeLayout[rowNum].values.elementAt(keyNum);
-
       // Create and return new VirtualKeyboardKey object.
       return FuldeKeyboardKey(
         text: key,
