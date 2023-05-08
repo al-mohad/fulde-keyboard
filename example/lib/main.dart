@@ -100,6 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (key.keyType == FuldeKeyboardKeyType.string) {
       text = text + (shiftEnabled ? key.capsText : key.text).toString();
       // print('Key pressed at x:${key.coords[0]}, y:${key.coords[1]}');
+
     } else if (key.keyType == FuldeKeyboardKeyType.action) {
       switch (key.action) {
         case FuldeKeyboardKeyAction.backspace:
