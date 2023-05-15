@@ -88,33 +88,52 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   bool isShiftEnabled = false;
   void _onKeyPress(FuldeKeyboardKey key) {
     double deviceWidth = MediaQuery.of(context).size.width;
-    print("key.text: ${key.text}");
-    // print("key.latin: ${key.latin}");
-    print("deviceWidth: $deviceWidth");
 
-    // // height and width specifications
-    // late double kWidth;
-    // int kHeight = 60;
+    //print("key.text: ${key.text}");
+    //print("key.latin: ${key.latin}");
+    //print("deviceWidth: $deviceWidth");
 
-    // //divide screenwidth by number of keys: devideWidth
-    // if (key.coords[1] == 0) {
-    //   //row1 keywidth
-    //   kWidth = deviceWidth / 10;
-    // } else if (key.coords[1] == 1) {
-    //   //row2 keywidth
-    //   kWidth = deviceWidth / 12;
-    // } else if (key.coords[1] == 2) {
-    //   //row3 keywidth
-    //   kWidth = deviceWidth / 12;
-    // } else if (key.coords[1] == 3) {
-    //   //row4 keywidth
-    //   kWidth = deviceWidth / 9;
-    // } else {
-    //   //row 5 keywidth - variation
-    //   kWidth = 36; //*default
-    // }
-    // print("kWidth: $kWidth");
-    // //
+    //print("type: $type"); "FuldeKeyboardType.alphanumeric", "FuldeKeyboardType.alt"
+    //print(customLayoutKeys.activeLayout[0].toString());
+    //print(_keyRowsAlt[0].toString());
+
+    // height and width specifications
+    late double kWidth;
+    int kHeight = 60;
+
+
+
+    //divide screenwidth by number of keys: kWidth
+    if (key.coords != null) {
+      if (type.toString() == "FuldeKeyboardType.alphanumeric") {
+        if (key.coords![1] == 0) { //row1
+          kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[0].length;
+        } else if (key.coords![1] == 1) { //row2
+          kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[1].length;
+        } else if (key.coords![1] == 2) { //row3
+          kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[2].length;
+        } else if (key.coords![1] == 3) { //row4
+          kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[3].length;
+        } else { //row5
+          kWidth = 36; //*default
+        }
+      } else if (type.toString() == "FuldeKeyboardType.alt") {
+        if (key.coords![1] == 0) { //row1
+          kWidth = deviceWidth / _keyRowsAlt[0].length;
+        } else if (key.coords![1] == 1) { //row2
+          kWidth = deviceWidth / _keyRowsAlt[1].length;
+        } else if (key.coords![1] == 2) { //row3
+          kWidth = deviceWidth / _keyRowsAlt[2].length;
+        } else if (key.coords![1] == 3) { //row4
+          kWidth = deviceWidth / _keyRowsAlt[3].length;
+        } else if (key.coords![1] == 4) { //row5
+          kWidth = deviceWidth / _keyRowsAlt[4].length;
+        } else { //row5
+          kWidth = 36; //*default
+        }
+      }
+    }
+
 
     OverlayEntry? overlayEntry;
     if (key.keyType == FuldeKeyboardKeyType.string) {
@@ -128,30 +147,31 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
             borderRadius: BorderRadius.circular(8),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Text('F'
-              //key.text ?? '',
-              // key.latin ?? '',
-              // style: const TextStyle(
-              //   fontFamily: 'Fulde',
-              //   color: Colors.white,
-              //   fontSize: 16,
-              //   fontWeight: FontWeight.bold,
-              // ),
-              ),
-        ),
+          child: Text(
+            key.text ?? '',
+            //key.latin ?? '',
+            style: const TextStyle(
+              fontFamily: 'Fulde',
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+
+          ),
+          ),
       );
       //print('Pressed key: ${key.text}');
       overlayEntry = OverlayEntry(
         builder: (BuildContext context) {
           return Positioned(
-            // left: key.coords[0].toDouble() * kWidth,
-            // bottom: 300 - ((key.coords[1].toDouble()) * kHeight),
+            left: key.coords![0].toDouble() * kWidth,
+            bottom: 300 - ((key.coords![1].toDouble()) * kHeight),
             child: customWidget,
           );
         },
       );
-      // ! responsible for displaying the pop over
-      // Overlay.of(context).insert(overlayEntry);
+      //display the pop over
+      Overlay.of(context).insert(overlayEntry);
     }
 
     if (key.keyType == FuldeKeyboardKeyType.string) {
@@ -180,12 +200,12 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     }
 
     onKeyPress?.call(key);
-    // ! responsible for removing the pop over widget
-    // if (key.keyType == FuldeKeyboardKeyType.string) {
-    //   Future.delayed(const Duration(milliseconds: 800), () {
-    //     overlayEntry!.remove();
-    //   });
-    // }
+    // remove the pop over widget
+    if (key.keyType == FuldeKeyboardKeyType.string) {
+      Future.delayed(const Duration(milliseconds: 800), () {
+        overlayEntry!.remove();
+      });
+    }
   }
 
   @override
