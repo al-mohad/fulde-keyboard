@@ -7,6 +7,7 @@ class FuldeKeyboardKey {
   final FuldeKeyboardKeyType keyType;
   final FuldeKeyboardKeyAction? action;
   List<int>? coords;
+  String? latin;
 
   FuldeKeyboardKey({
     this.text,
@@ -14,7 +15,9 @@ class FuldeKeyboardKey {
     required this.keyType,
     this.action,
     this.coords,
+    this.latin,
   }) {
+
     if (text == null && action != null) {
       text = action == FuldeKeyboardKeyAction.space
           ? ' '

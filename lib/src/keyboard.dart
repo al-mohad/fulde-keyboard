@@ -89,9 +89,12 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   void _onKeyPress(FuldeKeyboardKey key) {
     double deviceWidth = MediaQuery.of(context).size.width;
 
+    print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");
     //print("key.text: ${key.text}");
     //print("key.latin: ${key.latin}");
+    //print("key.coord: ${key.coords}");
     //print("deviceWidth: $deviceWidth");
+    print("Type: $type");
 
     //print("type: $type"); "FuldeKeyboardType.alphanumeric", "FuldeKeyboardType.alt"
     //print(customLayoutKeys.activeLayout[0].toString());
@@ -148,8 +151,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           ),
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Text(
-            key.text ?? '',
-            //key.latin ?? '',
+            //key.text ?? '',
+            //key.coords.toString() ?? '',
+            isShiftEnabled ? key.latin!.toUpperCase() ?? '' : key.latin ?? '',
             style: const TextStyle(
               fontFamily: 'Fulde',
               color: Colors.white,
