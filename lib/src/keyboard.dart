@@ -86,15 +86,21 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
   // True if shift is enabled.
   bool isShiftEnabled = false;
+
+  bool isABCEnabled = false;
+
   void _onKeyPress(FuldeKeyboardKey key) {
     double deviceWidth = MediaQuery.of(context).size.width;
 
+    //comment these off
     print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");
-    //print("key.text: ${key.text}");
-    //print("key.latin: ${key.latin}");
-    //print("key.coord: ${key.coords}");
-    //print("deviceWidth: $deviceWidth");
+    print("key.text: ${key.text}");
+    print("key.latin: ${key.latin}");
+    print("key.coord: ${key.coords}");
+    print("deviceWidth: $deviceWidth");
     print("Type: $type");
+    print("isABCEnabled: $isABCEnabled");
+
 
     //print("type: $type"); "FuldeKeyboardType.alphanumeric", "FuldeKeyboardType.alt"
     //print(customLayoutKeys.activeLayout[0].toString());
@@ -140,7 +146,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
     OverlayEntry? overlayEntry;
     if (key.keyType == FuldeKeyboardKeyType.string) {
-      Widget customWidget = Material(
+      Widget customWidget = isABCEnabled ? Container() : Material(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
@@ -498,6 +504,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
             onTap: () {
               setState(() {
                 customLayoutKeys.switchLanguage();
+                isABCEnabled = !isABCEnabled;
               });
             },
             child: SizedBox(
