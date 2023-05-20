@@ -339,8 +339,8 @@ const List<List> _latinKeyRowsAlphanumeric = [
   [
     {
       //'coords': {'row': 0, 'col': 0},
-      'latin': '0',
-      'upper': '0',
+      'latin': '\u0660',
+      'upper': '\u0660',
     },
     {
       //'coords': {'row': 1, 'col': 0},
@@ -392,125 +392,125 @@ const List<List> _latinKeyRowsAlphanumeric = [
   [
     {
       //'coords': {'row': 0, 'col': 1},
-      'latin': 'Nj',
-      'upper': '02',
+      'latin': '\u006E\u006A',
+      'upper': '\u006E\u006A',
     },
     {
       //'coords': {'row': 1, 'col': 1},
-      'latin': 'w',
+      'latin': '\u0077',
       'upper': '02',
     },
     {
       //'coords': {'row': 2, 'col': 1},
-      'latin': 'e',
+      'latin': '\u0065',
       'upper': '02',
     },
     {
       //'coords': {'row': 3, 'col': 1},
-      'latin': 'r',
+      'latin': '\u0072',
       'upper': '02',
     },
     {
       //'coords': {'row': 4, 'col': 1},
-      'latin': 't',
+      'latin': '\u0074',
       'upper': '02',
     },
     {
       //'coords': {'row': 5, 'col': 1},
-      'latin': 'y',
+      'latin': '\u0079',
       'upper': '02',
     },
     {
       //'coords': {'row': 6, 'col': 1},
-      'latin': 'u',
+      'latin': '\u0075',
       'upper': '02',
     },
     {
       //'coords': {'row': 7, 'col': 1},
-      'latin': 'i',
+      'latin': '\u0069',
       'upper': '02',
     },
     {
       //'coords': {'row': 8, 'col': 1},
-      'latin': 'o',
+      'latin': '\u006F',
       'upper': '02',
     },
     {
       //'coords': {'row': 9, 'col': 1},
-      'latin': 'p',
+      'latin': '\u0070',
       'upper': '02',
     },
     {
       //'coords': {'row': 10, 'col': 1},
-      'latin': 'ng',
-      'upper': '02',
+      'latin': '\u006E\u0067',
+      'upper': '\u004E\u0067',
     },
     {
       //'coords': {'row': 11, 'col': 1},
-      'latin': 'mb',
-      'upper': '02',
+      'latin': '\u006D\u0062',
+      'upper': '\u004D\u0062',
     },
   ],
   // Row 3
   [
     {
       //'coords': {'row': 0, 'col': 2},
-      'latin': 'a',
+      'latin': '\u0061',
       'upper': '02',
     },
     {
       //'coords': {'row': 1, 'col': 2},
-      'latin': 's',
+      'latin': '\u0073',
       'upper': '02',
     },
     {
       //'coords': {'row': 2, 'col': 2},
-      'latin': 'd',
+      'latin': '\u0064',
       'upper': '02',
     },
     {
       //'coords': {'row': 3, 'col': 2},
-      'latin': 'f',
+      'latin': '\u0066',
       'upper': '02',
     },
     {
       //'coords': {'row': 4, 'col': 2},
-      'latin': 'g',
+      'latin': '\u0067',
       'upper': '02',
     },
     {
       //'coords': {'row': 5, 'col': 2},
-      'latin': 'h',
+      'latin': '\u0068',
       'upper': '02',
     },
     {
       //'coords': {'row': 6, 'col': 2},
-      'latin': 'j',
+      'latin': '\u006A',
       'upper': '02',
     },
     {
       //'coords': {'row': 7, 'col': 2},
-      'latin': 'k',
+      'latin': '\u006B',
       'upper': '02',
     },
     {
       //'coords': {'row': 8, 'col': 2},
-      'latin': 'l',
+      'latin': '\u006C',
       'upper': '02',
     },
     {
       //'coords': {'row': 9, 'col': 2},
-      'latin': 'nd',
+      'latin': '\u006E\u0064',
       'upper': '02',
     },
     {
       //'coords': {'row': 10, 'col': 2},
-      'latin': 'ɓ',
+      'latin': '\u0253',
       'upper': '02',
     },
     {
       //'coords': {'row': 11, 'col': 2},
-      'latin': 'ƴ',
+      'latin': '\u01B4',
       'upper': '02',
     },
   ],
@@ -526,42 +526,42 @@ const List<List> _latinKeyRowsAlphanumeric = [
     // '+',
     {
       //'coords': {'row': 0, 'col': 3},
-      'latin': 'X21',
+      'latin': '\u006E\u0079',
       'upper': '02',
     },
     {
       //'coords': {'row': 1, 'col': 3},
-      'latin': 'ny',
+      'latin': '\u014B',
       'upper': '02',
     },
     {
       //'coords': {'row': 2, 'col': 3},
-      'latin': 'ŋ',
+      'latin': '\u014B',
       'upper': '02',
     },
     {
       //'coords': {'row': 3, 'col': 3},
-      'latin': 'c',
+      'latin': '\u0063',
       'upper': '02',
     },
     {
       //'coords': {'row': 4, 'col': 3},
-      'latin': 'ɗ',
+      'latin': '\u0257',
       'upper': '02',
     },
     {
       //'coords': {'row': 5, 'col': 3},
-      'latin': 'b',
+      'latin': '\u0062',
       'upper': '02',
     },
     {
       //'coords': {'row': 6, 'col': 3},
-      'latin': 'n',
+      'latin': '\u006E',
       'upper': '02',
     },
     {
       //'coords': {'row': 7, 'col': 3},
-      'latin': 'm',
+      'latin': '\u006D',
       'upper': '02',
     },
 
@@ -636,7 +636,7 @@ const List<List> _latinKeyRowsAlternate = [
     {
       //'coords': {'row': 0, 'col': 1},
       'latin': 'Nj',
-      'upper': '01',
+      'upper': '\u004E\u006A',
     },
     {
       //'coords': {'row': 1, 'col': 1},
@@ -651,47 +651,47 @@ const List<List> _latinKeyRowsAlternate = [
     {
       //'coords': {'row': 3, 'col': 1},
       'latin': 'r',
-      'upper': '01',
+      'upper': '\u0052',
     },
     {
       //'coords': {'row': 4, 'col': 1},
       'latin': 't',
-      'upper': '01',
+      'upper': '\u0054',
     },
     {
       //'coords': {'row': 5, 'col': 1},
       'latin': 'y',
-      'upper': '01',
+      'upper': '\u0059',
     },
     {
       //'coords': {'row': 6, 'col': 1},
       'latin': 'u',
-      'upper': '01',
+      'upper': '\u0055',
     },
     {
       //'coords': {'row': 7, 'col': 1},
       'latin': 'i',
-      'upper': '01',
+      'upper': '\u0049',
     },
     {
       //'coords': {'row': 8, 'col': 1},
       'latin': 'o',
-      'upper': '01',
+      'upper': '\u004F',
     },
     {
       //'coords': {'row': 9, 'col': 1},
       'latin': 'p',
-      'upper': '01',
+      'upper': '\u0050',
     },
     {
       //'coords': {'row': 10, 'col': 1},
       'latin': 'ng',
-      'upper': '01',
+      'upper': '\u004E\u0067',
     },
     {
       //'coords': {'row': 11, 'col': 1},
       'latin': 'mb',
-      'upper': '01',
+      'upper': '\u004D\u0064',
     },
   ],
   // Row 3
@@ -699,22 +699,22 @@ const List<List> _latinKeyRowsAlternate = [
     {
       //'coords': {'row': 0, 'col': 2},
       'latin': 'a',
-      'upper': '01',
+      'upper': '\u0041',
     },
     {
       //'coords': {'row': 1, 'col': 2},
       'latin': 's',
-      'upper': '01',
+      'upper': '\u0053',
     },
     {
       //'coords': {'row': 2, 'col': 2},
       'latin': 'd',
-      'upper': '01',
+      'upper': '\u0044',
     },
     {
       //'coords': {'row': 3, 'col': 2},
       'latin': 'f',
-      'upper': '01',
+      'upper': '\u0046',
     },
     {
       //'coords': {'row': 4, 'col': 2},
@@ -882,18 +882,19 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsAlt() {
         List<int> keyCoords =
             _parseCoords(_keyRowsAltCoordinate[rowNum][keyNum]['coords']);
 
-        String? latin;
-        try {
-          latin = _latinKeyRowsAlternate[rowNum][keyNum]['latin'];
-        } catch (exc) {
-          debugPrint(exc.toString());
-        }
-
-        String? upper;
-        try {
-          upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
-        } catch (exc) {}
+        String? latin = _latinKeyRowsAlternate[rowNum][keyNum]['latin'];
+        // String? latin;
+        // try {
+        //   latin = _latinKeyRowsAlternate[rowNum][keyNum]['latin'];
+        // } catch (exc) {}
         ;
+
+        String? upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
+        // String? upper;
+        // try {
+        //   upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
+        // } catch (exc) {}
+        // ;
 
         // Create and return new VirtualKeyboardKey object.
         return FuldeKeyboardKey(
@@ -928,22 +929,17 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
       String key = layoutKeys.activeLayout[rowNum].keys.elementAt(keyNum);
       String capsKey = layoutKeys.activeLayout[rowNum].values.elementAt(keyNum);
 
-      String latin = _latinKeyRowsAlphanumeric[rowNum][keyNum]['latin'];
-      String upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
+      String? latin;
+      try {
+        latin = _latinKeyRowsAlphanumeric[rowNum][keyNum]['latin'];
+      } catch (exc) {}
+      ;
 
-      // String? latin;
-      // try {
-      //   latin = _latinKeyRowsAlphanumeric[rowNum][keyNum]['latin'];
-      // } catch (exc) {
-      //   // ! what is this catch below?
-      //   print(exc);
-      // }
-      // ;
-      // String? upper;
-      // try {
-      //   upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
-      // } catch (exc) {}
-      // ;
+      String? upper;
+      try {
+        upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
+      } catch (exc) {}
+      ;
 
       // Create and return new VirtualKeyboardKey object.
       return FuldeKeyboardKey(
