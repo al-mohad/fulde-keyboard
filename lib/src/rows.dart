@@ -770,42 +770,42 @@ const List<List> _latinKeyRowsAlternate = [
     {
       //'coords': {'row': 0, 'col': 3},
       'latin': 'X21',
-      'upper': '01',
+      'upper': '\u004E\u0079',
     },
     {
       //'coords': {'row': 1, 'col': 3},
       'latin': 'ny',
-      'upper': '01',
+      'upper': '\u004E\u0079',
     },
     {
       //'coords': {'row': 2, 'col': 3},
       'latin': 'ŋ',
-      'upper': '01',
+      'upper': '\u014A',
     },
     {
       //'coords': {'row': 3, 'col': 3},
       'latin': 'c',
-      'upper': '01',
+      'upper': '\u0043',
     },
     {
       //'coords': {'row': 4, 'col': 3},
       'latin': 'ɗ',
-      'upper': '01',
+      'upper': '\u018A',
     },
     {
       //'coords': {'row': 5, 'col': 3},
       'latin': 'b',
-      'upper': '01',
+      'upper': '\u0042',
     },
     {
       //'coords': {'row': 6, 'col': 3},
       'latin': 'n',
-      'upper': '01',
+      'upper': '\u004E',
     },
     {
       //'coords': {'row': 7, 'col': 3},
       'latin': 'm',
-      'upper': '01',
+      'upper': '\u004D',
     },
 
     // FuldeKeyboardKeyAction.backspace,
