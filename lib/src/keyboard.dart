@@ -152,7 +152,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     if (isABCEnabled) {
       //english
       if (isShiftEnabled) {
-        keyToDisplay = key.latin!.toUpperCase();
+        keyToDisplay = key.latin != null ? key.latin!.toUpperCase() : '';
       } else {
         keyToDisplay = key.latin!;
       }
