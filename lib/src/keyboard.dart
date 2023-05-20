@@ -93,14 +93,13 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     double deviceWidth = MediaQuery.of(context).size.width;
 
     //comment these off
-    print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");
-    print("key.text: ${key.text}");
-    print("key.latin: ${key.latin}");
-    print("key.coord: ${key.coords}");
-    print("deviceWidth: $deviceWidth");
-    print("Type: $type");
-    print("isABCEnabled: $isABCEnabled");
-
+    // print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");
+    // print("key.text: ${key.text}");
+    // print("key.latin: ${key.latin}");
+    // print("key.coord: ${key.coords}");
+    // print("deviceWidth: $deviceWidth");
+    // print("Type: $type");
+    // print("isABCEnabled: $isABCEnabled");
 
     //print("type: $type"); "FuldeKeyboardType.alphanumeric", "FuldeKeyboardType.alt"
     //print(customLayoutKeys.activeLayout[0].toString());
@@ -110,66 +109,75 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     late double kWidth;
     int kHeight = 60;
 
-
-
     //divide screenwidth by number of keys: kWidth
     if (key.coords != null) {
       if (type.toString() == "FuldeKeyboardType.alphanumeric") {
-        if (key.coords![1] == 0) { //row1
+        if (key.coords![1] == 0) {
+          //row1
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[0].length;
-        } else if (key.coords![1] == 1) { //row2
+        } else if (key.coords![1] == 1) {
+          //row2
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[1].length;
-        } else if (key.coords![1] == 2) { //row3
+        } else if (key.coords![1] == 2) {
+          //row3
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[2].length;
-        } else if (key.coords![1] == 3) { //row4
+        } else if (key.coords![1] == 3) {
+          //row4
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[3].length;
-        } else { //row5
+        } else {
+          //row5
           kWidth = 36; //*default
         }
       } else if (type.toString() == "FuldeKeyboardType.alt") {
-        if (key.coords![1] == 0) { //row1
+        if (key.coords![1] == 0) {
+          //row1
           kWidth = deviceWidth / _keyRowsAlt[0].length;
-        } else if (key.coords![1] == 1) { //row2
+        } else if (key.coords![1] == 1) {
+          //row2
           kWidth = deviceWidth / _keyRowsAlt[1].length;
-        } else if (key.coords![1] == 2) { //row3
+        } else if (key.coords![1] == 2) {
+          //row3
           kWidth = deviceWidth / _keyRowsAlt[2].length;
-        } else if (key.coords![1] == 3) { //row4
+        } else if (key.coords![1] == 3) {
+          //row4
           kWidth = deviceWidth / _keyRowsAlt[3].length;
-        } else if (key.coords![1] == 4) { //row5
+        } else if (key.coords![1] == 4) {
+          //row5
           kWidth = deviceWidth / _keyRowsAlt[4].length;
-        } else { //row5
+        } else {
+          //row5
           kWidth = 36; //*default
         }
       }
     }
 
-
     OverlayEntry? overlayEntry;
     if (key.keyType == FuldeKeyboardKeyType.string) {
-      Widget customWidget = isABCEnabled ? Container() : Material(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.7),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Text(
-            //key.text ?? '',
-            //key.coords.toString() ?? '',
-            isShiftEnabled ? key.latin!.toUpperCase() ?? '' : key.latin ?? '',
-            style: const TextStyle(
-              fontFamily: 'Fulde',
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-
-          ),
-          ),
-      );
+      Widget customWidget = isABCEnabled
+          ? Container()
+          : Material(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.7),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Text(
+                  //key.text ?? '',
+                  //key.coords.toString() ?? '',
+                  isShiftEnabled ? key.latin!.toUpperCase() : key.latin ?? '',
+                  style: const TextStyle(
+                    fontFamily: 'Fulde',
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            );
       //print('Pressed key: ${key.text}');
       overlayEntry = OverlayEntry(
         builder: (BuildContext context) {
@@ -378,28 +386,30 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   /// Creates default UI element for keyboard Key.
   Widget _keyboardDefaultKey(FuldeKeyboardKey key) {
     return Expanded(
-        child: InkWell(
-      onTap: () {
-        _onKeyPress(key);
-      },
-      child: SizedBox(
-        height: height / customLayoutKeys.activeLayout.length,
-        child: Container(
-          margin: const EdgeInsets.all(2),
-          decoration: BoxDecoration(
-            color: const Color(0xFF222222),
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: Center(
+      child: InkWell(
+        onTap: () {
+          _onKeyPress(key);
+        },
+        child: SizedBox(
+          height: height / customLayoutKeys.activeLayout.length,
+          child: Container(
+            margin: const EdgeInsets.all(2),
+            decoration: BoxDecoration(
+              color: const Color(0xFF222222),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Center(
               child: Text(
-            alwaysCaps
-                ? key.capsText ?? ''
-                : (isShiftEnabled ? key.capsText : key.text) ?? '',
-            style: textStyle,
-          )),
+                alwaysCaps
+                    ? key.capsText ?? ''
+                    : (isShiftEnabled ? key.capsText : key.text) ?? '',
+                style: textStyle,
+              ),
+            ),
+          ),
         ),
       ),
-    ));
+    );
   }
 
   /// Creates default UI element for keyboard Action Key.

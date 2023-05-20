@@ -10,7 +10,7 @@ This project has forked from `virtual_keyboard` project because the `virtual_key
 
 - (Done) Multi-langugae support.
 - (Done) Customizable layout.
-- (`ToDo`) Option to make a popup floating keyboard/keyNum.
+- (Done) Option to make a popup floating keyboard/keyNum.
 - (`ToDo`) Adding input result viewer and handel the events.
 
 <br>

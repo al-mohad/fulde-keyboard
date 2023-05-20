@@ -1,6 +1,6 @@
 name: fulde_keyboard
 description: A simple package for displaying virtual fulde keyboards. The library is written in Dart and has no native code dependency.
-version: 0.5.0
+version: 0.8.0
 homepage: https://github.com/al-mohad/fulde-keyboard
 
 screenshots:
