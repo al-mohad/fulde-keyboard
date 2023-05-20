@@ -47,18 +47,18 @@ class FuldeKeyboard extends StatefulWidget {
 
   const FuldeKeyboard(
       {Key? key,
-      required this.type,
-      this.onKeyPress,
-      this.builder,
-      this.width,
-      this.defaultLayouts,
-      this.customLayoutKeys,
-      this.textController,
-      this.reverseLayout = false,
-      this.height = _virtualKeyboardDefaultHeight,
-      this.textColor = Colors.black,
-      this.fontSize = 18,
-      this.alwaysCaps = false})
+        required this.type,
+        this.onKeyPress,
+        this.builder,
+        this.width,
+        this.defaultLayouts,
+        this.customLayoutKeys,
+        this.textController,
+        this.reverseLayout = false,
+        this.height = _virtualKeyboardDefaultHeight,
+        this.textColor = Colors.black,
+        this.fontSize = 18,
+        this.alwaysCaps = false})
       : super(key: key);
 
   @override
@@ -91,15 +91,17 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
   void _onKeyPress(FuldeKeyboardKey key) {
     double deviceWidth = MediaQuery.of(context).size.width;
+    double keyboardHeight = 300.0;//MediaQuery.of(context).size.height;
 
     //comment these off
-    // print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");
-    // print("key.text: ${key.text}");
-    // print("key.latin: ${key.latin}");
-    // print("key.coord: ${key.coords}");
-    // print("deviceWidth: $deviceWidth");
-    // print("Type: $type");
-    // print("isABCEnabled: $isABCEnabled");
+    print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");
+    print("key.text: ${key.text}");
+    print("key.latin: ${key.latin}");
+    print("key.coord: ${key.coords}");
+    print("deviceWidth: $deviceWidth");
+    print("Type: $type");
+    print("isABCEnabled: $isABCEnabled");
+
 
     //print("type: $type"); "FuldeKeyboardType.alphanumeric", "FuldeKeyboardType.alt"
     //print(customLayoutKeys.activeLayout[0].toString());
@@ -107,83 +109,97 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
     // height and width specifications
     late double kWidth;
-    int kHeight = 60;
+    late double kHeight = 60;
+
+
 
     //divide screenwidth by number of keys: kWidth
     if (key.coords != null) {
       if (type.toString() == "FuldeKeyboardType.alphanumeric") {
-        if (key.coords![1] == 0) {
-          //row1
+        if (key.coords![1] == 0) { //row1
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[0].length;
-        } else if (key.coords![1] == 1) {
-          //row2
+        } else if (key.coords![1] == 1) { //row2
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[1].length;
-        } else if (key.coords![1] == 2) {
-          //row3
+        } else if (key.coords![1] == 2) { //row3
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[2].length;
-        } else if (key.coords![1] == 3) {
-          //row4
+        } else if (key.coords![1] == 3) { //row4
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[3].length;
-        } else {
-          //row5
-          kWidth = 36; //*default
         }
+        kHeight = keyboardHeight / customLayoutKeys.newFulbeLayout.length;
+        // else { //row5
+        //   kWidth = 36; //*default
+        // }
       } else if (type.toString() == "FuldeKeyboardType.alt") {
-        if (key.coords![1] == 0) {
-          //row1
+        if (key.coords![1] == 0) { //row1
           kWidth = deviceWidth / _keyRowsAlt[0].length;
-        } else if (key.coords![1] == 1) {
-          //row2
+        } else if (key.coords![1] == 1) { //row2
           kWidth = deviceWidth / _keyRowsAlt[1].length;
-        } else if (key.coords![1] == 2) {
-          //row3
+        } else if (key.coords![1] == 2) { //row3
           kWidth = deviceWidth / _keyRowsAlt[2].length;
-        } else if (key.coords![1] == 3) {
-          //row4
+        } else if (key.coords![1] == 3) { //row4
           kWidth = deviceWidth / _keyRowsAlt[3].length;
-        } else if (key.coords![1] == 4) {
-          //row5
+        } else if (key.coords![1] == 4) { //row5
           kWidth = deviceWidth / _keyRowsAlt[4].length;
-        } else {
-          //row5
-          kWidth = 36; //*default
         }
+        kHeight = keyboardHeight / customLayoutKeys.newFulbeLayout.length;
+        // else { //row5
+        //   kWidth = 36; //*default
+        // }
       }
     }
 
+    String keyToDisplay = "";
+    if (isABCEnabled) {
+      //english
+      if (isShiftEnabled) {
+        keyToDisplay = key.latin!.toUpperCase();
+      } else {
+        keyToDisplay = key.latin!;
+      }
+    } else {
+      //fulbe
+      if (isShiftEnabled) {
+        keyToDisplay = key.upper ?? ''; //character map for fulbe UPPERCASE
+      } else {
+        keyToDisplay = key.latin ?? '';
+      }
+    }
+
+
+
     OverlayEntry? overlayEntry;
     if (key.keyType == FuldeKeyboardKeyType.string) {
-      Widget customWidget = isABCEnabled
-          ? Container()
-          : Material(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: Text(
-                  //key.text ?? '',
-                  //key.coords.toString() ?? '',
-                  isShiftEnabled ? key.latin!.toUpperCase() : key.latin ?? '',
-                  style: const TextStyle(
-                    fontFamily: 'Fulde',
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            );
+      Widget customWidget = isABCEnabled ? Container() : Material(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.7),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          child: Text(
+            //key.text ?? '',
+            //key.coords.toString() ?? '',
+            //isShiftEnabled ? key.latin!.toUpperCase() ?? '' : key.latin ?? '',
+            keyToDisplay,
+            style: const TextStyle(
+              fontFamily: 'Fulde',
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+
+          ),
+        ),
+      );
       //print('Pressed key: ${key.text}');
       overlayEntry = OverlayEntry(
         builder: (BuildContext context) {
           return Positioned(
             left: key.coords![0].toDouble() * kWidth,
-            bottom: 300 - ((key.coords![1].toDouble()) * kHeight),
+            bottom: keyboardHeight - ((key.coords![1].toDouble()) * kHeight),
             child: customWidget,
           );
         },
@@ -229,7 +245,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   @override
   dispose() {
     if (widget.textController == null) // dispose if created locally only
-    {
+        {
       textController.dispose();
     }
     super.dispose();
@@ -336,11 +352,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           // Check the key type.
           switch (virtualKeyboardKey.keyType) {
             case FuldeKeyboardKeyType.string:
-              // Draw String key.
+            // Draw String key.
               keyWidget = _keyboardDefaultKey(virtualKeyboardKey);
               break;
             case FuldeKeyboardKeyType.action:
-              // Draw action key.
+            // Draw action key.
               keyWidget = _keyboardDefaultActionKey(virtualKeyboardKey);
               break;
           }
@@ -386,30 +402,28 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   /// Creates default UI element for keyboard Key.
   Widget _keyboardDefaultKey(FuldeKeyboardKey key) {
     return Expanded(
-      child: InkWell(
-        onTap: () {
-          _onKeyPress(key);
-        },
-        child: SizedBox(
-          height: height / customLayoutKeys.activeLayout.length,
-          child: Container(
-            margin: const EdgeInsets.all(2),
-            decoration: BoxDecoration(
-              color: const Color(0xFF222222),
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Center(
-              child: Text(
-                alwaysCaps
-                    ? key.capsText ?? ''
-                    : (isShiftEnabled ? key.capsText : key.text) ?? '',
-                style: textStyle,
+        child: InkWell(
+          onTap: () {
+            _onKeyPress(key);
+          },
+          child: SizedBox(
+            height: height / customLayoutKeys.activeLayout.length,
+            child: Container(
+              margin: const EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                color: const Color(0xFF222222),
+                borderRadius: BorderRadius.circular(4),
               ),
+              child: Center(
+                  child: Text(
+                    alwaysCaps
+                        ? key.capsText ?? ''
+                        : (isShiftEnabled ? key.capsText : key.text) ?? '',
+                    style: textStyle,
+                  )),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   /// Creates default UI element for keyboard Action Key.
@@ -427,14 +441,14 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               Timer.periodic(
                   const Duration(
                       milliseconds: _virtualKeyboardBackspaceEventPeriod),
-                  (timer) {
-                if (longPress) {
-                  _onKeyPress(key);
-                } else {
-                  // Cancel timer.
-                  timer.cancel();
-                }
-              });
+                      (timer) {
+                    if (longPress) {
+                      _onKeyPress(key);
+                    } else {
+                      // Cancel timer.
+                      timer.cancel();
+                    }
+                  });
             },
             onLongPressUp: () {
               // Cancel event loop
@@ -564,12 +578,12 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               ),
             ));
         break;
-      // case FuldeKeyboardKeyAction.alpha:
-      //   // TODO: Handle this case.
-      //   break;
-      // case FuldeKeyboardKeyAction.symbols:
-      //   // TODO: Handle this case.
-      //   break;
+    // case FuldeKeyboardKeyAction.alpha:
+    //   // TODO: Handle this case.
+    //   break;
+    // case FuldeKeyboardKeyAction.symbols:
+    //   // TODO: Handle this case.
+    //   break;
     }
 
     var widget = InkWell(

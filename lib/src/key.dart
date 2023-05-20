@@ -8,6 +8,7 @@ class FuldeKeyboardKey {
   final FuldeKeyboardKeyAction? action;
   List<int>? coords;
   String? latin;
+  String? upper;
 
   FuldeKeyboardKey({
     this.text,
@@ -16,6 +17,7 @@ class FuldeKeyboardKey {
     this.action,
     this.coords,
     this.latin,
+    this.upper,
   }) {
 
     if (text == null && action != null) {

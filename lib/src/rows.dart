@@ -341,145 +341,179 @@ const List<List> _latinKeyRowsAlphanumeric = [
   [
     {
       //'coords': {'row': 0, 'col': 0},
-      'latin': '0'
+      'latin': '0',
+      'upper': '0',
     },
     {
       //'coords': {'row': 1, 'col': 0},
-      'latin': '1'
+      'latin': '1',
+      'upper': '1',
     },
     {
       //'coords': {'row': 2, 'col': 0},
-      'latin': '2'
+      'latin': '2',
+      'upper': '2',
     },
     {
       //'coords': {'row': 3, 'col': 0},
-      'latin': '3'
+      'latin': '3',
+      'upper': '3',
     },
     {
       //'coords': {'row': 4, 'col': 0},
-      'latin': '4'
+      'latin': '4',
+      'upper': '4',
     },
     {
       //'coords': {'row': 5, 'col': 0},
-      'latin': '5'
+      'latin': '5',
+      'upper': '5',
     },
     {
       //'coords': {'row': 6, 'col': 0},
-      'latin': '6'
+      'latin': '6',
+      'upper': '6',
     },
     {
       //'coords': {'row': 7, 'col': 0},
-      'latin': '7'
+      'latin': '7',
+      'upper': '7',
     },
     {
       //'coords': {'row': 8, 'col': 0},
-      'latin': '8'
+      'latin': '8',
+      'upper': '8',
     },
     {
       //'coords': {'row': 9, 'col': 0},
-      'latin': '9'
+      'latin': '9',
+      'upper': '9',
     },
   ],
   // Row 2
   [
     {
       //'coords': {'row': 0, 'col': 1},
-      'latin': 'Nj'
+      'latin': 'Nj',
+      'upper': '02',
     },
     {
       //'coords': {'row': 1, 'col': 1},
-      'latin': 'w'
+      'latin': 'w',
+      'upper': '02',
     },
     {
       //'coords': {'row': 2, 'col': 1},
-      'latin': 'e'
+      'latin': 'e',
+      'upper': '02',
     },
     {
       //'coords': {'row': 3, 'col': 1},
-      'latin': 'r'
+      'latin': 'r',
+      'upper': '02',
     },
     {
       //'coords': {'row': 4, 'col': 1},
-      'latin': 't'
+      'latin': 't',
+      'upper': '02',
     },
     {
       //'coords': {'row': 5, 'col': 1},
-      'latin': 'y'
+      'latin': 'y',
+      'upper': '02',
     },
     {
       //'coords': {'row': 6, 'col': 1},
-      'latin': 'u'
+      'latin': 'u',
+      'upper': '02',
     },
     {
       //'coords': {'row': 7, 'col': 1},
-      'latin': 'i'
+      'latin': 'i',
+      'upper': '02',
     },
     {
       //'coords': {'row': 8, 'col': 1},
-      'latin': 'o'
+      'latin': 'o',
+      'upper': '02',
     },
     {
       //'coords': {'row': 9, 'col': 1},
-      'latin': 'p'
+      'latin': 'p',
+      'upper': '02',
     },
     {
       //'coords': {'row': 10, 'col': 1},
-      'latin': 'ng'
+      'latin': 'ng',
+      'upper': '02',
     },
     {
       //'coords': {'row': 11, 'col': 1},
-      'latin': 'mb'
+      'latin': 'mb',
+      'upper': '02',
     },
   ],
   // Row 3
   [
     {
       //'coords': {'row': 0, 'col': 2},
-      'latin': 'a'
+      'latin': 'a',
+      'upper': '02',
     },
     {
       //'coords': {'row': 1, 'col': 2},
-      'latin': 's'
+      'latin': 's',
+      'upper': '02',
     },
     {
       //'coords': {'row': 2, 'col': 2},
-      'latin': 'd'
+      'latin': 'd',
+      'upper': '02',
     },
     {
       //'coords': {'row': 3, 'col': 2},
-      'latin': 'f'
+      'latin': 'f',
+      'upper': '02',
     },
     {
       //'coords': {'row': 4, 'col': 2},
-      'latin': 'g'
+      'latin': 'g',
+      'upper': '02',
     },
     {
       //'coords': {'row': 5, 'col': 2},
-      'latin': 'h'
+      'latin': 'h',
+      'upper': '02',
     },
     {
       //'coords': {'row': 6, 'col': 2},
-      'latin': 'j'
+      'latin': 'j',
+      'upper': '02',
     },
     {
       //'coords': {'row': 7, 'col': 2},
-      'latin': 'k'
+      'latin': 'k',
+      'upper': '02',
     },
     {
       //'coords': {'row': 8, 'col': 2},
-      'latin': 'l'
+      'latin': 'l',
+      'upper': '02',
     },
     {
       //'coords': {'row': 9, 'col': 2},
-      'latin': 'nd'
+      'latin': 'nd',
+      'upper': '02',
     },
     {
       //'coords': {'row': 10, 'col': 2},
-      'latin': 'ɓ'
+      'latin': 'ɓ',
+      'upper': '02',
     },
     {
       //'coords': {'row': 11, 'col': 2},
-      'latin': 'ƴ'
+      'latin': 'ƴ',
+      'upper': '02',
     },
   ],
   // Row 4
@@ -494,35 +528,43 @@ const List<List> _latinKeyRowsAlphanumeric = [
     // '+',
     {
       //'coords': {'row': 0, 'col': 3},
-      'latin': 'X21'
+      'latin': 'X21',
+      'upper': '02',
     },
     {
       //'coords': {'row': 1, 'col': 3},
-      'latin': 'ny'
+      'latin': 'ny',
+      'upper': '02',
     },
     {
       //'coords': {'row': 2, 'col': 3},
-      'latin': 'ŋ'
+      'latin': 'ŋ',
+      'upper': '02',
     },
     {
       //'coords': {'row': 3, 'col': 3},
-      'latin': 'c'
+      'latin': 'c',
+      'upper': '02',
     },
     {
       //'coords': {'row': 4, 'col': 3},
-      'latin': 'ɗ'
+      'latin': 'ɗ',
+      'upper': '02',
     },
     {
       //'coords': {'row': 5, 'col': 3},
-      'latin': 'b'
+      'latin': 'b',
+      'upper': '02',
     },
     {
       //'coords': {'row': 6, 'col': 3},
-      'latin': 'n'
+      'latin': 'n',
+      'upper': '02',
     },
     {
       //'coords': {'row': 7, 'col': 3},
-      'latin': 'm'
+      'latin': 'm',
+      'upper': '02',
     },
 
     // FuldeKeyboardKeyAction.backspace,
@@ -542,145 +584,179 @@ const List<List> _latinKeyRowsAlternate = [
   [
     {
       //'coords': {'row': 0, 'col': 0},
-      'latin': 'X'
+      'latin': '0',
+      'upper': '0'
     },
     {
       //'coords': {'row': 1, 'col': 0},
-      'latin': '1'
+      'latin': '1',
+      'upper': '1'
     },
     {
       //'coords': {'row': 2, 'col': 0},
-      'latin': '2'
+      'latin': '2',
+      'upper': '2'
     },
     {
       //'coords': {'row': 3, 'col': 0},
-      'latin': '3'
+      'latin': '3',
+      'upper': '3'
     },
     {
       //'coords': {'row': 4, 'col': 0},
-      'latin': '4'
+      'latin': '4',
+      'upper': '4'
     },
     {
       //'coords': {'row': 5, 'col': 0},
-      'latin': '5'
+      'latin': '5',
+      'upper': '5'
     },
     {
       //'coords': {'row': 6, 'col': 0},
-      'latin': '6'
+      'latin': '6',
+      'upper': '6'
     },
     {
       //'coords': {'row': 7, 'col': 0},
-      'latin': '7'
+      'latin': '7',
+      'upper': '7'
     },
     {
       //'coords': {'row': 8, 'col': 0},
-      'latin': '8'
+      'latin': '8',
+      'upper': '8'
     },
     {
       //'coords': {'row': 9, 'col': 0},
-      'latin': '9'
+      'latin': '9',
+      'upper': '9'
     },
   ],
   // Row 2
   [
     {
       //'coords': {'row': 0, 'col': 1},
-      'latin': 'Nj'
+      'latin': 'Nj',
+      'upper': '01',
     },
     {
       //'coords': {'row': 1, 'col': 1},
-      'latin': 'w'
+      'latin': 'w',
+      'upper': '01',
     },
     {
       //'coords': {'row': 2, 'col': 1},
-      'latin': 'e'
+      'latin': 'e',
+      'upper': '01',
     },
     {
       //'coords': {'row': 3, 'col': 1},
-      'latin': 'r'
+      'latin': 'r',
+      'upper': '01',
     },
     {
       //'coords': {'row': 4, 'col': 1},
-      'latin': 't'
+      'latin': 't',
+      'upper': '01',
     },
     {
       //'coords': {'row': 5, 'col': 1},
-      'latin': 'y'
+      'latin': 'y',
+      'upper': '01',
     },
     {
       //'coords': {'row': 6, 'col': 1},
-      'latin': 'u'
+      'latin': 'u',
+      'upper': '01',
     },
     {
       //'coords': {'row': 7, 'col': 1},
-      'latin': 'i'
+      'latin': 'i',
+      'upper': '01',
     },
     {
       //'coords': {'row': 8, 'col': 1},
-      'latin': 'o'
+      'latin': 'o',
+      'upper': '01',
     },
     {
       //'coords': {'row': 9, 'col': 1},
-      'latin': 'p'
+      'latin': 'p',
+      'upper': '01',
     },
     {
       //'coords': {'row': 10, 'col': 1},
-      'latin': 'ng'
+      'latin': 'ng',
+      'upper': '01',
     },
     {
       //'coords': {'row': 11, 'col': 1},
-      'latin': 'mb'
+      'latin': 'mb',
+      'upper': '01',
     },
   ],
   // Row 3
   [
     {
       //'coords': {'row': 0, 'col': 2},
-      'latin': 'a'
+      'latin': 'a',
+      'upper': '01',
     },
     {
       //'coords': {'row': 1, 'col': 2},
-      'latin': 's'
+      'latin': 's',
+      'upper': '01',
     },
     {
       //'coords': {'row': 2, 'col': 2},
-      'latin': 'd'
+      'latin': 'd',
+      'upper': '01',
     },
     {
       //'coords': {'row': 3, 'col': 2},
-      'latin': 'f'
+      'latin': 'f',
+      'upper': '01',
     },
     {
       //'coords': {'row': 4, 'col': 2},
-      'latin': 'g'
+      'latin': 'g',
+      'upper': '01',
     },
     {
       //'coords': {'row': 5, 'col': 2},
-      'latin': 'h'
+      'latin': 'h',
+      'upper': '01',
     },
     {
       //'coords': {'row': 6, 'col': 2},
-      'latin': 'j'
+      'latin': 'j',
+      'upper': '01',
     },
     {
       //'coords': {'row': 7, 'col': 2},
-      'latin': 'k'
+      'latin': 'k',
+      'upper': '01',
     },
     {
       //'coords': {'row': 8, 'col': 2},
-      'latin': 'l'
+      'latin': 'l',
+      'upper': '01',
     },
     {
       //'coords': {'row': 9, 'col': 2},
-      'latin': 'nd'
+      'latin': 'nd',
+      'upper': '01',
     },
     {
       //'coords': {'row': 10, 'col': 2},
-      'latin': 'ɓ'
+      'latin': 'ɓ',
+      'upper': '01',
     },
     {
       //'coords': {'row': 11, 'col': 2},
-      'latin': 'ƴ'
+      'latin': 'ƴ',
+      'upper': '01',
     },
   ],
   // Row 4
@@ -695,35 +771,43 @@ const List<List> _latinKeyRowsAlternate = [
     // '+',
     {
       //'coords': {'row': 0, 'col': 3},
-      'latin': 'X21'
+      'latin': 'X21',
+      'upper': '01',
     },
     {
       //'coords': {'row': 1, 'col': 3},
-      'latin': 'ny'
+      'latin': 'ny',
+      'upper': '01',
     },
     {
       //'coords': {'row': 2, 'col': 3},
-      'latin': 'ŋ'
+      'latin': 'ŋ',
+      'upper': '01',
     },
     {
       //'coords': {'row': 3, 'col': 3},
-      'latin': 'c'
+      'latin': 'c',
+      'upper': '01',
     },
     {
       //'coords': {'row': 4, 'col': 3},
-      'latin': 'ɗ'
+      'latin': 'ɗ',
+      'upper': '01',
     },
     {
       //'coords': {'row': 5, 'col': 3},
-      'latin': 'b'
+      'latin': 'b',
+      'upper': '01',
     },
     {
       //'coords': {'row': 6, 'col': 3},
-      'latin': 'n'
+      'latin': 'n',
+      'upper': '01',
     },
     {
       //'coords': {'row': 7, 'col': 3},
-      'latin': 'm'
+      'latin': 'm',
+      'upper': '01',
     },
 
     // FuldeKeyboardKeyAction.backspace,
@@ -804,12 +888,19 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsAlt() {
           latin = _latinKeyRowsAlternate[rowNum][keyNum]['latin'];
         } catch (exc) {};
 
+        String? upper;
+        try {
+          upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
+        } catch (exc) {};
+
+
         // Create and return new VirtualKeyboardKey object.
         return FuldeKeyboardKey(
           text: key,
           keyType: FuldeKeyboardKeyType.string,
           coords: keyCoords,
           latin: latin,
+          upper: upper,
         );
       } else {
         var action = _keyRowsAlt[rowNum][keyNum] as FuldeKeyboardKeyAction;
@@ -843,6 +934,11 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
         latin = _latinKeyRowsAlphanumeric[rowNum][keyNum]['latin'];
       } catch (exc) {};
 
+      String? upper;
+      try {
+        upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
+      } catch (exc) {};
+
 
       // Create and return new VirtualKeyboardKey object.
       return FuldeKeyboardKey(
@@ -851,6 +947,7 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
         keyType: FuldeKeyboardKeyType.string,
         coords: [keyNum, rowNum],
         latin: latin,
+        upper: upper,
       );
     } else {
       var action = layoutKeys.activeLayout[rowNum].keys.elementAt(keyNum)
