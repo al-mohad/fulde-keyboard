@@ -93,14 +93,14 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     double deviceWidth = MediaQuery.of(context).size.width;
     double keyboardHeight = 300.0;//MediaQuery.of(context).size.height;
 
-    //comment these off
-    print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");
-    print("key.text: ${key.text}");
-    print("key.latin: ${key.latin}");
-    print("key.coord: ${key.coords}");
-    print("deviceWidth: $deviceWidth");
-    print("Type: $type");
-    print("isABCEnabled: $isABCEnabled");
+    // //comment these off
+    // print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");
+    // print("key.text: ${key.text}");
+    // print("key.latin: ${key.latin}");
+    // print("key.coord: ${key.coords}");
+    // print("deviceWidth: $deviceWidth");
+    // print("Type: $type");
+    // print("isABCEnabled: $isABCEnabled");
 
 
     //print("type: $type"); "FuldeKeyboardType.alphanumeric", "FuldeKeyboardType.alt"
@@ -109,7 +109,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
     // height and width specifications
     late double kWidth;
-    late double kHeight = 60;
+    late double kHeight;// = 60;
 
 
 
