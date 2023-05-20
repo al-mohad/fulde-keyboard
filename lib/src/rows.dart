@@ -344,47 +344,47 @@ const List<List> _latinKeyRowsAlphanumeric = [
     },
     {
       //'coords': {'row': 1, 'col': 0},
-      'latin': '1',
+      'latin': '\u0661',
       'upper': '1',
     },
     {
       //'coords': {'row': 2, 'col': 0},
-      'latin': '2',
+      'latin': '\u0662',
       'upper': '2',
     },
     {
       //'coords': {'row': 3, 'col': 0},
-      'latin': '3',
+      'latin': '\u0663',
       'upper': '3',
     },
     {
       //'coords': {'row': 4, 'col': 0},
-      'latin': '4',
+      'latin': '\u0664',
       'upper': '4',
     },
     {
       //'coords': {'row': 5, 'col': 0},
-      'latin': '5',
+      'latin': '\u0665',
       'upper': '5',
     },
     {
       //'coords': {'row': 6, 'col': 0},
-      'latin': '6',
+      'latin': '\u0666',
       'upper': '6',
     },
     {
       //'coords': {'row': 7, 'col': 0},
-      'latin': '7',
+      'latin': '\u0667',
       'upper': '7',
     },
     {
       //'coords': {'row': 8, 'col': 0},
-      'latin': '8',
+      'latin': '\u0668',
       'upper': '8',
     },
     {
       //'coords': {'row': 9, 'col': 0},
-      'latin': '9',
+      'latin': '\u0669',
       'upper': '9',
     },
   ],
@@ -531,7 +531,7 @@ const List<List> _latinKeyRowsAlphanumeric = [
     },
     {
       //'coords': {'row': 1, 'col': 3},
-      'latin': '\u014B',
+      'latin': '\u006E\u0079',
       'upper': '02',
     },
     {
@@ -929,17 +929,19 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
       String key = layoutKeys.activeLayout[rowNum].keys.elementAt(keyNum);
       String capsKey = layoutKeys.activeLayout[rowNum].values.elementAt(keyNum);
 
-      String? latin;
-      try {
-        latin = _latinKeyRowsAlphanumeric[rowNum][keyNum]['latin'];
-      } catch (exc) {}
-      ;
+      String latin = _latinKeyRowsAlphanumeric[rowNum][keyNum]['latin'];
+      // String? latin;
+      // try {
+      //   latin = _latinKeyRowsAlphanumeric[rowNum][keyNum]['latin'];
+      // } catch (exc) {}
+      // ;
 
-      String? upper;
-      try {
-        upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
-      } catch (exc) {}
-      ;
+      String upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
+      // String? upper;
+      // try {
+      //   upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
+      // } catch (exc) {}
+      // ;
 
       // Create and return new VirtualKeyboardKey object.
       return FuldeKeyboardKey(

@@ -498,7 +498,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           width: double.infinity,
           child: Center(
             child: Text(
-              customLayoutKeys.activeIndex == 0 ? '\u0020' : 'space bar',
+              customLayoutKeys.activeIndex == 0
+                  ? '\u06A9\u069F\u06BC\u06A2'
+                  : 'space bar',
               style: textStyle,
             ),
           ),
