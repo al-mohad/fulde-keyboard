@@ -50,7 +50,6 @@ const List<List> _keyRowsNumericCoordinate = [
       //'+',
       'coords': {'row': 0, 'col': 3},
     },
-
   ],
   // Row 2
   [
@@ -332,7 +331,6 @@ const List<List> _keyRowsAltCoordinate = [
     FuldeKeyboardKeyAction.switchNumberPad,
   ]
 ];
-
 
 // MAKE MODIFICATIONS HERE
 // LATIN MAPPING FOR ALPHANUMERIC
@@ -826,15 +824,15 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysNumeric(rowNum) {
   return List.generate(_keyRowsNumeric[rowNum].length, (int keyNum) {
     // Get key string value.
     String key = _keyRowsNumeric[rowNum][keyNum];
-    List<int> keyCoords = _parseCoords(_keyRowsNumericCoordinate[rowNum][keyNum]['coords']);
+    List<int> keyCoords =
+        _parseCoords(_keyRowsNumericCoordinate[rowNum][keyNum]['coords']);
 
     // Create and return new VirtualKeyboardKey object.
     return FuldeKeyboardKey(
-      text: key,
-      capsText: key.toUpperCase(),
-      keyType: FuldeKeyboardKeyType.string,
-      coords: keyCoords
-    );
+        text: key,
+        capsText: key.toUpperCase(),
+        keyType: FuldeKeyboardKeyType.string,
+        coords: keyCoords);
   });
 }
 
@@ -851,16 +849,16 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsNumeric() {
         rowKeys.addAll(_getKeyboardRowKeysNumeric(rowNum));
         rowKeys.add(
           FuldeKeyboardKey(
-              keyType: FuldeKeyboardKeyType.action,
-              action: FuldeKeyboardKeyAction.alt,
+            keyType: FuldeKeyboardKeyType.action,
+            action: FuldeKeyboardKeyAction.alt,
             coords: [rowKeys.length, rowNum],
           ),
         );
         // Right Shift
         rowKeys.add(
           FuldeKeyboardKey(
-              keyType: FuldeKeyboardKeyType.action,
-              action: FuldeKeyboardKeyAction.backspace,
+            keyType: FuldeKeyboardKeyType.action,
+            action: FuldeKeyboardKeyAction.backspace,
             coords: [rowKeys.length, rowNum],
           ),
         );
@@ -881,18 +879,20 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsAlt() {
       // Get key string value.
       if (_keyRowsAlt[rowNum][keyNum] is String) {
         String key = _keyRowsAlt[rowNum][keyNum];
-        List<int> keyCoords = _parseCoords(_keyRowsAltCoordinate[rowNum][keyNum]['coords']);
+        List<int> keyCoords =
+            _parseCoords(_keyRowsAltCoordinate[rowNum][keyNum]['coords']);
 
         String? latin;
         try {
           latin = _latinKeyRowsAlternate[rowNum][keyNum]['latin'];
-        } catch (exc) {};
+        } catch (exc) {}
+        ;
 
         String? upper;
         try {
           upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
-        } catch (exc) {};
-
+        } catch (exc) {}
+        ;
 
         // Create and return new VirtualKeyboardKey object.
         return FuldeKeyboardKey(
@@ -917,8 +917,6 @@ List<int> _parseCoords(Map<String, int> coords) {
   return [row, col];
 }
 
-
-
 /// Returns a list of `VirtualKeyboardKey` objects.
 List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
     FuldeKeyboardLayoutKeys layoutKeys, rowNum) {
@@ -929,16 +927,22 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
       String key = layoutKeys.activeLayout[rowNum].keys.elementAt(keyNum);
       String capsKey = layoutKeys.activeLayout[rowNum].values.elementAt(keyNum);
 
-      String? latin;
-      try {
-        latin = _latinKeyRowsAlphanumeric[rowNum][keyNum]['latin'];
-      } catch (exc) {};
+      String latin = _latinKeyRowsAlphanumeric[rowNum][keyNum]['latin'];
+      String upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
 
-      String? upper;
-      try {
-        upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
-      } catch (exc) {};
-
+      // String? latin;
+      // try {
+      //   latin = _latinKeyRowsAlphanumeric[rowNum][keyNum]['latin'];
+      // } catch (exc) {
+      //   // ! what is this catch below?
+      //   print(exc);
+      // }
+      // ;
+      // String? upper;
+      // try {
+      //   upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
+      // } catch (exc) {}
+      // ;
 
       // Create and return new VirtualKeyboardKey object.
       return FuldeKeyboardKey(
@@ -953,7 +957,8 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
       var action = layoutKeys.activeLayout[rowNum].keys.elementAt(keyNum)
           as FuldeKeyboardKeyAction;
       return FuldeKeyboardKey(
-          keyType: FuldeKeyboardKeyType.action, action: action,
+        keyType: FuldeKeyboardKeyType.action,
+        action: action,
         coords: [keyNum, rowNum],
       );
     }
