@@ -641,12 +641,12 @@ const List<List> _latinKeyRowsAlternate = [
     {
       //'coords': {'row': 1, 'col': 1},
       'latin': 'w',
-      'upper': '01',
+      'upper': '\u0057',
     },
     {
       //'coords': {'row': 2, 'col': 1},
       'latin': 'e',
-      'upper': '01',
+      'upper': '\u0045',
     },
     {
       //'coords': {'row': 3, 'col': 1},
@@ -719,42 +719,42 @@ const List<List> _latinKeyRowsAlternate = [
     {
       //'coords': {'row': 4, 'col': 2},
       'latin': 'g',
-      'upper': '01',
+      'upper': '\u0047',
     },
     {
       //'coords': {'row': 5, 'col': 2},
       'latin': 'h',
-      'upper': '01',
+      'upper': '\u0048',
     },
     {
       //'coords': {'row': 6, 'col': 2},
       'latin': 'j',
-      'upper': '01',
+      'upper': '\u004A',
     },
     {
       //'coords': {'row': 7, 'col': 2},
       'latin': 'k',
-      'upper': '01',
+      'upper': '\u004B',
     },
     {
       //'coords': {'row': 8, 'col': 2},
       'latin': 'l',
-      'upper': '01',
+      'upper': '\u004C',
     },
     {
       //'coords': {'row': 9, 'col': 2},
       'latin': 'nd',
-      'upper': '01',
+      'upper': '\u004E\u0064',
     },
     {
       //'coords': {'row': 10, 'col': 2},
       'latin': 'ɓ',
-      'upper': '01',
+      'upper': '\u0181',
     },
     {
       //'coords': {'row': 11, 'col': 2},
       'latin': 'ƴ',
-      'upper': '01',
+      'upper': '\u01B3',
     },
   ],
   // Row 4
@@ -882,14 +882,14 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsAlt() {
         List<int> keyCoords =
             _parseCoords(_keyRowsAltCoordinate[rowNum][keyNum]['coords']);
 
-        String? latin = _latinKeyRowsAlternate[rowNum][keyNum]['latin'];
+        String latin = _latinKeyRowsAlternate[rowNum][keyNum]['latin'];
         // String? latin;
         // try {
         //   latin = _latinKeyRowsAlternate[rowNum][keyNum]['latin'];
         // } catch (exc) {}
-        ;
+        // ;
 
-        String? upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
+        String upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
         // String? upper;
         // try {
         //   upper = _latinKeyRowsAlternate[rowNum][keyNum]['upper'];
