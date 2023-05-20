@@ -583,52 +583,52 @@ const List<List> _latinKeyRowsAlternate = [
     {
       //'coords': {'row': 0, 'col': 0},
       'latin': '0',
-      'upper': '0'
+      'upper': '\u0660'
     },
     {
       //'coords': {'row': 1, 'col': 0},
       'latin': '1',
-      'upper': '1'
+      'upper': '\u0661'
     },
     {
       //'coords': {'row': 2, 'col': 0},
       'latin': '2',
-      'upper': '2'
+      'upper': '\u0662'
     },
     {
       //'coords': {'row': 3, 'col': 0},
       'latin': '3',
-      'upper': '3'
+      'upper': '\u0663'
     },
     {
       //'coords': {'row': 4, 'col': 0},
       'latin': '4',
-      'upper': '4'
+      'upper': '\u0664'
     },
     {
       //'coords': {'row': 5, 'col': 0},
       'latin': '5',
-      'upper': '5'
+      'upper': '\u0665'
     },
     {
       //'coords': {'row': 6, 'col': 0},
       'latin': '6',
-      'upper': '6'
+      'upper': '\u0666'
     },
     {
       //'coords': {'row': 7, 'col': 0},
       'latin': '7',
-      'upper': '7'
+      'upper': '\u0667'
     },
     {
       //'coords': {'row': 8, 'col': 0},
       'latin': '8',
-      'upper': '8'
+      'upper': '\u0668'
     },
     {
       //'coords': {'row': 9, 'col': 0},
       'latin': '9',
-      'upper': '9'
+      'upper': '\u0669'
     },
   ],
   // Row 2
