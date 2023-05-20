@@ -885,8 +885,9 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsAlt() {
         String? latin;
         try {
           latin = _latinKeyRowsAlternate[rowNum][keyNum]['latin'];
-        } catch (exc) {}
-        ;
+        } catch (exc) {
+          debugPrint(exc.toString());
+        }
 
         String? upper;
         try {
