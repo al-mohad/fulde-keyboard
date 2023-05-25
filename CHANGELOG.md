@@ -15,3 +15,8 @@
 * UI changes
 * Customizable layout.
 * Popup floating keyboard/keyNum.
+
+## 0.9.0
+
+* crushed some bugs
+* latin equivalents added

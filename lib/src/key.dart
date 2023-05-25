@@ -19,7 +19,6 @@ class FuldeKeyboardKey {
     this.latin,
     this.upper,
   }) {
-
     if (text == null && action != null) {
       text = action == FuldeKeyboardKeyAction.space
           ? ' '
