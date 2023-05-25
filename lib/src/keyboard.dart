@@ -91,7 +91,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
   void _onKeyPress(FuldeKeyboardKey key) {
     double deviceWidth = MediaQuery.of(context).size.width;
-    double keyboardHeight = 300.0;//MediaQuery.of(context).size.height;
+    double keyboardHeight = height;//_virtualKeyboardDefaultHeight; //MediaQuery.of(context).size.height;
 
     // //comment these off
     // print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");

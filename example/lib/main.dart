@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               color: const Color(0xFF28282B),
               child: FuldeKeyboard(
-                height: 300,
+                height: 200,
                 // width: 100,
                 textColor: Colors.white,
                 textController: _controllerText,
