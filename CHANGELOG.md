@@ -20,3 +20,7 @@
 
 * crushed some bugs
 * latin equivalents added
+
+## 0.9.1
+
+* overlay position height fixed
