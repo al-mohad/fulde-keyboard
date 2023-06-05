@@ -92,8 +92,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   void _onKeyPress(FuldeKeyboardKey key) {
     double deviceWidth = MediaQuery.of(context).size.width;
 
-    double keyboardHeight = height;//_virtualKeyboardDefaultHeight; //MediaQuery.of(context).size.height;
-
+    double keyboardHeight =
+        height; //_virtualKeyboardDefaultHeight; //MediaQuery.of(context).size.height;
 
     /*//comment these off
     print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");
@@ -421,28 +421,28 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   Widget _keyboardDefaultKey(FuldeKeyboardKey key) {
     return Expanded(
         child: InkWell(
-          onLongPress: () => _handleLongPress(key),
-          onTap: () {
-            _onKeyPress(key);
-            },
-          child: SizedBox(
-            height: height / customLayoutKeys.activeLayout.length,
-            child: Container(
-              margin: const EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                color: const Color(0xFF222222),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Center(
-                  child: Text(
-                    alwaysCaps
-                        ? key.capsText ?? ''
-                        : (isShiftEnabled ? key.capsText : key.text) ?? '',
-                    style: textStyle,
-                  )),
-            ),
+      onLongPress: () => _handleLongPress(key),
+      onTap: () {
+        _onKeyPress(key);
+      },
+      child: SizedBox(
+        height: height / customLayoutKeys.activeLayout.length,
+        child: Container(
+          margin: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            color: const Color(0xFF222222),
+            borderRadius: BorderRadius.circular(4),
           ),
-        ));
+          child: Center(
+              child: Text(
+            alwaysCaps
+                ? key.capsText ?? ''
+                : (isShiftEnabled ? key.capsText : key.text) ?? '',
+            style: textStyle,
+          )),
+        ),
+      ),
+    ));
   }
 
   OverlayEntry? currentOverlayEntry;
@@ -459,27 +459,32 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     //8 1
     //0 2
 
-
     String keyToDisplay = "";
     //assign respective properties to keys
     if (key.coords != null) {
       if (type.toString() == "FuldeKeyboardType.alphanumeric") {
-        if ((key.coords![0] == 2) && (key.coords![1] == 1)) { // 1
+        if ((key.coords![0] == 2) && (key.coords![1] == 1)) {
+          // 1
           //2 1
           keyToDisplay = "21";
-        }  else if ((key.coords![0] == 6) && (key.coords![1] == 1)) { // 2
+        } else if ((key.coords![0] == 6) && (key.coords![1] == 1)) {
+          // 2
           //6 1
           keyToDisplay = "61";
-        } else if ((key.coords![0] == 7) && (key.coords![1] == 1)) { //3
+        } else if ((key.coords![0] == 7) && (key.coords![1] == 1)) {
+          //3
           //7 1
           keyToDisplay = "71";
-        } else if ((key.coords![0] == 8) && (key.coords![1] == 1)) { //4
+        } else if ((key.coords![0] == 8) && (key.coords![1] == 1)) {
+          //4
           //8 1
           keyToDisplay = "81";
-        } else if ((key.coords![0] == 0) && (key.coords![1] == 2)) { //5
+        } else if ((key.coords![0] == 0) && (key.coords![1] == 2)) {
+          //5
           //0 2
           keyToDisplay = "02";
-        } else if ((key.coords![0] == 2) && (key.coords![1] == 4)) { //5
+        } else if ((key.coords![0] == 2) && (key.coords![1] == 4)) {
+          //5
           //2 4
           keyToDisplay = "24";
         }
@@ -565,43 +570,40 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       //print('Error occurred while removing overlay entry: $e');
     }
 
-
     OverlayEntry? overlayEntry;
 
     Widget customWidget = isABCEnabled
         ? Container()
         : Material(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.7),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        child: GestureDetector(
-          onTap: () {
-            textController.text += keyToDisplay;
-            overlayEntry?.remove();
-          },
-          child: Row(
-            children: <Widget>[
-              Text(keyToDisplay,
-                style: const TextStyle(
-                  //fontFamily: 'Fulde',
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.7),
+                borderRadius: BorderRadius.circular(8),
               ),
-
-
-            ],
-          )
-        ),
-      ),
-    );
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              child: GestureDetector(
+                  onTap: () {
+                    textController.text += keyToDisplay;
+                    overlayEntry?.remove();
+                  },
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        keyToDisplay,
+                        style: const TextStyle(
+                          //fontFamily: 'Fulde',
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  )),
+            ),
+          );
 
     overlayEntry = OverlayEntry(
       builder: (BuildContext context) {
@@ -613,10 +615,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       },
     );
 
-
     //display the pop over
-    (keyToDisplay != "") ?
-    Overlay.of(context).insert(overlayEntry) : null;
+    (keyToDisplay != "") ? Overlay.of(context).insert(overlayEntry) : null;
 
     currentOverlayEntry = overlayEntry!;
 
@@ -626,7 +626,6 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       });
     }*/
   }
-
 
   /// Creates default UI element for keyboard Action Key.
   Widget _keyboardDefaultActionKey(FuldeKeyboardKey key) {
@@ -813,40 +812,41 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         double deviceWidth = MediaQuery.of(context).size.width;
         double keyboardHeight = height;
         late double kWidth = 60;
-        double kHeight = keyboardHeight / customLayoutKeys.newFulbeLayout.length;
-
+        double kHeight =
+            keyboardHeight / customLayoutKeys.newFulbeLayout.length;
 
         OverlayEntry? overlayEntry;
 
         Widget customWidget = isABCEnabled
             ? Container()
             : Material(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.7),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: GestureDetector(
-                onTap: () {
-                  //textController.text += keyToDisplay;
-                  overlayEntry?.remove();
-                },
-                child: Row(
-                  children: const <Widget>[
-
-                    Icon(Icons.adb, color: Colors.white,),
-                    SizedBox(width: 4,),
-                    Icon(Icons.adb, color: Colors.white,),
-
-                  ],
-                )
-            ),
-          ),
-        );
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: GestureDetector(
+                      onTap: () {
+                        //textController.text += keyToDisplay;
+                        overlayEntry?.remove();
+                      },
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text('Fulde'),
+                          SizedBox(width: 4),
+                          Text('Latin'),
+                          SizedBox(width: 4),
+                          Text('English'),
+                        ],
+                      )),
+                ),
+              );
 
         overlayEntry = OverlayEntry(
           builder: (BuildContext context) {
@@ -858,17 +858,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           },
         );
 
-
         //display the pop over
         //(keyToDisplay != "") ?
-        Overlay.of(context).insert(overlayEntry);// : null;
+        Overlay.of(context).insert(overlayEntry); // : null;
 
         currentOverlayEntry = overlayEntry!;
-
-
-
-
-
       },
       child: Container(
         margin: const EdgeInsets.all(2),
