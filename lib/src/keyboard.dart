@@ -421,7 +421,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   Widget _keyboardDefaultKey(FuldeKeyboardKey key) {
     return Expanded(
         child: InkWell(
-      onLongPress: () => _handleLongPress(key),
+      onLongPress: () {
+        _onLongKeyPress(key);
+      },
       onTap: () {
         _onKeyPress(key);
       },
@@ -447,17 +449,20 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
   OverlayEntry? currentOverlayEntry;
 
-  void _handleLongPress(FuldeKeyboardKey key) {
-    print("LONG PRESSED");
+
+  void _onLongKeyPress(FuldeKeyboardKey key) {
+    /*print("LONG PRESSED");
     print("key.text: ${key.text}");
     print("${key.coords![0]} ${key.coords![1]}");
     print(type.toString());
-    print("isABCEnabled: $isABCEnabled");
+    print("isABCEnabled: $isABCEnabled");*/
 
     //6 1
     //7 1
     //8 1
     //0 2
+
+
 
     String keyToDisplay = "";
     //assign respective properties to keys
@@ -575,35 +580,37 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     Widget customWidget = isABCEnabled
         ? Container()
         : Material(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.7),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: GestureDetector(
-                  onTap: () {
-                    textController.text += keyToDisplay;
-                    overlayEntry?.remove();
-                  },
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        keyToDisplay,
-                        style: const TextStyle(
-                          //fontFamily: 'Fulde',
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  )),
-            ),
-          );
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.7),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: GestureDetector(
+            onTap: () {
+
+              onKeyPress?.call(key);
+              textController.text += ((isShiftEnabled ? key.capsText : key.text) ?? '');
+              overlayEntry?.remove();
+            },
+            child: Row(
+              children: <Widget>[
+                Text(
+                  keyToDisplay,
+                  style: const TextStyle(
+                    //fontFamily: 'Fulde',
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            )),
+      ),
+    );
 
     overlayEntry = OverlayEntry(
       builder: (BuildContext context) {
@@ -835,14 +842,14 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                         //textController.text += keyToDisplay;
                         overlayEntry?.remove();
                       },
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text('Fulde'),
-                          SizedBox(width: 4),
-                          Text('Latin'),
-                          SizedBox(width: 4),
-                          Text('English'),
+                        children: const <Widget>[
+                          Text('Fulde', style: TextStyle(color: Colors.white),),
+                          SizedBox(width: 12),
+                          Text('Latin', style: TextStyle(color: Colors.white),),
+                          SizedBox(width: 12),
+                          Text('English', style: TextStyle(color: Colors.white),),
                         ],
                       )),
                 ),
