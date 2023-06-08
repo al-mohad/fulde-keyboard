@@ -253,10 +253,13 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     // remove the pop over widget
     if (key.keyType == FuldeKeyboardKeyType.string) {
       Future.delayed(const Duration(milliseconds: 800), () {
+        // TODO:: handle this error
+        // BUG:: Failed assertion: line 162 pos 12: '_overlay != null': is not true.
         overlayEntry!.remove();
       });
     }
 
+    // BUG: Null check operator used on a null value
     currentOverlayEntry = overlayEntry!;
   }
 
@@ -449,7 +452,6 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
   OverlayEntry? currentOverlayEntry;
 
-
   void _onLongKeyPress(FuldeKeyboardKey key) {
     /*print("LONG PRESSED");
     print("key.text: ${key.text}");
@@ -461,8 +463,6 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     //7 1
     //8 1
     //0 2
-
-
 
     String keyToDisplay = "";
     //assign respective properties to keys
@@ -580,37 +580,37 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     Widget customWidget = isABCEnabled
         ? Container()
         : Material(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.7),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        child: GestureDetector(
-            onTap: () {
-
-              onKeyPress?.call(key);
-              textController.text += ((isShiftEnabled ? key.capsText : key.text) ?? '');
-              overlayEntry?.remove();
-            },
-            child: Row(
-              children: <Widget>[
-                Text(
-                  keyToDisplay,
-                  style: const TextStyle(
-                    //fontFamily: 'Fulde',
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            )),
-      ),
-    );
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.deepPurple.withOpacity(0.7),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+              child: GestureDetector(
+                  onTap: () {
+                    onKeyPress?.call(key);
+                    textController.text +=
+                        ((isShiftEnabled ? key.capsText : key.text) ?? '');
+                    overlayEntry?.remove();
+                  },
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        keyToDisplay,
+                        style: const TextStyle(
+                          fontFamily: 'Fulde',
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  )),
+            ),
+          );
 
     overlayEntry = OverlayEntry(
       builder: (BuildContext context) {
@@ -832,24 +832,33 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                 ),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.7),
+                    color: Colors.deepPurple.withOpacity(0.7),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   child: GestureDetector(
                       onTap: () {
-                        //textController.text += keyToDisplay;
+                        // textController.text += keyToDisplay;
                         overlayEntry?.remove();
                       },
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
-                          Text('Fulde', style: TextStyle(color: Colors.white),),
+                          Text(
+                            'Fulde',
+                            style: TextStyle(color: Colors.white),
+                          ),
                           SizedBox(width: 12),
-                          Text('Latin', style: TextStyle(color: Colors.white),),
+                          Text(
+                            'Latin',
+                            style: TextStyle(color: Colors.white),
+                          ),
                           SizedBox(width: 12),
-                          Text('English', style: TextStyle(color: Colors.white),),
+                          Text(
+                            'English',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ],
                       )),
                 ),
