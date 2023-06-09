@@ -471,23 +471,24 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         if ((key.coords![0] == 2) && (key.coords![1] == 1)) {
           // 1
           //2 1
-          keyToDisplay = "21";
+          keyToDisplay = "\u069B";
+          key = _longVowelsLayout[0][1];
         } else if ((key.coords![0] == 6) && (key.coords![1] == 1)) {
           // 2
           //6 1
-          keyToDisplay = "61";
+          keyToDisplay = "\u069D";
         } else if ((key.coords![0] == 7) && (key.coords![1] == 1)) {
           //3
           //7 1
-          keyToDisplay = "71";
+          keyToDisplay = "\u069C";
         } else if ((key.coords![0] == 8) && (key.coords![1] == 1)) {
           //4
           //8 1
-          keyToDisplay = "81";
+          keyToDisplay = "\u069E";
         } else if ((key.coords![0] == 0) && (key.coords![1] == 2)) {
           //5
           //0 2
-          keyToDisplay = "02";
+          keyToDisplay = "\u069A";
         } else if ((key.coords![0] == 2) && (key.coords![1] == 4)) {
           //5
           //2 4
@@ -837,30 +838,43 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  child: GestureDetector(
-                      onTap: () {
-                        // textController.text += keyToDisplay;
-                        overlayEntry?.remove();
-                      },
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const <Widget>[
-                          Text(
-                            'Fulde',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          SizedBox(width: 12),
-                          Text(
-                            'Latin',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          SizedBox(width: 12),
-                          Text(
-                            'English',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          customLayoutKeys.switchLanguage();
+                          overlayEntry?.remove();
+                        },
+                        child: const Text(
+                          'Fulde',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(width: 12),
+                      GestureDetector(
+                        onTap: () {
+                          //
+                          overlayEntry?.remove();
+                        },
+                        child: const Text(
+                          'Latin',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(width: 12),
+                      GestureDetector(
+                        onTap: () {
+                          //
+                          overlayEntry?.remove();
+                        },
+                        child: const Text(
+                          'English',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
 
