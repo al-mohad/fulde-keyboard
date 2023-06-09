@@ -472,7 +472,6 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           // 1
           //2 1
           keyToDisplay = "\u069B";
-          key = _longVowelsLayout[0][1];
         } else if ((key.coords![0] == 6) && (key.coords![1] == 1)) {
           // 2
           //6 1
@@ -592,9 +591,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
               child: GestureDetector(
                   onTap: () {
-                    onKeyPress?.call(key);
+                    onKeyPress?.call(key); //<- not in use
                     textController.text +=
-                        ((isShiftEnabled ? key.capsText : key.text) ?? '');
+                        ((isShiftEnabled ? keyToDisplay : keyToDisplay) ?? '');
                     overlayEntry?.remove();
                   },
                   child: Row(

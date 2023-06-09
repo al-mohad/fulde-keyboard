@@ -189,16 +189,16 @@ const List<Map> _newFuldeLayout = [
   }
 ];
 
-/// Keys for LongVowelsLayout.
-const List<Map> _longVowelsLayout = [
-  {
-    '\u069B': '\u069B',
-    '\u069D': '\u069D',
-    '\u069C': '\u069C',
-    '\u069E': '\u069E',
-    '\u069A': '\u069A',
-  },
-];
+/// Keys for LongVowelsLayout. NO LONGER USED
+// const List<Map> _longVowelsLayout = [
+//   {
+//     '\u069B': '\u069B',
+//     '\u069D': '\u069D',
+//     '\u069C': '\u069C',
+//     '\u069E': '\u069E',
+//     '\u069A': '\u069A',
+//   },
+// ];
 
 /// Keys for Virtual Keyboard's rows.
 const List<Map> _newLatinLayout = [
