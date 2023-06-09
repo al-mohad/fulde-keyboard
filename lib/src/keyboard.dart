@@ -704,7 +704,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
             child: Text(
               customLayoutKeys.activeIndex == 0
                   ? '\u06A9\u069F\u06BC\u06A2'
-                  : 'space bar',
+                  : customLayoutKeys.activeIndex == 1
+                      ? 'almohad'
+                      : 'space bar',
               style: textStyle,
             ),
           ),
@@ -738,7 +740,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         actionKey = GestureDetector(
             onTap: () {
               setState(() {
-                customLayoutKeys.switchLanguage();
+                customLayoutKeys.switchLanguage(2);
                 isABCEnabled = !isABCEnabled;
               });
             },
@@ -843,7 +845,10 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
-                          customLayoutKeys.switchLanguage();
+                          print('switching to fulde');
+                          setState(() {
+                            customLayoutKeys.switchLanguage(0);
+                          });
                           overlayEntry?.remove();
                         },
                         child: const Text(
@@ -855,6 +860,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                       GestureDetector(
                         onTap: () {
                           //
+                          setState(() {
+                            customLayoutKeys.switchLanguage(1);
+                          });
                           overlayEntry?.remove();
                         },
                         child: const Text(
@@ -866,6 +874,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                       GestureDetector(
                         onTap: () {
                           //
+                          setState(() {
+                            customLayoutKeys.switchLanguage(2);
+                          });
                           overlayEntry?.remove();
                         },
                         child: const Text(

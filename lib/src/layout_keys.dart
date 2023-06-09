@@ -12,12 +12,14 @@ abstract class FuldeKeyboardLayoutKeys {
   int getLanguagesCount();
   List<Map> getLanguage(int index);
 
-  void switchLanguage() {
-    if ((activeIndex + 1) == getLanguagesCount()) {
-      activeIndex = 0;
-    } else {
-      activeIndex++;
-    }
+  void switchLanguage(int index) {
+    // if ((activeIndex + 1) == getLanguagesCount()) {
+    //   print('languagesCount: ${getLanguagesCount()}');
+    //   activeIndex = 0;
+    // } else {
+    //   activeIndex++;
+    // }
+    activeIndex = index;
   }
 }
 
@@ -37,9 +39,7 @@ class VirtualKeyboardDefaultLayoutKeys extends FuldeKeyboardLayoutKeys {
         return _newFuldeLayout;
       case FuldeKeyboardDefaultLayouts.latin:
         return _newLatinLayout;
-      default:
     }
-    return _newEnglishLayout;
   }
 }
 
@@ -200,20 +200,19 @@ const List<Map> _longVowelsLayout = [
   },
 ];
 
-
 /// Keys for Virtual Keyboard's rows.
 const List<Map> _newLatinLayout = [
   {
-    '\u0660': '\u0660',
-    '\u0661': '\u0661',
-    '\u0662': '\u0662',
-    '\u0663': '\u0663',
-    '\u0664': '\u0664',
-    '\u0665': '\u0665',
-    '\u0666': '\u0666',
-    '\u0667': '\u0667',
-    '\u0668': '\u0668',
-    '\u0669': '\u0669',
+    'q': 'q',
+    'w': 'w',
+    'e': 'e',
+    'r': 'r',
+    't': 't',
+    'y': 'y',
+    'u': 'u',
+    'i': 'i',
+    'o': 'o',
+    'p': 'p',
   },
   // Row 2
   {
