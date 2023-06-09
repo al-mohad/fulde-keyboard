@@ -585,7 +585,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
             ),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.deepPurple.withOpacity(0.7),
+                color: Colors.blueGrey.withOpacity(0.7),
                 borderRadius: BorderRadius.circular(4),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
@@ -834,11 +834,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                 ),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.deepPurple.withOpacity(0.7),
+                    color: Colors.black,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -850,9 +850,16 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           });
                           overlayEntry?.remove();
                         },
-                        child: const Text(
+                        child: Text(
                           'Fulde',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: customLayoutKeys.activeIndex == 0
+                                ? Colors.blue
+                                : Colors.grey,
+                            fontWeight: customLayoutKeys.activeIndex == 0
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                          ),
                         ),
                       ),
                       SizedBox(width: 12),
@@ -864,9 +871,16 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           });
                           overlayEntry?.remove();
                         },
-                        child: const Text(
+                        child: Text(
                           'Latin',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: customLayoutKeys.activeIndex == 1
+                                ? Colors.blue
+                                : Colors.grey,
+                            fontWeight: customLayoutKeys.activeIndex == 1
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                          ),
                         ),
                       ),
                       SizedBox(width: 12),
@@ -878,9 +892,16 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           });
                           overlayEntry?.remove();
                         },
-                        child: const Text(
+                        child: Text(
                           'English',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: customLayoutKeys.activeIndex == 2
+                                ? Colors.blue
+                                : Colors.grey,
+                            fontWeight: customLayoutKeys.activeIndex == 2
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                          ),
                         ),
                       ),
                     ],
