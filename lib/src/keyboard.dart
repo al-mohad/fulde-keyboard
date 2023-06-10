@@ -821,7 +821,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         // height and width specifications
         // double deviceWidth = MediaQuery.of(context).size.width;
         double keyboardHeight = height;
-        late double kWidth = 60;
+        // late double kWidth = 60;
         double kHeight =
             keyboardHeight / customLayoutKeys.newFulbeLayout.length;
 
@@ -834,14 +834,16 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Container(
+                  width: MediaQuery.of(context).size.width / 3,
                   decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
@@ -912,8 +914,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
         overlayEntry = OverlayEntry(
           builder: (BuildContext context) {
+            Size size = MediaQuery.of(context).size;
             return Positioned(
-              left: key.coords![0].toDouble() * kWidth,
+              // left: key.coords![0].toDouble() * kWidth,
+              left: size.width / 3,
+              right: size.width / 3,
               bottom: keyboardHeight - ((key.coords![1].toDouble()) * kHeight),
               child: customWidget,
             );
