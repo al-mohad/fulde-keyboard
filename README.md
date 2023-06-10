@@ -11,10 +11,11 @@ This project has forked from `virtual_keyboard` project because the `virtual_key
 - (Done) Multi-langugae support.
 - (Done) Customizable layout.
 - (Done) Option to make a popup floating keyboard/keyNum.
-- (`ToDo`) Adding Arabic and Hausa (Rabi'at font).
-- (`ToDo`) Adding onLongPress spacebar pop widget to select another keyboard.
+- (Done) Adding onLongPress spacebar pop widget to select another keyboard.
+- (`ToDo`) Adding Arabic and Hausa keyboards (Rabi'at font).
 - (`ToDo`) Optimization.
 - (`ToDo`) Adding input result viewer and handel the events.
+- (`Spell checker`) Adding input result viewer and handel the events.
 
 <br>
 <p align="center">

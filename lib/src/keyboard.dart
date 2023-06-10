@@ -495,7 +495,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         }
       }
     }
-    print(keyToDisplay.toString());
+    debugPrint(keyToDisplay.toString());
 
     /*String keyToDisplay = "";
     if (isABCEnabled) {
@@ -593,7 +593,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                   onTap: () {
                     onKeyPress?.call(key); //<- not in use
                     textController.text +=
-                        ((isShiftEnabled ? keyToDisplay : keyToDisplay) ?? '');
+                        ((isShiftEnabled ? keyToDisplay : keyToDisplay));
                     overlayEntry?.remove();
                   },
                   child: Row(
@@ -625,7 +625,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     //display the pop over
     (keyToDisplay != "") ? Overlay.of(context).insert(overlayEntry) : null;
 
-    currentOverlayEntry = overlayEntry!;
+    currentOverlayEntry = overlayEntry;
 
     /*if (key.keyType == FuldeKeyboardKeyType.string) {
       Future.delayed(const Duration(milliseconds: 800), () {
@@ -704,8 +704,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               customLayoutKeys.activeIndex == 0
                   ? '\u06A9\u069F\u06BC\u06A2'
                   : customLayoutKeys.activeIndex == 1
-                      ? 'almohad'
-                      : 'space bar',
+                      ? 'Latin'
+                      : 'English',
               style: textStyle,
             ),
           ),
@@ -738,18 +738,18 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       case FuldeKeyboardKeyAction.switchLanguage:
         actionKey = GestureDetector(
             onTap: () {
-              setState(() {
-                customLayoutKeys.switchLanguage(2);
-                isABCEnabled = !isABCEnabled;
-              });
+              // setState(() {
+              //   customLayoutKeys.switchLanguage(2);
+              //   isABCEnabled = !isABCEnabled;
+              // });
             },
-            child: SizedBox(
+            child: const SizedBox(
               height: double.infinity,
               width: double.infinity,
-              child: Icon(
-                Icons.language,
-                color: textColor,
-              ),
+              // child: Icon(
+              //   Icons.language,
+              //   color: textColor,
+              // ),
             ));
         break;
       case FuldeKeyboardKeyAction.switchAbc:
@@ -813,12 +813,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       },
       onLongPress: () {
         // Handle long tap here
-        print('Long tap detected!');
 
         // display widget for switching
 
         // height and width specifications
-        double deviceWidth = MediaQuery.of(context).size.width;
+        // double deviceWidth = MediaQuery.of(context).size.width;
         double keyboardHeight = height;
         late double kWidth = 60;
         double kHeight =
@@ -844,7 +843,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
-                          print('switching to fulde');
+                          // switch to fulde; 0-fulde, 1-latin, 2-english
                           setState(() {
                             customLayoutKeys.switchLanguage(0);
                           });
@@ -862,7 +861,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       GestureDetector(
                         onTap: () {
                           //
@@ -883,7 +882,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       GestureDetector(
                         onTap: () {
                           //
@@ -923,7 +922,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         //(keyToDisplay != "") ?
         Overlay.of(context).insert(overlayEntry); // : null;
 
-        currentOverlayEntry = overlayEntry!;
+        currentOverlayEntry = overlayEntry;
       },
       child: Container(
         margin: const EdgeInsets.all(2),

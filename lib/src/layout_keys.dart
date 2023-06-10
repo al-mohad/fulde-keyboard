@@ -216,7 +216,7 @@ const List<Map> _newLatinLayout = [
   },
   // Row 2
   {
-    '\u006E\u006A': '\u06A8',
+    '\u006E\u006A': 'x',
     '\u0077': '\u06BB',
     '\u0065': '\u067C',
     '\u0072': '\u068E',
