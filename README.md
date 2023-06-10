@@ -255,4 +255,6 @@ setState(() {});
 ```
 
 - [Muhammad Buhari](https://github.com/al-mohad)
+- [Ma'aruf Mohammed Adam](https://github.com/maarufadam)
+- [Rilwan Adedeji](https://github.com/rilwanat)
 - [LICENSE - MIT](https://github.com/al-mohad/fulde_keyboard/blob/main/LICENSE)
