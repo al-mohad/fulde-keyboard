@@ -1,3 +1,3 @@
 part of fulde_keyboard;
 
-enum FuldeKeyboardDefaultLayouts { fulde, english }
+enum FuldeKeyboardDefaultLayouts { english, fulde, latin }

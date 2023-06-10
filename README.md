@@ -10,8 +10,12 @@ This project has forked from `virtual_keyboard` project because the `virtual_key
 
 - (Done) Multi-langugae support.
 - (Done) Customizable layout.
-- (`ToDo`) Option to make a popup floating keyboard/keyNum.
+- (Done) Option to make a popup floating keyboard/keyNum.
+- (Done) Adding onLongPress spacebar pop widget to select another keyboard.
+- (`ToDo`) Adding Arabic and Hausa keyboards (Rabi'at font).
+- (`ToDo`) Optimization.
 - (`ToDo`) Adding input result viewer and handel the events.
+- (`ToDo`) Adding Spell checker.
 
 <br>
 <p align="center">
@@ -251,4 +255,6 @@ setState(() {});
 ```
 
 - [Muhammad Buhari](https://github.com/al-mohad)
+- [Ma'aruf Mohammed Adam](https://github.com/maarufadam)
+- [Rilwan Adedeji](https://github.com/rilwanat)
 - [LICENSE - MIT](https://github.com/al-mohad/fulde_keyboard/blob/main/LICENSE)

@@ -6,12 +6,18 @@ class FuldeKeyboardKey {
   String? capsText;
   final FuldeKeyboardKeyType keyType;
   final FuldeKeyboardKeyAction? action;
+  List<int>? coords;
+  String? latin;
+  String? upper;
 
   FuldeKeyboardKey({
     this.text,
     this.capsText,
     required this.keyType,
     this.action,
+    this.coords,
+    this.latin,
+    this.upper,
   }) {
     if (text == null && action != null) {
       text = action == FuldeKeyboardKeyAction.space
@@ -23,5 +29,8 @@ class FuldeKeyboardKey {
           ? ' '
           : (action == FuldeKeyboardKeyAction.enter ? '\n' : '');
     }
+  }
+  List<int> getCoords() {
+    return coords!;
   }
 }

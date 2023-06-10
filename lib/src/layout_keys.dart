@@ -6,17 +6,20 @@ abstract class FuldeKeyboardLayoutKeys {
 
   List<Map> get newEnglishLayout => _newEnglishLayout;
   List<Map> get newFulbeLayout => _newFuldeLayout;
+  List<Map> get newLatinLayout => _newLatinLayout;
 
   List<Map> get activeLayout => getLanguage(activeIndex);
   int getLanguagesCount();
   List<Map> getLanguage(int index);
 
-  void switchLanguage() {
-    if ((activeIndex + 1) == getLanguagesCount()) {
-      activeIndex = 0;
-    } else {
-      activeIndex++;
-    }
+  void switchLanguage(int index) {
+    // if ((activeIndex + 1) == getLanguagesCount()) {
+    //   print('languagesCount: ${getLanguagesCount()}');
+    //   activeIndex = 0;
+    // } else {
+    //   activeIndex++;
+    // }
+    activeIndex = index;
   }
 }
 
@@ -34,9 +37,9 @@ class VirtualKeyboardDefaultLayoutKeys extends FuldeKeyboardLayoutKeys {
         return _newEnglishLayout;
       case FuldeKeyboardDefaultLayouts.fulde:
         return _newFuldeLayout;
-      default:
+      case FuldeKeyboardDefaultLayouts.latin:
+        return _newLatinLayout;
     }
-    return _newEnglishLayout;
   }
 }
 
@@ -167,6 +170,92 @@ const List<Map> _newFuldeLayout = [
     '\u06AA': '\u0686',
     '\u06B4': '\u068F',
     '\u06BF': '\u0699',
+    // '\u06C0': '\u06C0',
+    // '\u06C1': '\u06C1',
+    // '\u06C3': '\u06C3',
+    // '\u06C2': '\u06C2',
+    FuldeKeyboardKeyAction.backspace: FuldeKeyboardKeyAction.backspace,
+  },
+  // Row 5
+  {
+    FuldeKeyboardKeyAction.switchLanguage:
+        FuldeKeyboardKeyAction.switchLanguage,
+    // '@': '@',
+    FuldeKeyboardKeyAction.alt: FuldeKeyboardKeyAction.alt,
+    FuldeKeyboardKeyAction.space: FuldeKeyboardKeyAction.space,
+    FuldeKeyboardKeyAction.switchNumberPad:
+        FuldeKeyboardKeyAction.switchNumberPad,
+    FuldeKeyboardKeyAction.enter: FuldeKeyboardKeyAction.enter,
+  }
+];
+
+/// Keys for LongVowelsLayout. NO LONGER USED
+// const List<Map> _longVowelsLayout = [
+//   {
+//     '\u069B': '\u069B',
+//     '\u069D': '\u069D',
+//     '\u069C': '\u069C',
+//     '\u069E': '\u069E',
+//     '\u069A': '\u069A',
+//   },
+// ];
+
+/// Keys for Virtual Keyboard's rows.
+const List<Map> _newLatinLayout = [
+  {
+    '\u0660': '\u0660',
+    '\u0661': '\u0661',
+    '\u0662': '\u0662',
+    '\u0663': '\u0663',
+    '\u0664': '\u0664',
+    '\u0665': '\u0665',
+    '\u0666': '\u0666',
+    '\u0667': '\u0667',
+    '\u0668': '\u0668',
+    '\u0669': '\u0669',
+  },
+  // Row 2
+  {
+    '\u006E\u006A': 'x',
+    '\u0077': '\u06BB',
+    '\u0065': '\u067C',
+    '\u0072': '\u068E',
+    '\u0074': '\u0687',
+    '\u0079': '\u0691',
+    '\u0075': '\u067E',
+    '\u0069': '\u067D',
+    '\u006F': '\u067F',
+    '\u0070': '\u0689',
+    '\u006E\u0067': '\u0698',
+    '\u006D\u0062': '\u0690', //TODO CHECK
+    // FuldeKeyboardKeyAction.backspace: FuldeKeyboardKeyAction.backspace
+  },
+  // Row 3
+  {
+    '\u0061': '\u067B',
+    '\u0073': '\u068C',
+    '\u0064': '\u0697',
+    '\u0066': '\u0688',
+    '\u0067': '\u068B',
+    '\u0068': '\u0694',
+    '\u006A': '\u0693',
+    '\u006B': '\u068A',
+    '\u006C': '\u0695',
+    '\u006E\u0064': '\u0681',
+    '\u0253': '\u0685',
+    '\u01B4': '\u0690',
+    // FuldeKeyboardKeyAction.enter: FuldeKeyboardKeyAction.enter
+  },
+  // Row 4
+  {
+    FuldeKeyboardKeyAction.leftShift: FuldeKeyboardKeyAction.leftShift,
+    '\u006E\u0079': '\u0692',
+    '\u014B': '\u0683',
+    '\u0063': '\u068D',
+    '\u0257': '\u0682',
+    '\u0062': '\u0686',
+    '\u006E': '\u068F',
+    '\u006D': '\u0699',
     // '\u06C0': '\u06C0',
     // '\u06C1': '\u06C1',
     // '\u06C3': '\u06C3',
