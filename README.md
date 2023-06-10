@@ -15,7 +15,7 @@ This project has forked from `virtual_keyboard` project because the `virtual_key
 - (`ToDo`) Adding Arabic and Hausa keyboards (Rabi'at font).
 - (`ToDo`) Optimization.
 - (`ToDo`) Adding input result viewer and handel the events.
-- (`Spell checker`) Adding input result viewer and handel the events.
+- (`ToDo`) Adding Spell checker.
 
 <br>
 <p align="center">
