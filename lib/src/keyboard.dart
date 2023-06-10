@@ -623,7 +623,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     );
 
     //display the pop over
-    (keyToDisplay != "") ? Overlay.of(context).insert(overlayEntry) : null;
+    if (keyToDisplay.isNotEmpty) {
+      Overlay.of(context).insert(overlayEntry);
+    }
 
     currentOverlayEntry = overlayEntry;
 

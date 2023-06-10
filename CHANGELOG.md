@@ -30,3 +30,9 @@
 - UI fixed 🎨
 - Latin Keyboard added 🚀
 - Bugs crushed 🐞
+
+## 0.9.5
+
+- UI fixed 🎨
+- Latin Keyboard added 🚀
+- Bugs crushed 🐞
