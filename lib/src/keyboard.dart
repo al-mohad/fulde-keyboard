@@ -165,12 +165,33 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         keyToDisplay = key.latin!;
       }
     } else {
-      //fulbe
-      if (isShiftEnabled) {
-        keyToDisplay = key.upper ?? ''; //character map for fulbe UPPERCASE
-      } else {
-        keyToDisplay = key.latin ?? '';
+
+      // switch to fulde; 0-fulde, 1-latin, 2-english
+      switch(customLayoutKeys.activeIndex ) {
+        case(0): //0-fulde
+          if (isShiftEnabled) {
+            keyToDisplay = key.upper ?? ''; //character map for fulbe UPPERCASE
+          } else {
+            keyToDisplay = key.latin ?? '';
+          }
+          break;
+        case(1): //1-latin
+          if (isShiftEnabled) {
+            keyToDisplay = "LA1";//key.upper ?? ''; //character map for latin UPPERCASE
+          } else {
+            keyToDisplay = "la1";//key.latin ?? '';
+          }
+          break;
+        case(2): //2-english
+          if (isShiftEnabled) {
+            keyToDisplay = "FU1";//key.upper ?? ''; //character map for english UPPERCASE
+          } else {
+            keyToDisplay = "FU1";//key.latin ?? '';
+          }
+          break;
       }
+
+
     }
 
     // Close the previously opened overlay
@@ -220,8 +241,12 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           );
         },
       );
+
       //display the pop over
-      Overlay.of(context).insert(overlayEntry);
+      if(customLayoutKeys.activeIndex != 2) {
+        Overlay.of(context).insert(overlayEntry);
+      }
+
     }
 
     if (key.keyType == FuldeKeyboardKeyType.string) {
