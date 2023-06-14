@@ -179,7 +179,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           if (isShiftEnabled) {
             keyToDisplay = "LA1";//key.upper ?? ''; //character map for latin UPPERCASE
           } else {
-            keyToDisplay = "la1";//key.latin ?? '';
+            keyToDisplay = key.fulde ?? ''; //"la1";//
           }
           break;
         case(2): //2-english
@@ -878,15 +878,26 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           });
                           overlayEntry?.remove();
                         },
-                        child: Text(
-                          'Fulde',
-                          style: TextStyle(
-                            color: customLayoutKeys.activeIndex == 0
-                                ? Colors.blue
-                                : Colors.grey,
-                            fontWeight: customLayoutKeys.activeIndex == 0
-                                ? FontWeight.bold
-                                : FontWeight.normal,
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          decoration: customLayoutKeys.activeIndex == 0 ? BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ) : null,
+                          child: Center(
+                            child: Text(
+                              'Fulde',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: customLayoutKeys.activeIndex == 0
+                                    ? Colors.black //blue
+                                    : Colors.grey,
+                                fontWeight: customLayoutKeys.activeIndex == 0
+                                    ? FontWeight.bold
+                                    : FontWeight.normal,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -899,15 +910,26 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           });
                           overlayEntry?.remove();
                         },
-                        child: Text(
-                          'Latin',
-                          style: TextStyle(
-                            color: customLayoutKeys.activeIndex == 1
-                                ? Colors.blue
-                                : Colors.grey,
-                            fontWeight: customLayoutKeys.activeIndex == 1
-                                ? FontWeight.bold
-                                : FontWeight.normal,
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          decoration: customLayoutKeys.activeIndex == 1 ? BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ) : null,
+                          child: Center(
+                            child: Text(
+                              'Latin',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: customLayoutKeys.activeIndex == 1
+                                    ? Colors.black //blue
+                                    : Colors.grey,
+                                fontWeight: customLayoutKeys.activeIndex == 1
+                                    ? FontWeight.bold
+                                    : FontWeight.normal,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -920,15 +942,26 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           });
                           overlayEntry?.remove();
                         },
-                        child: Text(
-                          'English',
-                          style: TextStyle(
-                            color: customLayoutKeys.activeIndex == 2
-                                ? Colors.blue
-                                : Colors.grey,
-                            fontWeight: customLayoutKeys.activeIndex == 2
-                                ? FontWeight.bold
-                                : FontWeight.normal,
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          decoration: customLayoutKeys.activeIndex == 2 ? BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ) : null,
+                          child: Center(
+                            child: Text(
+                              'English',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: customLayoutKeys.activeIndex == 2
+                                    ? Colors.black //blue
+                                    : Colors.grey,
+                                fontWeight: customLayoutKeys.activeIndex == 2
+                                    ? FontWeight.bold
+                                    : FontWeight.normal,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -942,8 +975,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
             Size size = MediaQuery.of(context).size;
             return Positioned(
               // left: key.coords![0].toDouble() * kWidth,
-              left: size.width / 3,
-              right: size.width / 3,
+              left: size.width / 4,
+              right: size.width / 4,
               bottom: keyboardHeight - ((key.coords![1].toDouble()) * kHeight),
               child: customWidget,
             );

@@ -583,52 +583,62 @@ const List<List> _latinKeyRowsAlternate = [
     {
       //'coords': {'row': 0, 'col': 0},
       'latin': '0',
-      'upper': '\u0660'
+      'upper': '\u0660',
+      'fulde': '\u0660'
     },
     {
       //'coords': {'row': 1, 'col': 0},
       'latin': '1',
-      'upper': '\u0661'
+      'upper': '\u0661',
+      'fulde': '\u0661'
     },
     {
       //'coords': {'row': 2, 'col': 0},
       'latin': '2',
-      'upper': '\u0662'
+      'upper': '\u0662',
+      'fulde': '\u0662'
     },
     {
       //'coords': {'row': 3, 'col': 0},
       'latin': '3',
-      'upper': '\u0663'
+      'upper': '\u0663',
+      'fulde': '\u0663'
     },
     {
       //'coords': {'row': 4, 'col': 0},
       'latin': '4',
-      'upper': '\u0664'
+      'upper': '\u0664',
+      'fulde': '\u0664'
     },
     {
       //'coords': {'row': 5, 'col': 0},
       'latin': '5',
-      'upper': '\u0665'
+      'upper': '\u0665',
+      'fulde': '\u0665'
     },
     {
       //'coords': {'row': 6, 'col': 0},
       'latin': '6',
-      'upper': '\u0666'
+      'upper': '\u0666',
+      'fulde': '\u0666'
     },
     {
       //'coords': {'row': 7, 'col': 0},
       'latin': '7',
-      'upper': '\u0667'
+      'upper': '\u0667',
+      'fulde': '\u0667'
     },
     {
       //'coords': {'row': 8, 'col': 0},
       'latin': '8',
-      'upper': '\u0668'
+      'upper': '\u0668',
+      'fulde': '\u0668'
     },
     {
       //'coords': {'row': 9, 'col': 0},
       'latin': '9',
-      'upper': '\u0669'
+      'upper': '\u0669',
+      'fulde': '\u0669'
     },
   ],
   // Row 2
@@ -637,61 +647,73 @@ const List<List> _latinKeyRowsAlternate = [
       //'coords': {'row': 0, 'col': 1},
       'latin': 'Nj',
       'upper': '\u004E\u006A',
+      'fulde': '\u0684'
     },
     {
       //'coords': {'row': 1, 'col': 1},
       'latin': 'w',
       'upper': '\u0057',
+      'fulde': '\u0696'
     },
     {
       //'coords': {'row': 2, 'col': 1},
       'latin': 'e',
       'upper': '\u0045',
+      'fulde': '\u067C'
     },
     {
       //'coords': {'row': 3, 'col': 1},
       'latin': 'r',
       'upper': '\u0052',
+      'fulde': '\u068E'
     },
     {
       //'coords': {'row': 4, 'col': 1},
       'latin': 't',
       'upper': '\u0054',
+      'fulde': '\u0687'
     },
     {
       //'coords': {'row': 5, 'col': 1},
       'latin': 'y',
       'upper': '\u0059',
+      'fulde': '\u0691'
     },
     {
       //'coords': {'row': 6, 'col': 1},
       'latin': 'u',
       'upper': '\u0055',
+      'fulde': '\u067E'
     },
     {
       //'coords': {'row': 7, 'col': 1},
       'latin': 'i',
       'upper': '\u0049',
+      'fulde': '\u067D'
     },
     {
       //'coords': {'row': 8, 'col': 1},
       'latin': 'o',
       'upper': '\u004F',
+      'fulde': '\u067F'
     },
     {
       //'coords': {'row': 9, 'col': 1},
       'latin': 'p',
       'upper': '\u0050',
+      'fulde': '\u0689'
     },
     {
       //'coords': {'row': 10, 'col': 1},
       'latin': 'ng',
       'upper': '\u004E\u0067',
+      'fulde': '\u0698'
     },
     {
       //'coords': {'row': 11, 'col': 1},
       'latin': 'mb',
       'upper': '\u004D\u0064',
+      'fulde': '\u0690'
     },
   ],
   // Row 3
@@ -700,61 +722,73 @@ const List<List> _latinKeyRowsAlternate = [
       //'coords': {'row': 0, 'col': 2},
       'latin': 'a',
       'upper': '\u0041',
+      'fulde': '\u067B'
     },
     {
       //'coords': {'row': 1, 'col': 2},
       'latin': 's',
       'upper': '\u0053',
+      'fulde': '\u068C'
     },
     {
       //'coords': {'row': 2, 'col': 2},
       'latin': 'd',
       'upper': '\u0044',
+      'fulde': '\u0697'
     },
     {
       //'coords': {'row': 3, 'col': 2},
       'latin': 'f',
       'upper': '\u0046',
+      'fulde': '\u0688'
     },
     {
       //'coords': {'row': 4, 'col': 2},
       'latin': 'g',
       'upper': '\u0047',
+      'fulde': '\u068B'
     },
     {
       //'coords': {'row': 5, 'col': 2},
       'latin': 'h',
       'upper': '\u0048',
+      'fulde': '\u0694'
     },
     {
       //'coords': {'row': 6, 'col': 2},
       'latin': 'j',
       'upper': '\u004A',
+      'fulde': '\u0693'
     },
     {
       //'coords': {'row': 7, 'col': 2},
       'latin': 'k',
       'upper': '\u004B',
+      'fulde': '\u068A'
     },
     {
       //'coords': {'row': 8, 'col': 2},
       'latin': 'l',
       'upper': '\u004C',
+      'fulde': '\u0695'
     },
     {
       //'coords': {'row': 9, 'col': 2},
       'latin': 'nd',
       'upper': '\u004E\u0064',
+      'fulde': '\u0681'
     },
     {
       //'coords': {'row': 10, 'col': 2},
       'latin': 'ɓ',
       'upper': '\u0181',
+      'fulde': '\u0685'
     },
     {
       //'coords': {'row': 11, 'col': 2},
       'latin': 'ƴ',
       'upper': '\u01B3',
+      'fulde': '\u0690'
     },
   ],
   // Row 4
@@ -771,41 +805,49 @@ const List<List> _latinKeyRowsAlternate = [
       //'coords': {'row': 0, 'col': 3},
       'latin': 'X21',
       'upper': '\u004E\u0079',
+      'fulde': '\u0660'
     },
     {
       //'coords': {'row': 1, 'col': 3},
       'latin': 'ny',
       'upper': '\u004E\u0079',
+      'fulde': '\u0692'
     },
     {
       //'coords': {'row': 2, 'col': 3},
       'latin': 'ŋ',
       'upper': '\u014A',
+      'fulde': '\u0683'
     },
     {
       //'coords': {'row': 3, 'col': 3},
       'latin': 'c',
       'upper': '\u0043',
+      'fulde': '\u068D'
     },
     {
       //'coords': {'row': 4, 'col': 3},
       'latin': 'ɗ',
       'upper': '\u018A',
+      'fulde': '\u0682'
     },
     {
       //'coords': {'row': 5, 'col': 3},
       'latin': 'b',
       'upper': '\u0042',
+      'fulde': '\u0686'
     },
     {
       //'coords': {'row': 6, 'col': 3},
       'latin': 'n',
       'upper': '\u004E',
+      'fulde': '\u068F'
     },
     {
       //'coords': {'row': 7, 'col': 3},
       'latin': 'm',
       'upper': '\u004D',
+      'fulde': '\u0699'
     },
 
     // FuldeKeyboardKeyAction.backspace,
@@ -896,6 +938,8 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsAlt() {
         // } catch (exc) {}
         // ;
 
+        String fulde = _latinKeyRowsAlternate[rowNum][keyNum]['fulde'];
+
         // Create and return new VirtualKeyboardKey object.
         return FuldeKeyboardKey(
           text: key,
@@ -903,6 +947,7 @@ List<List<FuldeKeyboardKey>> _getKeyboardRowsAlt() {
           coords: keyCoords,
           latin: latin,
           upper: upper,
+          fulde: fulde,
         );
       } else {
         var action = _keyRowsAlt[rowNum][keyNum] as FuldeKeyboardKeyAction;
@@ -943,6 +988,8 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
       // } catch (exc) {}
       // ;
 
+      String fulde = _latinKeyRowsAlternate[rowNum][keyNum]['fulde'];
+
       // Create and return new VirtualKeyboardKey object.
       return FuldeKeyboardKey(
         text: key,
@@ -951,6 +998,7 @@ List<FuldeKeyboardKey> _getKeyboardRowKeysAlphaNumeric(
         coords: [keyNum, rowNum],
         latin: latin,
         upper: upper,
+        fulde: fulde,
       );
     } else {
       var action = layoutKeys.activeLayout[rowNum].keys.elementAt(keyNum)
