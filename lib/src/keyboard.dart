@@ -276,16 +276,14 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     // remove the pop over widget
     if (key.keyType == FuldeKeyboardKeyType.string) {
       Future.delayed(const Duration(milliseconds: 800), () {
-        // TODO:: handle this error
-        // BUG:: Failed assertion: line 162 pos 12: '_overlay != null': is not true.
-        if (overlayEntry != null) {
-          overlayEntry!.remove();
+        if (overlayEntry != null && overlayEntry.mounted) {
+          overlayEntry.remove();
         }
       });
     }
 
     // BUG: Null check operator used on a null value
-    currentOverlayEntry = overlayEntry!;
+    currentOverlayEntry = overlayEntry;
   }
 
   @override
@@ -731,7 +729,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               customLayoutKeys.activeIndex == 0
                   ? '\u06A9\u069F\u06BC\u06A2'
                   : customLayoutKeys.activeIndex == 1
-                      ? 'Latin'
+                      ? '\u06AB\u06A0\u06AC\u06A2'
                       : 'English',
               style: textStyle,
             ),
@@ -926,8 +924,10 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                               : null,
                           child: Center(
                             child: Text(
-                              'Latin',
+                              // latin
+                              '\u06AB\u06A0\u06AC\u06A2',
                               style: TextStyle(
+                                fontFamily: 'Fulde',
                                 fontSize: 20,
                                 color: customLayoutKeys.activeIndex == 1
                                     ? Colors.black //blue

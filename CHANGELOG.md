@@ -40,3 +40,10 @@
 ## 0.9.6
 
 - Bugs crushed 🐞
+
+## 0.9.7
+
+- UI fixed 🎨
+- Latin fix 🛠️
+- Bugs crushed 🐞
+- optimized 🚀
