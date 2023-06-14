@@ -165,33 +165,32 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         keyToDisplay = key.latin!;
       }
     } else {
-
       // switch to fulde; 0-fulde, 1-latin, 2-english
-      switch(customLayoutKeys.activeIndex ) {
-        case(0): //0-fulde
+      switch (customLayoutKeys.activeIndex) {
+        case (0): //0-fulde
           if (isShiftEnabled) {
             keyToDisplay = key.upper ?? ''; //character map for fulbe UPPERCASE
           } else {
             keyToDisplay = key.latin ?? '';
           }
           break;
-        case(1): //1-latin
+        case (1): //1-latin
           if (isShiftEnabled) {
-            keyToDisplay = "LA1";//key.upper ?? ''; //character map for latin UPPERCASE
+            keyToDisplay =
+                "LA1"; //key.upper ?? ''; //character map for latin UPPERCASE
           } else {
             keyToDisplay = key.fulde ?? ''; //"la1";//
           }
           break;
-        case(2): //2-english
+        case (2): //2-english
           if (isShiftEnabled) {
-            keyToDisplay = "FU1";//key.upper ?? ''; //character map for english UPPERCASE
+            keyToDisplay =
+                "FU1"; //key.upper ?? ''; //character map for english UPPERCASE
           } else {
-            keyToDisplay = "FU1";//key.latin ?? '';
+            keyToDisplay = "FU1"; //key.latin ?? '';
           }
           break;
       }
-
-
     }
 
     // Close the previously opened overlay
@@ -243,10 +242,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       );
 
       //display the pop over
-      if(customLayoutKeys.activeIndex != 2) {
+      if (customLayoutKeys.activeIndex != 2) {
         Overlay.of(context).insert(overlayEntry);
       }
-
     }
 
     if (key.keyType == FuldeKeyboardKeyType.string) {
@@ -280,7 +278,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       Future.delayed(const Duration(milliseconds: 800), () {
         // TODO:: handle this error
         // BUG:: Failed assertion: line 162 pos 12: '_overlay != null': is not true.
-        overlayEntry!.remove();
+        if (overlayEntry != null) {
+          overlayEntry!.remove();
+        }
       });
     }
 
@@ -879,17 +879,21 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           overlayEntry?.remove();
                         },
                         child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 6),
                           padding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: customLayoutKeys.activeIndex == 0 ? BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                          ) : null,
+                          decoration: customLayoutKeys.activeIndex == 0
+                              ? BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                )
+                              : null,
                           child: Center(
                             child: Text(
-                              'Fulde',
+                              '\u06A9\u069F\u06BC\u06A2',
                               style: TextStyle(
                                 fontSize: 20,
+                                fontFamily: 'Fulde',
                                 color: customLayoutKeys.activeIndex == 0
                                     ? Colors.black //blue
                                     : Colors.grey,
@@ -911,12 +915,15 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           overlayEntry?.remove();
                         },
                         child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 6),
                           padding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: customLayoutKeys.activeIndex == 1 ? BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                          ) : null,
+                          decoration: customLayoutKeys.activeIndex == 1
+                              ? BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                )
+                              : null,
                           child: Center(
                             child: Text(
                               'Latin',
@@ -943,12 +950,15 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           overlayEntry?.remove();
                         },
                         child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 6),
                           padding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: customLayoutKeys.activeIndex == 2 ? BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                          ) : null,
+                          decoration: customLayoutKeys.activeIndex == 2
+                              ? BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                )
+                              : null,
                           child: Center(
                             child: Text(
                               'English',
