@@ -47,3 +47,7 @@
 - Latin fix 🛠️
 - Bugs crushed 🐞
 - optimized 🚀
+
+## 0.9.8
+
+- UI fixed 🎨

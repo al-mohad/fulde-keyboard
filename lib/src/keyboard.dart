@@ -212,7 +212,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.7),
+                  color: Colors.blueGrey.withOpacity(0.7),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
