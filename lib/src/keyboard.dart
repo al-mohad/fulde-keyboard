@@ -196,6 +196,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
             keyToDisplay = "FU1"; //key.latin ?? '';
           }
           break;
+      //fulbe
+      if (isShiftEnabled) {
+        keyToDisplay = key.upper ?? ''; //character map for fulbe UPPERCASE
+      } else {
+        keyToDisplay = key.latin ?? '';
       }
     }
 
@@ -219,6 +224,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.blueGrey.withOpacity(0.7),
+                  color: Colors.black.withOpacity(0.7),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -251,6 +257,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       if (customLayoutKeys.activeIndex != 2) {
         Overlay.of(context).insert(overlayEntry);
       }
+      //display the pop over
+      Overlay.of(context).insert(overlayEntry);
     }
 
     if (key.keyType == FuldeKeyboardKeyType.string) {
@@ -285,11 +293,15 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         if (overlayEntry != null && overlayEntry.mounted) {
           overlayEntry.remove();
         }
+        // TODO:: handle this error
+        // BUG:: Failed assertion: line 162 pos 12: '_overlay != null': is not true.
+        overlayEntry!.remove();
       });
     }
 
     // BUG: Null check operator used on a null value
     currentOverlayEntry = overlayEntry;
+    currentOverlayEntry = overlayEntry!;
   }
 
   @override
@@ -656,6 +668,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       Overlay.of(context).insert(overlayEntry);
     }
 
+    (keyToDisplay != "") ? Overlay.of(context).insert(overlayEntry) : null;
+
     currentOverlayEntry = overlayEntry;
 
     /*if (key.keyType == FuldeKeyboardKeyType.string) {
@@ -736,6 +750,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                   ? '\u06A9\u069F\u06BC\u06A2'
                   : customLayoutKeys.activeIndex == 1
                       ? '\u06AB\u06A0\u06AC\u06A2'
+                      ? 'Latin'
                       : 'English',
               style: textStyle,
             ),
@@ -851,6 +866,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         // double deviceWidth = MediaQuery.of(context).size.width;
         double keyboardHeight = height;
         // late double kWidth = 60;
+        late double kWidth = 60;
         double kHeight =
             keyboardHeight / customLayoutKeys.newFulbeLayout.length;
 
@@ -873,6 +889,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
@@ -909,6 +927,15 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                                     : FontWeight.normal,
                               ),
                             ),
+                        child: Text(
+                          'Fulde',
+                          style: TextStyle(
+                            color: customLayoutKeys.activeIndex == 0
+                                ? Colors.blue
+                                : Colors.grey,
+                            fontWeight: customLayoutKeys.activeIndex == 0
+                                ? FontWeight.bold
+                                : FontWeight.normal,
                           ),
                         ),
                       ),
@@ -948,6 +975,16 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                                     : FontWeight.normal,
                               ),
                             ),
+
+                        child: Text(
+                          'Latin',
+                          style: TextStyle(
+                            color: customLayoutKeys.activeIndex == 1
+                                ? Colors.blue
+                                : Colors.grey,
+                            fontWeight: customLayoutKeys.activeIndex == 1
+                                ? FontWeight.bold
+                                : FontWeight.normal,
                           ),
                         ),
                       ),
@@ -985,6 +1022,15 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                                     : FontWeight.normal,
                               ),
                             ),
+                        child: Text(
+                          'English',
+                          style: TextStyle(
+                            color: customLayoutKeys.activeIndex == 2
+                                ? Colors.blue
+                                : Colors.grey,
+                            fontWeight: customLayoutKeys.activeIndex == 2
+                                ? FontWeight.bold
+                                : FontWeight.normal,
                           ),
                         ),
                       ),
@@ -1000,6 +1046,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               // left: key.coords![0].toDouble() * kWidth,
               left: size.width / 4,
               right: size.width / 4,
+            return Positioned(
+              left: key.coords![0].toDouble() * kWidth,
               bottom: keyboardHeight - ((key.coords![1].toDouble()) * kHeight),
               child: customWidget,
             );
