@@ -11,6 +11,7 @@ class FuldeKeyboardKey {
   String? upper;
   String? fulde;
 
+
   FuldeKeyboardKey({
     this.text,
     this.capsText,
@@ -20,6 +21,7 @@ class FuldeKeyboardKey {
     this.latin,
     this.upper,
     this.fulde,
+
   }) {
     if (text == null && action != null) {
       text = action == FuldeKeyboardKeyAction.space
