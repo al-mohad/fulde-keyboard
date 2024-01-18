@@ -165,6 +165,31 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         keyToDisplay = key.latin!;
       }
     } else {
+      // switch to fulde; 0-fulde, 1-latin, 2-english
+      switch (customLayoutKeys.activeIndex) {
+        case (0): //0-fulde
+          if (isShiftEnabled) {
+            keyToDisplay = key.upper ?? ''; //character map for fulbe UPPERCASE
+          } else {
+            keyToDisplay = key.latin ?? '';
+          }
+          break;
+        case (1): //1-latin
+          if (isShiftEnabled) {
+            keyToDisplay =
+                "LA1"; //key.upper ?? ''; //character map for latin UPPERCASE
+          } else {
+            keyToDisplay = key.fulde ?? ''; //"la1";//
+          }
+          break;
+        case (2): //2-english
+          if (isShiftEnabled) {
+            keyToDisplay =
+                "FU1"; //key.upper ?? ''; //character map for english UPPERCASE
+          } else {
+            keyToDisplay = "FU1"; //key.latin ?? '';
+          }
+          break;
       //fulbe
       if (isShiftEnabled) {
         keyToDisplay = key.upper ?? ''; //character map for fulbe UPPERCASE
@@ -192,6 +217,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               ),
               child: Container(
                 decoration: BoxDecoration(
+                  color: Colors.blueGrey.withOpacity(0.7),
                   color: Colors.black.withOpacity(0.7),
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -220,6 +246,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           );
         },
       );
+
+      //display the pop over
+      if (customLayoutKeys.activeIndex != 2) {
+        Overlay.of(context).insert(overlayEntry);
+      }
       //display the pop over
       Overlay.of(context).insert(overlayEntry);
     }
@@ -253,6 +284,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     // remove the pop over widget
     if (key.keyType == FuldeKeyboardKeyType.string) {
       Future.delayed(const Duration(milliseconds: 800), () {
+        if (overlayEntry != null && overlayEntry.mounted) {
+          overlayEntry.remove();
+        }
         // TODO:: handle this error
         // BUG:: Failed assertion: line 162 pos 12: '_overlay != null': is not true.
         overlayEntry!.remove();
@@ -260,6 +294,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     }
 
     // BUG: Null check operator used on a null value
+    currentOverlayEntry = overlayEntry;
     currentOverlayEntry = overlayEntry!;
   }
 
@@ -623,6 +658,10 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     );
 
     //display the pop over
+    if (keyToDisplay.isNotEmpty) {
+      Overlay.of(context).insert(overlayEntry);
+    }
+
     (keyToDisplay != "") ? Overlay.of(context).insert(overlayEntry) : null;
 
     currentOverlayEntry = overlayEntry;
@@ -704,6 +743,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               customLayoutKeys.activeIndex == 0
                   ? '\u06A9\u069F\u06BC\u06A2'
                   : customLayoutKeys.activeIndex == 1
+                      ? '\u06AB\u06A0\u06AC\u06A2'
                       ? 'Latin'
                       : 'English',
               style: textStyle,
@@ -819,6 +859,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         // height and width specifications
         // double deviceWidth = MediaQuery.of(context).size.width;
         double keyboardHeight = height;
+        // late double kWidth = 60;
         late double kWidth = 60;
         double kHeight =
             keyboardHeight / customLayoutKeys.newFulbeLayout.length;
@@ -832,12 +873,16 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Container(
+                  width: MediaQuery.of(context).size.width / 3,
                   decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -849,6 +894,30 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           });
                           overlayEntry?.remove();
                         },
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          decoration: customLayoutKeys.activeIndex == 0
+                              ? BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                )
+                              : null,
+                          child: Center(
+                            child: Text(
+                              '\u06A9\u069F\u06BC\u06A2',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Fulde',
+                                color: customLayoutKeys.activeIndex == 0
+                                    ? Colors.black //blue
+                                    : Colors.grey,
+                                fontWeight: customLayoutKeys.activeIndex == 0
+                                    ? FontWeight.bold
+                                    : FontWeight.normal,
+                              ),
+                            ),
                         child: Text(
                           'Fulde',
                           style: TextStyle(
@@ -870,6 +939,32 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           });
                           overlayEntry?.remove();
                         },
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          decoration: customLayoutKeys.activeIndex == 1
+                              ? BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                )
+                              : null,
+                          child: Center(
+                            child: Text(
+                              // latin
+                              '\u06AB\u06A0\u06AC\u06A2',
+                              style: TextStyle(
+                                fontFamily: 'Fulde',
+                                fontSize: 20,
+                                color: customLayoutKeys.activeIndex == 1
+                                    ? Colors.black //blue
+                                    : Colors.grey,
+                                fontWeight: customLayoutKeys.activeIndex == 1
+                                    ? FontWeight.bold
+                                    : FontWeight.normal,
+                              ),
+                            ),
+
                         child: Text(
                           'Latin',
                           style: TextStyle(
@@ -891,6 +986,29 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                           });
                           overlayEntry?.remove();
                         },
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          decoration: customLayoutKeys.activeIndex == 2
+                              ? BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                )
+                              : null,
+                          child: Center(
+                            child: Text(
+                              'English',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: customLayoutKeys.activeIndex == 2
+                                    ? Colors.black //blue
+                                    : Colors.grey,
+                                fontWeight: customLayoutKeys.activeIndex == 2
+                                    ? FontWeight.bold
+                                    : FontWeight.normal,
+                              ),
+                            ),
                         child: Text(
                           'English',
                           style: TextStyle(
@@ -910,6 +1028,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
         overlayEntry = OverlayEntry(
           builder: (BuildContext context) {
+            Size size = MediaQuery.of(context).size;
+            return Positioned(
+              // left: key.coords![0].toDouble() * kWidth,
+              left: size.width / 4,
+              right: size.width / 4,
             return Positioned(
               left: key.coords![0].toDouble() * kWidth,
               bottom: keyboardHeight - ((key.coords![1].toDouble()) * kHeight),

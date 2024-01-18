@@ -30,3 +30,24 @@
 - UI fixed 🎨
 - Latin Keyboard added 🚀
 - Bugs crushed 🐞
+
+## 0.9.5
+
+- UI fixed 🎨
+- Latin Keyboard added 🚀
+- Bugs crushed 🐞
+
+## 0.9.6
+
+- Bugs crushed 🐞
+
+## 0.9.7
+
+- UI fixed 🎨
+- Latin fix 🛠️
+- Bugs crushed 🐞
+- optimized 🚀
+
+## 0.9.8
+
+- UI fixed 🎨

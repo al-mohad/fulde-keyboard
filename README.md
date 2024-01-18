@@ -19,15 +19,15 @@ This project has forked from `virtual_keyboard` project because the `virtual_key
 
 <br>
 <p align="center">
-<img style="height:200px;" alt="FlutterBlue" src="https://github.com/al-mohad/fulde-keyboard/blob/main/example/screenshots/fuldeLayout.png" />
+<img style="height:200px;" alt="screenshot" src="https://github.com/al-mohad/fulde-keyboard/blob/main/example/screenshots/fuldeLayout.png" />
 </p>
 <br>
 <p align="center">
-<img style="height:200px;" alt="FlutterBlue" src="https://github.com/al-mohad/fulde-keyboard/blob/main/example/screenshots/englishLayout.png" />
+<img style="height:200px;" alt="screenshot" src="https://github.com/al-mohad/fulde-keyboard/blob/main/example/screenshots/englishLayout.png" />
 </p>
 <br>
 <p align="center">
-<img style="height:200px;" alt="FlutterBlue" src="https://github.com/al-mohad/fulde-keyboard/blob/main/example/screenshots/englishLayout3.png" />
+<img style="height:200px;" alt="screenshot" src="https://github.com/al-mohad/fulde-keyboard/blob/main/example/screenshots/englishLayout3.png" />
 </p>
 <hr>
 
