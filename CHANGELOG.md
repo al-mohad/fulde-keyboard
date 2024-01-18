@@ -51,3 +51,7 @@
 ## 0.9.8
 
 - UI fixed 🎨
+
+## 0.9.9
+
+- Added TextDirection Listener 🚀
