@@ -88,6 +88,7 @@ class MyHomePageState extends State<MyHomePage> {
                 //reverseLayout :true,
                 type: FuldeKeyboardType.alphanumeric,
                 onKeyPress: _onKeyPress,
+                onTextDirectionChanged: (TextDirection value) {},
               ),
             )
           ],

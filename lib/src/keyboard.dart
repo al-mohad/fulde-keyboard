@@ -45,21 +45,25 @@ class FuldeKeyboard extends StatefulWidget {
   /// will be ignored if customLayoutKeys is not null
   final List<FuldeKeyboardDefaultLayouts>? defaultLayouts;
 
-  const FuldeKeyboard(
-      {Key? key,
-      required this.type,
-      this.onKeyPress,
-      this.builder,
-      this.width,
-      this.defaultLayouts,
-      this.customLayoutKeys,
-      this.textController,
-      this.reverseLayout = false,
-      this.height = _virtualKeyboardDefaultHeight,
-      this.textColor = Colors.black,
-      this.fontSize = 18,
-      this.alwaysCaps = false})
-      : super(key: key);
+  /// Callback to notify the parent about the text direction.
+  final ValueChanged<TextDirection> onTextDirectionChanged;
+
+  const FuldeKeyboard({
+    Key? key,
+    required this.type,
+    this.onKeyPress,
+    this.builder,
+    this.width,
+    this.defaultLayouts,
+    this.customLayoutKeys,
+    this.textController,
+    this.reverseLayout = false,
+    this.height = _virtualKeyboardDefaultHeight,
+    this.textColor = Colors.black,
+    this.fontSize = 18,
+    this.alwaysCaps = false,
+    required this.onTextDirectionChanged,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -88,6 +92,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   bool isShiftEnabled = false;
 
   bool isABCEnabled = false;
+
+  TextDirection textDirection = TextDirection.rtl;
 
   void _onKeyPress(FuldeKeyboardKey key) {
     double deviceWidth = MediaQuery.of(context).size.width;
@@ -870,6 +876,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
+                          textDirection = TextDirection.rtl;
+                          changeTextDirection(textDirection);
+
                           // switch to fulde; 0-fulde, 1-latin, 2-english
                           setState(() {
                             customLayoutKeys.switchLanguage(0);
@@ -906,6 +915,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                       const SizedBox(width: 12),
                       GestureDetector(
                         onTap: () {
+                          textDirection = TextDirection.ltr;
+                          changeTextDirection(textDirection);
                           //
                           setState(() {
                             customLayoutKeys.switchLanguage(1);
@@ -943,6 +954,8 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                       const SizedBox(width: 12),
                       GestureDetector(
                         onTap: () {
+                          textDirection = TextDirection.ltr;
+                          changeTextDirection(textDirection);
                           //
                           setState(() {
                             customLayoutKeys.switchLanguage(2);
@@ -1018,5 +1031,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
     } else {
       return Expanded(child: widget);
     }
+  }
+
+  void changeTextDirection(TextDirection textDirection) {
+    widget.onTextDirectionChanged(textDirection);
   }
 }
