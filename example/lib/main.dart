@@ -8,14 +8,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //deviceWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
       title: 'Fulde Keyboard Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF4A90E2),
+          brightness: Brightness.light,
+        ),
+        useMaterial3: true,
+        fontFamily: 'SF Pro Display',
       ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF4A90E2),
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+        fontFamily: 'SF Pro Display',
+      ),
+      themeMode: ThemeMode.system,
       home: const MyHomePage(
-        title: 'Fulde Keyboard Demo',
+        title: 'Fulde Keyboard',
       ),
     );
   }
@@ -52,40 +65,131 @@ class MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        foregroundColor: Theme.of(context).colorScheme.onSurface,
       ),
-      body: Center(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Theme.of(context).colorScheme.surface,
+              Theme.of(context).colorScheme.surface.withValues(alpha: 0.8),
+            ],
+          ),
+        ),
         child: Column(
           children: <Widget>[
-            Text(
-              text,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge
-                  ?.copyWith(fontFamily: 'Fulde', fontSize: 40.0),
-            ),
-            Text(
-              _controllerText.text,
-              style: const TextStyle(
-                  color: Colors.red, fontSize: 40.0, fontFamily: 'Fulde'),
-            ),
             Expanded(
-              child: Container(),
+              child: Container(
+                margin: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.1),
+                      offset: const Offset(0, 2),
+                      blurRadius: 8,
+                      spreadRadius: 0,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Type with Fulde Keyboard',
+                      style:
+                          Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                    ),
+                    const SizedBox(height: 16),
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.surface,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .outline
+                                .withValues(alpha: 0.3),
+                            width: 1,
+                          ),
+                        ),
+                        child: SingleChildScrollView(
+                          child: Text(
+                            text.isEmpty ? 'Start typing...' : text,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith(
+                                  fontFamily: 'Fulde',
+                                  fontSize: 24.0,
+                                  height: 1.5,
+                                  color: text.isEmpty
+                                      ? Theme.of(context)
+                                          .colorScheme
+                                          .onSurface
+                                          .withValues(alpha: 0.6)
+                                      : Theme.of(context).colorScheme.onSurface,
+                                ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             Container(
-              color: const Color(0xFF28282B),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFF1A1A1A),
+                    Color(0xFF0F0F0F),
+                  ],
+                ),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    offset: Offset(0, -2),
+                    blurRadius: 8,
+                    spreadRadius: 0,
+                  ),
+                ],
+              ),
               child: FuldeKeyboard(
-                height: 200,
-                // width: 100,
+                height: 280,
                 textColor: Colors.white,
                 textController: _controllerText,
-                //customLayoutKeys: _customLayoutKeys,
                 defaultLayouts: const [
                   FuldeKeyboardDefaultLayouts.fulde,
                   FuldeKeyboardDefaultLayouts.latin,
                   FuldeKeyboardDefaultLayouts.english
                 ],
-                //reverseLayout :true,
                 type: FuldeKeyboardType.alphanumeric,
                 onKeyPress: _onKeyPress,
                 onTextDirectionChanged: (TextDirection value) {},

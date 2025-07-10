@@ -52,6 +52,21 @@
 
 - UI fixed 🎨
 
+## 1.0.0
+
+- 🎨 **Major UI/UX Overhaul**: Complete visual redesign with modern aesthetics
+- 🌈 **Enhanced Visual Design**: Added gradients, shadows, and modern key styling
+- 🎯 **Improved Language Switcher**: Beautiful animated language selection with visual indicators
+- 📱 **Better Accessibility**: Added semantic labels, haptic feedback, and improved contrast
+- ⚡ **Performance Optimizations**: Fixed all rendering overflow issues and improved responsiveness
+- 🔧 **Code Quality**: Resolved all compilation errors, warnings, and deprecated API usage
+- 📖 **Updated Example App**: Modernized demo app with Material 3 design and dark/light theme support
+- 🎪 **Smooth Animations**: Added key press animations and smooth transitions
+- 🔊 **Haptic Feedback**: Enhanced user experience with tactile feedback
+- 🎨 **Modern Key Design**: Rounded corners, better spacing, and improved visual hierarchy
+- 📐 **Responsive Layout**: Fixed overflow issues and improved layout flexibility
+- ♿ **Accessibility Improvements**: Better screen reader support and touch targets
+
 ## 0.9.9
 
 - Added TextDirection Listener 🚀

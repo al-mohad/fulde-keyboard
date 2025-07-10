@@ -95,122 +95,105 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
   TextDirection textDirection = TextDirection.rtl;
 
+  /// Get semantic label for action keys
+  String _getActionKeyLabel(FuldeKeyboardKeyAction? action) {
+    switch (action) {
+      case FuldeKeyboardKeyAction.backspace:
+        return 'Backspace';
+      case FuldeKeyboardKeyAction.leftShift:
+      case FuldeKeyboardKeyAction.rightShift:
+        return 'Shift';
+      case FuldeKeyboardKeyAction.space:
+        return 'Space';
+      case FuldeKeyboardKeyAction.enter:
+        return 'Enter';
+      default:
+        return 'Action key';
+    }
+  }
+
+  /// Get semantic hint for action keys
+  String _getActionKeyHint(FuldeKeyboardKeyAction? action) {
+    switch (action) {
+      case FuldeKeyboardKeyAction.backspace:
+        return 'Delete previous character';
+      case FuldeKeyboardKeyAction.leftShift:
+      case FuldeKeyboardKeyAction.rightShift:
+        return 'Toggle uppercase letters';
+      case FuldeKeyboardKeyAction.space:
+        return 'Insert space or switch language';
+      case FuldeKeyboardKeyAction.enter:
+        return 'Insert new line';
+      default:
+        return 'Perform action';
+    }
+  }
+
   void _onKeyPress(FuldeKeyboardKey key) {
+    // Add haptic feedback for better user experience
+    HapticFeedback.lightImpact();
+
     double deviceWidth = MediaQuery.of(context).size.width;
+    double keyboardHeight = height;
 
-    double keyboardHeight =
-        height; //_virtualKeyboardDefaultHeight; //MediaQuery.of(context).size.height;
-
-    /*//comment these off
-    print("key:${key.text}  key.latin:${key.latin}  key.coord:${key.coords}");
-    print("key.text: ${key.text}");
-    print("key.latin: ${key.latin}");
-    print("key.coord: ${key.coords}");
-    print("deviceWidth: $deviceWidth");
-    print("Type: $type");
-    print("isABCEnabled: $isABCEnabled");
-
-    print("type: $type"); //"FuldeKeyboardType.alphanumeric", "FuldeKeyboardType.alt"
-    print(customLayoutKeys.activeLayout[0].toString());
-    print(_keyRowsAlt[0].toString());*/
-
-    // height and width specifications
     late double kWidth;
-    late double kHeight; // = 60;
+    late double kHeight;
 
-    //divide screenwidth by number of keys: kWidth
     if (key.coords != null) {
       if (type.toString() == "FuldeKeyboardType.alphanumeric") {
         if (key.coords![1] == 0) {
-          //row1
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[0].length;
         } else if (key.coords![1] == 1) {
-          //row2
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[1].length;
         } else if (key.coords![1] == 2) {
-          //row3
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[2].length;
         } else if (key.coords![1] == 3) {
-          //row4
           kWidth = deviceWidth / customLayoutKeys.newFulbeLayout[3].length;
         }
         kHeight = keyboardHeight / customLayoutKeys.newFulbeLayout.length;
-        // else { //row5
-        //   kWidth = 36; //*default
-        // }
       } else if (type.toString() == "FuldeKeyboardType.alt") {
         if (key.coords![1] == 0) {
-          //row1
           kWidth = deviceWidth / _keyRowsAlt[0].length;
         } else if (key.coords![1] == 1) {
-          //row2
           kWidth = deviceWidth / _keyRowsAlt[1].length;
         } else if (key.coords![1] == 2) {
-          //row3
           kWidth = deviceWidth / _keyRowsAlt[2].length;
         } else if (key.coords![1] == 3) {
-          //row4
           kWidth = deviceWidth / _keyRowsAlt[3].length;
         } else if (key.coords![1] == 4) {
-          //row5
           kWidth = deviceWidth / _keyRowsAlt[4].length;
         }
         kHeight = keyboardHeight / customLayoutKeys.newFulbeLayout.length;
-        // else { //row5
-        //   kWidth = 36; //*default
-        // }
       }
     }
 
     String keyToDisplay = "";
     if (isABCEnabled) {
-      //english
       if (isShiftEnabled) {
         keyToDisplay = key.latin != null ? key.latin!.toUpperCase() : '';
       } else {
-        keyToDisplay = key.latin!;
+        keyToDisplay = key.latin ?? '';
       }
     } else {
-      // switch to fulde; 0-fulde, 1-latin, 2-english
       switch (customLayoutKeys.activeIndex) {
-        case (0): //0-fulde
-          if (isShiftEnabled) {
-            keyToDisplay = key.upper ?? ''; //character map for fulbe UPPERCASE
-          } else {
-            keyToDisplay = key.latin ?? '';
-          }
+        case 0: // Fulde
+          keyToDisplay = isShiftEnabled ? (key.upper ?? '') : (key.latin ?? '');
           break;
-        case (1): //1-latin
-          if (isShiftEnabled) {
-            keyToDisplay =
-                "LA1"; //key.upper ?? ''; //character map for latin UPPERCASE
-          } else {
-            keyToDisplay = key.fulde ?? ''; //"la1";//
-          }
+        case 1: // Latin
+          keyToDisplay = isShiftEnabled ? "LA1" : (key.fulde ?? '');
           break;
-        case (2): //2-english
-          if (isShiftEnabled) {
-            keyToDisplay =
-                "FU1"; //key.upper ?? ''; //character map for english UPPERCASE
-          } else {
-            keyToDisplay = "FU1"; //key.latin ?? '';
-          }
+        case 2: // English
+          keyToDisplay = "FU1";
           break;
-      //fulbe
-      if (isShiftEnabled) {
-        keyToDisplay = key.upper ?? ''; //character map for fulbe UPPERCASE
-      } else {
-        keyToDisplay = key.latin ?? '';
+        default:
+          keyToDisplay = isShiftEnabled ? (key.upper ?? '') : (key.latin ?? '');
       }
     }
 
-    // Close the previously opened overlay
-    //currentOverlayEntry?.remove();
     try {
       currentOverlayEntry?.remove();
     } catch (e) {
-      // Handle any exception that may occur
-      //print('Error occurred while removing overlay entry: $e');
+      // Ignore overlay removal errors
     }
 
     OverlayEntry? overlayEntry;
@@ -223,15 +206,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blueGrey.withOpacity(0.7),
-                  color: Colors.black.withOpacity(0.7),
+                  color: Colors.black.withValues(alpha: 0.7),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: Text(
-                  //key.text ?? '',
-                  //key.coords.toString() ?? '',
-                  //isShiftEnabled ? key.latin!.toUpperCase() ?? '' : key.latin ?? '',
                   keyToDisplay,
                   style: const TextStyle(
                     fontFamily: 'Fulde',
@@ -242,7 +221,6 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                 ),
               ),
             );
-      //print('Pressed key: ${key.text}');
       overlayEntry = OverlayEntry(
         builder: (BuildContext context) {
           return Positioned(
@@ -253,12 +231,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         },
       );
 
-      //display the pop over
       if (customLayoutKeys.activeIndex != 2) {
         Overlay.of(context).insert(overlayEntry);
       }
-      //display the pop over
-      Overlay.of(context).insert(overlayEntry);
     }
 
     if (key.keyType == FuldeKeyboardKeyType.string) {
@@ -277,31 +252,24 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           textController.text += (key.text ?? '');
           break;
         case FuldeKeyboardKeyAction.leftShift:
-          break;
         case FuldeKeyboardKeyAction.rightShift:
-          break;
         case FuldeKeyboardKeyAction.alt:
-          break;
         default:
+          break;
       }
     }
 
     onKeyPress?.call(key);
-    // remove the pop over widget
+
     if (key.keyType == FuldeKeyboardKeyType.string) {
       Future.delayed(const Duration(milliseconds: 800), () {
         if (overlayEntry != null && overlayEntry.mounted) {
           overlayEntry.remove();
         }
-        // TODO:: handle this error
-        // BUG:: Failed assertion: line 162 pos 12: '_overlay != null': is not true.
-        overlayEntry!.remove();
       });
     }
 
-    // BUG: Null check operator used on a null value
     currentOverlayEntry = overlayEntry;
-    currentOverlayEntry = overlayEntry!;
   }
 
   @override
@@ -435,14 +403,23 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
       });
 
       if (reverseLayout) items = items.reversed.toList();
-      return Material(
-        color: const Color(0xFF0A0A0A),
+      return Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF1A1A1A),
+              Color(0xFF0F0F0F),
+            ],
+          ),
+        ),
         child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
-              // Generate keboard keys
+              // Generate keyboard keys
               children: items,
             ),
             // ?* Add lines to each row
@@ -464,31 +441,93 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
   /// Creates default UI element for keyboard Key.
   Widget _keyboardDefaultKey(FuldeKeyboardKey key) {
     return Expanded(
-        child: InkWell(
-      onLongPress: () {
-        _onLongKeyPress(key);
-      },
-      onTap: () {
-        _onKeyPress(key);
-      },
-      child: SizedBox(
-        height: height / customLayoutKeys.activeLayout.length,
-        child: Container(
-          margin: const EdgeInsets.all(2),
-          decoration: BoxDecoration(
-            color: const Color(0xFF222222),
-            borderRadius: BorderRadius.circular(4),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 3.0),
+        child: Material(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
+          child: Semantics(
+            button: true,
+            label: 'Key ${key.text ?? key.capsText ?? ''}',
+            hint: 'Tap to type ${key.text ?? key.capsText ?? ''}',
+            child: InkWell(
+              borderRadius: BorderRadius.circular(12),
+              splashColor: Colors.white.withValues(alpha: 0.1),
+              highlightColor: Colors.white.withValues(alpha: 0.05),
+              onLongPress: () {
+                _onLongKeyPress(key);
+              },
+              onTap: () {
+                _onKeyPress(key);
+              },
+              onTapDown: (_) {
+                // Add scale animation on press
+                setState(() {});
+              },
+              onTapUp: (_) {
+                // Reset scale animation
+                setState(() {});
+              },
+              onTapCancel: () {
+                // Reset scale animation on cancel
+                setState(() {});
+              },
+              child: Container(
+                height: (height / customLayoutKeys.activeLayout.length) - 6,
+                margin: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xFF3A3A3A),
+                      Color(0xFF2A2A2A),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: const Color(0xFF4A4A4A),
+                    width: 0.5,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.3),
+                      offset: const Offset(0, 2),
+                      blurRadius: 4,
+                      spreadRadius: 0,
+                    ),
+                    BoxShadow(
+                      color: Colors.white.withValues(alpha: 0.05),
+                      offset: const Offset(0, -1),
+                      blurRadius: 1,
+                      spreadRadius: 0,
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Text(
+                    alwaysCaps
+                        ? key.capsText ?? ''
+                        : (isShiftEnabled ? key.capsText : key.text) ?? '',
+                    style: textStyle.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withValues(alpha: 0.5),
+                          offset: const Offset(0, 1),
+                          blurRadius: 2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ),
-          child: Center(
-              child: Text(
-            alwaysCaps
-                ? key.capsText ?? ''
-                : (isShiftEnabled ? key.capsText : key.text) ?? '',
-            style: textStyle,
-          )),
         ),
       ),
-    ));
+    );
   }
 
   OverlayEntry? currentOverlayEntry;
@@ -626,7 +665,7 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
             ),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.blueGrey.withOpacity(0.7),
+                color: Colors.blueGrey.withValues(alpha: 0.7),
                 borderRadius: BorderRadius.circular(4),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
@@ -681,16 +720,13 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
 
   /// Creates default UI element for keyboard Action Key.
   Widget _keyboardDefaultActionKey(FuldeKeyboardKey key) {
-    // Holds the action key widget.
     Widget? actionKey;
 
-    // Switch the action type to build action Key widget.
     switch (key.action ?? FuldeKeyboardKeyAction.switchLanguage) {
       case FuldeKeyboardKeyAction.backspace:
         actionKey = GestureDetector(
             onLongPress: () {
               longPress = true;
-              // Start sending backspace key events while longPress is true
               Timer.periodic(
                   const Duration(
                       milliseconds: _virtualKeyboardBackspaceEventPeriod),
@@ -698,13 +734,11 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                 if (longPress) {
                   _onKeyPress(key);
                 } else {
-                  // Cancel timer.
                   timer.cancel();
                 }
               });
             },
             onLongPressUp: () {
-              // Cancel event loop
               longPress = false;
             },
             child: SizedBox(
@@ -717,24 +751,13 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
             ));
         break;
       case FuldeKeyboardKeyAction.leftShift:
-        actionKey = SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: Center(
-            child: Text(
-              customLayoutKeys.activeIndex == 0 ? '\u21E7' : '\u21E7',
-              style: textStyle,
-            ),
-          ),
-        );
-        break;
       case FuldeKeyboardKeyAction.rightShift:
         actionKey = SizedBox(
           height: double.infinity,
           width: double.infinity,
           child: Center(
             child: Text(
-              customLayoutKeys.activeIndex == 0 ? '\u21E7' : '\u21E7',
+              '\u21E7',
               style: textStyle,
             ),
           ),
@@ -749,7 +772,6 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               customLayoutKeys.activeIndex == 0
                   ? '\u06A9\u069F\u06BC\u06A2'
                   : customLayoutKeys.activeIndex == 1
-                      ? '\u06AB\u06A0\u06AC\u06A2'
                       ? 'Latin'
                       : 'English',
               style: textStyle,
@@ -783,19 +805,10 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
         break;
       case FuldeKeyboardKeyAction.switchLanguage:
         actionKey = GestureDetector(
-            onTap: () {
-              // setState(() {
-              //   customLayoutKeys.switchLanguage(2);
-              //   isABCEnabled = !isABCEnabled;
-              // });
-            },
+            onTap: () {},
             child: const SizedBox(
               height: double.infinity,
               width: double.infinity,
-              // child: Icon(
-              //   Icons.language,
-              //   color: textColor,
-              // ),
             ));
         break;
       case FuldeKeyboardKeyAction.switchAbc:
@@ -836,12 +849,6 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
               ),
             ));
         break;
-      // case FuldeKeyboardKeyAction.alpha:
-      //   // TODO: Handle this case.
-      //   break;
-      // case FuldeKeyboardKeyAction.symbols:
-      //   // TODO: Handle this case.
-      //   break;
     }
 
     var widget = InkWell(
@@ -854,22 +861,9 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
             });
           }
         }
-
         _onKeyPress(key);
       },
       onLongPress: () {
-        // Handle long tap here
-
-        // display widget for switching
-
-        // height and width specifications
-        // double deviceWidth = MediaQuery.of(context).size.width;
-        double keyboardHeight = height;
-        // late double kWidth = 60;
-        late double kWidth = 60;
-        double kHeight =
-            keyboardHeight / customLayoutKeys.newFulbeLayout.length;
-
         OverlayEntry? overlayEntry;
 
         Widget customWidget = isABCEnabled
@@ -879,158 +873,325 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Container(
-                  width: MediaQuery.of(context).size.width / 3,
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.9,
+                    minWidth: MediaQuery.of(context).size.width * 0.7,
+                  ),
                   decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(8),
+                    gradient: const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xFF2A2A2A),
+                        Color(0xFF1A1A1A),
+                      ],
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.5),
+                        offset: const Offset(0, 4),
+                        blurRadius: 8,
+                        spreadRadius: 0,
+                      ),
+                    ],
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          textDirection = TextDirection.rtl;
-                          changeTextDirection(textDirection);
-
-                          // switch to fulde; 0-fulde, 1-latin, 2-english
-                          setState(() {
-                            customLayoutKeys.switchLanguage(0);
-                          });
-                          overlayEntry?.remove();
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 6),
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: customLayoutKeys.activeIndex == 0
-                              ? BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                )
-                              : null,
-                          child: Center(
-                            child: Text(
-                              '\u06A9\u069F\u06BC\u06A2',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Fulde',
+                      Flexible(
+                        child: GestureDetector(
+                          onTap: () {
+                            textDirection = TextDirection.rtl;
+                            changeTextDirection(textDirection);
+                            setState(() {
+                              customLayoutKeys.switchLanguage(0);
+                            });
+                            overlayEntry?.remove();
+                          },
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.easeInOut,
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 4, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                            decoration: BoxDecoration(
+                              gradient: customLayoutKeys.activeIndex == 0
+                                  ? const LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color(0xFF4A90E2),
+                                        Color(0xFF357ABD),
+                                      ],
+                                    )
+                                  : null,
+                              color: customLayoutKeys.activeIndex == 0
+                                  ? null
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
                                 color: customLayoutKeys.activeIndex == 0
-                                    ? Colors.black //blue
-                                    : Colors.grey,
-                                fontWeight: customLayoutKeys.activeIndex == 0
-                                    ? FontWeight.bold
-                                    : FontWeight.normal,
+                                    ? Colors.transparent
+                                    : Colors.grey.withValues(alpha: 0.3),
+                                width: 1,
+                              ),
+                              boxShadow: customLayoutKeys.activeIndex == 0
+                                  ? [
+                                      BoxShadow(
+                                        color: const Color(0xFF4A90E2)
+                                            .withValues(alpha: 0.3),
+                                        offset: const Offset(0, 2),
+                                        blurRadius: 4,
+                                        spreadRadius: 0,
+                                      ),
+                                    ]
+                                  : null,
+                            ),
+                            child: Center(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  if (customLayoutKeys.activeIndex == 0)
+                                    const Padding(
+                                      padding: EdgeInsets.only(right: 4.0),
+                                      child: Icon(
+                                        Icons.check_circle,
+                                        color: Colors.white,
+                                        size: 12,
+                                      ),
+                                    ),
+                                  Flexible(
+                                    child: Text(
+                                      'Fulde',
+                                      style: TextStyle(
+                                        color: customLayoutKeys.activeIndex == 0
+                                            ? Colors.white
+                                            : Colors.grey
+                                                .withValues(alpha: 0.9),
+                                        fontWeight:
+                                            customLayoutKeys.activeIndex == 0
+                                                ? FontWeight.bold
+                                                : FontWeight.normal,
+                                        fontSize: 14,
+                                        letterSpacing: 0.3,
+                                        shadows:
+                                            customLayoutKeys.activeIndex == 0
+                                                ? [
+                                                    const Shadow(
+                                                      color: Colors.black26,
+                                                      offset: Offset(0, 1),
+                                                      blurRadius: 2,
+                                                    ),
+                                                  ]
+                                                : null,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                        child: Text(
-                          'Fulde',
-                          style: TextStyle(
-                            color: customLayoutKeys.activeIndex == 0
-                                ? Colors.blue
-                                : Colors.grey,
-                            fontWeight: customLayoutKeys.activeIndex == 0
-                                ? FontWeight.bold
-                                : FontWeight.normal,
                           ),
                         ),
                       ),
-                      const SizedBox(width: 12),
-                      GestureDetector(
-                        onTap: () {
-                          textDirection = TextDirection.ltr;
-                          changeTextDirection(textDirection);
-                          //
-                          setState(() {
-                            customLayoutKeys.switchLanguage(1);
-                          });
-                          overlayEntry?.remove();
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 6),
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: customLayoutKeys.activeIndex == 1
-                              ? BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                )
-                              : null,
-                          child: Center(
-                            child: Text(
-                              // latin
-                              '\u06AB\u06A0\u06AC\u06A2',
-                              style: TextStyle(
-                                fontFamily: 'Fulde',
-                                fontSize: 20,
+                      const SizedBox(width: 8),
+                      Flexible(
+                        child: GestureDetector(
+                          onTap: () {
+                            textDirection = TextDirection.ltr;
+                            changeTextDirection(textDirection);
+                            setState(() {
+                              customLayoutKeys.switchLanguage(1);
+                            });
+                            overlayEntry?.remove();
+                          },
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.easeInOut,
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 4, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                            decoration: BoxDecoration(
+                              gradient: customLayoutKeys.activeIndex == 1
+                                  ? const LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color(0xFF4A90E2),
+                                        Color(0xFF357ABD),
+                                      ],
+                                    )
+                                  : null,
+                              color: customLayoutKeys.activeIndex == 1
+                                  ? null
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
                                 color: customLayoutKeys.activeIndex == 1
-                                    ? Colors.black //blue
-                                    : Colors.grey,
-                                fontWeight: customLayoutKeys.activeIndex == 1
-                                    ? FontWeight.bold
-                                    : FontWeight.normal,
+                                    ? Colors.transparent
+                                    : Colors.grey.withValues(alpha: 0.3),
+                                width: 1,
+                              ),
+                              boxShadow: customLayoutKeys.activeIndex == 1
+                                  ? [
+                                      BoxShadow(
+                                        color: const Color(0xFF4A90E2)
+                                            .withValues(alpha: 0.3),
+                                        offset: const Offset(0, 2),
+                                        blurRadius: 4,
+                                        spreadRadius: 0,
+                                      ),
+                                    ]
+                                  : null,
+                            ),
+                            child: Center(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  if (customLayoutKeys.activeIndex == 1)
+                                    const Padding(
+                                      padding: EdgeInsets.only(right: 4.0),
+                                      child: Icon(
+                                        Icons.check_circle,
+                                        color: Colors.white,
+                                        size: 12,
+                                      ),
+                                    ),
+                                  Flexible(
+                                    child: Text(
+                                      'Latin',
+                                      style: TextStyle(
+                                        color: customLayoutKeys.activeIndex == 1
+                                            ? Colors.white
+                                            : Colors.grey
+                                                .withValues(alpha: 0.9),
+                                        fontWeight:
+                                            customLayoutKeys.activeIndex == 1
+                                                ? FontWeight.bold
+                                                : FontWeight.normal,
+                                        fontSize: 14,
+                                        letterSpacing: 0.3,
+                                        shadows:
+                                            customLayoutKeys.activeIndex == 1
+                                                ? [
+                                                    const Shadow(
+                                                      color: Colors.black26,
+                                                      offset: Offset(0, 1),
+                                                      blurRadius: 2,
+                                                    ),
+                                                  ]
+                                                : null,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-
-                        child: Text(
-                          'Latin',
-                          style: TextStyle(
-                            color: customLayoutKeys.activeIndex == 1
-                                ? Colors.blue
-                                : Colors.grey,
-                            fontWeight: customLayoutKeys.activeIndex == 1
-                                ? FontWeight.bold
-                                : FontWeight.normal,
                           ),
                         ),
                       ),
-                      const SizedBox(width: 12),
-                      GestureDetector(
-                        onTap: () {
-                          textDirection = TextDirection.ltr;
-                          changeTextDirection(textDirection);
-                          //
-                          setState(() {
-                            customLayoutKeys.switchLanguage(2);
-                          });
-                          overlayEntry?.remove();
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 6),
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: customLayoutKeys.activeIndex == 2
-                              ? BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                )
-                              : null,
-                          child: Center(
-                            child: Text(
-                              'English',
-                              style: TextStyle(
-                                fontSize: 20,
+                      const SizedBox(width: 8),
+                      Flexible(
+                        child: GestureDetector(
+                          onTap: () {
+                            textDirection = TextDirection.ltr;
+                            changeTextDirection(textDirection);
+                            setState(() {
+                              customLayoutKeys.switchLanguage(2);
+                            });
+                            overlayEntry?.remove();
+                          },
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.easeInOut,
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 4, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                            decoration: BoxDecoration(
+                              gradient: customLayoutKeys.activeIndex == 2
+                                  ? const LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color(0xFF4A90E2),
+                                        Color(0xFF357ABD),
+                                      ],
+                                    )
+                                  : null,
+                              color: customLayoutKeys.activeIndex == 2
+                                  ? null
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
                                 color: customLayoutKeys.activeIndex == 2
-                                    ? Colors.black //blue
-                                    : Colors.grey,
-                                fontWeight: customLayoutKeys.activeIndex == 2
-                                    ? FontWeight.bold
-                                    : FontWeight.normal,
+                                    ? Colors.transparent
+                                    : Colors.grey.withValues(alpha: 0.3),
+                                width: 1,
+                              ),
+                              boxShadow: customLayoutKeys.activeIndex == 2
+                                  ? [
+                                      BoxShadow(
+                                        color: const Color(0xFF4A90E2)
+                                            .withValues(alpha: 0.3),
+                                        offset: const Offset(0, 2),
+                                        blurRadius: 4,
+                                        spreadRadius: 0,
+                                      ),
+                                    ]
+                                  : null,
+                            ),
+                            child: Center(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  if (customLayoutKeys.activeIndex == 2)
+                                    const Padding(
+                                      padding: EdgeInsets.only(right: 4.0),
+                                      child: Icon(
+                                        Icons.check_circle,
+                                        color: Colors.white,
+                                        size: 12,
+                                      ),
+                                    ),
+                                  Flexible(
+                                    child: Text(
+                                      'English',
+                                      style: TextStyle(
+                                        color: customLayoutKeys.activeIndex == 2
+                                            ? Colors.white
+                                            : Colors.grey
+                                                .withValues(alpha: 0.9),
+                                        fontWeight:
+                                            customLayoutKeys.activeIndex == 2
+                                                ? FontWeight.bold
+                                                : FontWeight.normal,
+                                        fontSize: 14,
+                                        letterSpacing: 0.3,
+                                        shadows:
+                                            customLayoutKeys.activeIndex == 2
+                                                ? [
+                                                    const Shadow(
+                                                      color: Colors.black26,
+                                                      offset: Offset(0, 1),
+                                                      blurRadius: 2,
+                                                    ),
+                                                  ]
+                                                : null,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                        child: Text(
-                          'English',
-                          style: TextStyle(
-                            color: customLayoutKeys.activeIndex == 2
-                                ? Colors.blue
-                                : Colors.grey,
-                            fontWeight: customLayoutKeys.activeIndex == 2
-                                ? FontWeight.bold
-                                : FontWeight.normal,
                           ),
                         ),
                       ),
@@ -1043,32 +1204,58 @@ class _FuldeKeyboardState extends State<FuldeKeyboard> {
           builder: (BuildContext context) {
             Size size = MediaQuery.of(context).size;
             return Positioned(
-              // left: key.coords![0].toDouble() * kWidth,
               left: size.width / 4,
               right: size.width / 4,
-            return Positioned(
-              left: key.coords![0].toDouble() * kWidth,
-              bottom: keyboardHeight - ((key.coords![1].toDouble()) * kHeight),
+              bottom: height / 2,
               child: customWidget,
             );
           },
         );
 
-        //display the pop over
-        //(keyToDisplay != "") ?
-        Overlay.of(context).insert(overlayEntry); // : null;
-
+        Overlay.of(context).insert(overlayEntry);
         currentOverlayEntry = overlayEntry;
       },
-      child: Container(
-        margin: const EdgeInsets.all(2),
-        decoration: BoxDecoration(
-          color: const Color(0xFF313131),
-          borderRadius: BorderRadius.circular(4),
+      child: Semantics(
+        button: true,
+        label: _getActionKeyLabel(key.action),
+        hint: _getActionKeyHint(key.action),
+        child: Container(
+          margin: const EdgeInsets.all(3),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFF4A4A4A),
+                Color(0xFF3A3A3A),
+              ],
+            ),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: const Color(0xFF5A5A5A),
+              width: 0.5,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.4),
+                offset: const Offset(0, 2),
+                blurRadius: 4,
+                spreadRadius: 0,
+              ),
+              BoxShadow(
+                color: Colors.white.withValues(alpha: 0.08),
+                offset: const Offset(0, -1),
+                blurRadius: 1,
+                spreadRadius: 0,
+              ),
+            ],
+          ),
+          alignment: Alignment.center,
+          child: SizedBox(
+            height: height / customLayoutKeys.activeLayout.length,
+            child: actionKey,
+          ),
         ),
-        alignment: Alignment.center,
-        height: height / customLayoutKeys.activeLayout.length,
-        child: actionKey,
       ),
     );
 

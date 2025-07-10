@@ -141,7 +141,7 @@ const List<Map> _newFuldeLayout = [
     '\u06A3': '\u067F',
     '\u06AE': '\u0689',
     '\u06BD': '\u0698',
-    '\u06A4': '\u0690', //TODO CHECK
+    '\u06A4': '\u0690',
     // FuldeKeyboardKeyAction.backspace: FuldeKeyboardKeyAction.backspace
   },
   // Row 3
@@ -227,7 +227,7 @@ const List<Map> _newLatinLayout = [
     '\u006F': '\u067F',
     '\u0070': '\u0689',
     '\u006E\u0067': '\u0698',
-    '\u006D\u0062': '\u0690', //TODO CHECK
+    '\u006D\u0062': '\u0690',
     // FuldeKeyboardKeyAction.backspace: FuldeKeyboardKeyAction.backspace
   },
   // Row 3

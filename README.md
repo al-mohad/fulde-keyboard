@@ -2,20 +2,46 @@
 
 # About
 
-A simple package for dispaying virtual keyboards on a devices like kiosks and ATMs. The library is written in Dart and has no native code dependancy.
+A modern, beautiful virtual keyboard package for Fulde language with multi-language support (Fulde, Latin, English). Features modern UI design, haptic feedback, accessibility support, and smooth animations. Perfect for kiosks, ATMs, and mobile applications.
 
-This project has forked from `virtual_keyboard` project because the `virtual_keyboard` project built to only display a buttons on the screen with single language. However, this project will handel the events and aill supports multi-languages.
+This project has evolved from a simple virtual keyboard to a comprehensive, production-ready keyboard solution with modern design principles and accessibility features.
 
-# Feature and TODO List
+# ✨ Features
 
-- (Done) Multi-langugae support.
-- (Done) Customizable layout.
-- (Done) Option to make a popup floating keyboard/keyNum.
-- (Done) Adding onLongPress spacebar pop widget to select another keyboard.
-- (`ToDo`) Adding Arabic and Hausa keyboards (Rabi'at font).
-- (`ToDo`) Optimization.
-- (`ToDo`) Adding input result viewer and handel the events.
-- (`ToDo`) Adding Spell checker.
+## 🎨 Modern Design
+
+- **Beautiful UI**: Modern gradients, shadows, and rounded corners
+- **Smooth Animations**: Key press animations and smooth transitions
+- **Material 3 Design**: Latest Material Design principles
+- **Dark/Light Theme**: Automatic theme switching support
+
+## 🌍 Multi-Language Support
+
+- **Fulde Language**: Native Fulde keyboard layout
+- **Latin Script**: Latin character support
+- **English**: Full English QWERTY layout
+- **Easy Language Switching**: Animated language selector with visual indicators
+
+## ♿ Accessibility & UX
+
+- **Haptic Feedback**: Tactile feedback on key presses
+- **Screen Reader Support**: Semantic labels for accessibility
+- **Responsive Design**: Works on all screen sizes
+- **Touch Optimized**: Proper touch targets and visual feedback
+
+## 🔧 Technical Features
+
+- **No Native Dependencies**: Pure Dart implementation
+- **Customizable Layouts**: Easy to modify and extend
+- **Performance Optimized**: Smooth rendering and minimal overhead
+- **Flutter 3.x Compatible**: Latest Flutter support
+
+## 📋 TODO List
+
+- (`ToDo`) Adding Arabic and Hausa keyboards (Rabi'at font)
+- (`ToDo`) Adding input result viewer and event handling
+- (`ToDo`) Adding spell checker
+- (`ToDo`) Voice input integration
 
 <br>
 <p align="center">

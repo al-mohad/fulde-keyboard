@@ -1,6 +1,6 @@
 name: fulde_keyboard
-description: A simple package for displaying virtual fulde keyboards. The library is written in Dart and has no native code dependency.
-version: 0.9.9
+description: A modern, beautiful virtual keyboard package for Fulde language with multi-language support (Fulde, Latin, English). Features modern UI design, haptic feedback, accessibility support, and smooth animations.
+version: 1.0.0
 
 homepage: https://github.com/al-mohad/fulde-keyboard
 
